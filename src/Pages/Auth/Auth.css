@@ -1,118 +1,119 @@
 .auth {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    height: 100%;
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  height: 100vh;
+  /* overflow: hidden; */
 }
 
 .auth .left_section {
-    position: relative;
-    flex: 2;
-    background-image: url("./portrait.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+  position: relative;
+  flex: 2;
+  background-image: url("./portrait.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .auth .left_section .logo_img {
-    height: 60px;
-    position: absolute;
-    top: 20px;
-    left: 20px;
+  height: 60px;
+  position: absolute;
+  top: 20px;
+  left: 20px;
 }
 
 .auth .right_section {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    flex: 1;
-    min-width: 450px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex: 1;
+  min-width: 450px;
 }
 
 .auth .right_section .app_title {
-    font-size: 30px;
-    position: absolute;
-    font-weight: bolder;
-    right: 30px;
-    top: 20px;
+  font-size: 30px;
+  position: absolute;
+  font-weight: bolder;
+  right: 30px;
+  top: 20px;
 }
 
 .auth .right_section .right_content {
-    width: 100%;
-    max-width: 400px;
-    display: flex;
-    flex-direction: column;
-    gap: 50px;
-    /* background-color: aqua; */
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  /* background-color: aqua; */
 }
 
 .auth .right_section .right_content .title_contain {
-    /* background-color: bisque; */
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+  /* background-color: bisque; */
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .auth .right_section .right_content .form_contain {
-    /* background-color: violet; */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
+  /* background-color: violet; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 }
 
 .auth .right_section .right_content .form_contain form {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .auth .right_section .right_content .form_contain form .textbox:focus {
-    border-bottom: 1px solid black;
+  border-bottom: 1px solid black;
 }
 
 .auth .right_section .right_content .form_contain form .textbox {
-    outline: none;
-    border: none;
-    border-bottom: 1px solid rgba(185, 185, 185, 0.479);
-    padding: 8px;
-    font-size: 18px;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid rgba(185, 185, 185, 0.479);
+  padding: 8px;
+  font-size: 18px;
 }
 
 .auth .right_section .right_content .form_contain form .loader {
-    background-color: transparent;
-    height: 70px;
+  background-color: transparent;
+  height: 70px;
 }
 
 .auth .right_section .right_content .form_contain form .submit_btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-    font-size: 18px;
-    outline: none;
-    border: none;
-    background-color: var(--black);
-    color: white;
-    border-radius: 10px;
-    cursor: pointer;
-    overflow-y: hidden;
-    height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  font-size: 18px;
+  outline: none;
+  border: none;
+  background-color: var(--black);
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+  overflow-y: hidden;
+  height: 50px;
 }
 
 @media only screen and (max-width: 900px) {
-    .auth .left_section {
-        display: none;
-    }
+  .auth .left_section {
+    display: none;
+  }
 
-    .auth .right_section {
-        min-width: max-content !important;
-    }
-    .auth .right_section .right_content {
-        width: 300px;
-    }
+  .auth .right_section {
+    min-width: max-content !important;
+  }
+  .auth .right_section .right_content {
+    width: 300px;
+  }
 }
