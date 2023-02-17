@@ -12,9 +12,16 @@ import loader from "../../assets/images/loader.svg";
 import "./Auth.css";
 import { Outlet } from "react-router";
 import animation from "../../assets/Lottie/lottie.json";
+import API from "../axios/axios";
 
 const Auth = () => {
   const [isLogin, setIsLogin] = useState(true);
+  const [data,setdata]=useState({
+    email:'',
+    password:'',
+    username:'',
+    role_name:''
+  })
   // const [currentIndex, setCurrentIndex] = useState(0);
   // const randome = [portrait,garden, garden1];
 
@@ -40,18 +47,32 @@ const Auth = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(data);
     let email = e.target.email.value.trim();
     let password = e.target.password.value.trim();
     if (isLogin) {
       if (isLogin && email.length > 0 && password.length > 0) {
-        login(email, password);
+        API.post("user-login", data)
+          .then((res) => {
+            toast.success("sucssesfuly login");
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       } else {
         console.log("cannot be empty");
       }
     } else {
       let username = e.target.username.value.trim();
       if (email.length > 0 && password.length > 0 && username.length > 0) {
-        signup({ email: email, pass: password, username: username });
+        API.post("user-register", data)
+          .then((res) => {
+            console.log(res);
+            toast.success("sucssesfuly register");
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       } else {
         console.log("cannot be empty");
       }
@@ -105,6 +126,15 @@ const Auth = () => {
       },
     },
   };
+  const inputEvent = (e) => {
+    const { name, value } = e.target;
+    setdata((pre) => {
+      return {
+        ...pre,
+        [name]: value,
+      };
+    });
+  };
 
   return (
     <motion.div
@@ -148,23 +178,43 @@ const Auth = () => {
                 className="email textbox"
                 placeholder="Email"
                 name="email"
+                value={data.email}
+                onChange={inputEvent}
               />
               <input
                 type="password"
                 className="password textbox"
                 placeholder="Password"
                 name="password"
+                value={data.password}
+                onChange={inputEvent}
               />
               {!isLogin && (
-                <motion.input
-                  type="text"
-                  className="username textbox"
-                  placeholder="Username"
-                  name="username"
-                  variants={inputVariant}
-                  initial="hidden"
-                  animate="visible"
-                />
+                <>
+                  <motion.input
+                    type="text"
+                    className="username textbox"
+                    placeholder="Username"
+                    name="username"
+                    variants={inputVariant}
+                    initial="hidden"
+                    animate="visible"
+                    value={data.username}
+                    onChange={inputEvent}
+                  />
+                  <select
+                    name="role_name"
+                    id="cars"
+                    className="username textbox"
+                    placeholder="select role"
+                    onChange={inputEvent}
+                    value={data.role_name}
+                  >
+                    <option value="Sr Devloper">Sr Devloper</option>
+                    <option value="Jr devloper">Jr devloper</option>
+                    <option value="Admin">Admin</option>
+                  </select>
+                </>
               )}
               {/* {(LGError || SUError) && <p className="error_msg">{LGError ? LGError : SUError}</p>} */}
               <button type="submit" className="submit_btn">
