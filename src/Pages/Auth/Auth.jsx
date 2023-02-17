@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import logo from "../../assets/images/logo.png";
+import Lottie from "lottie-react";
 //import useLogin from "../../Hooks/useLogin";
 //import useLogout from "../../Hooks/useLogout";
 //import useSignup from "../../Hooks/useSignup";
@@ -10,31 +11,32 @@ import garden1 from "../../assets/images/garden2.jpg";
 import loader from "../../assets/images/loader.svg";
 import "./Auth.css";
 import { Outlet } from "react-router";
+import animation from "../../assets/Lottie/lottie.json";
 
 const Auth = () => {
   const [isLogin, setIsLogin] = useState(true);
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const randome = [portrait,garden, garden1];
+  // const [currentIndex, setCurrentIndex] = useState(0);
+  // const randome = [portrait,garden, garden1];
 
   // const { signup, error: SUError, loading: SULoading } = useSignup();
   //const { login, error: LGError, loading: LGLoading } = useLogin();
   //const { logout } = useLogout();
 
   //const isLoading = () => (SULoading || LGLoading);
-  useEffect(() => {
-    const intervalId = setTimeout(() => {
-      let length = randome.length;
-      if (currentIndex === length - 1) {
-        setCurrentIndex(0);
-      }
-      else {
-        setCurrentIndex(currentIndex + 1);
-      }
-      console.log("inde changed to ", currentIndex);
-    }, 3000);
+  // useEffect(() => {
+  //   const intervalId = setTimeout(() => {
+  //     let length = randome.length;
+  //     if (currentIndex === length - 1) {
+  //       setCurrentIndex(0);
+  //     }
+  //     else {
+  //       setCurrentIndex(currentIndex + 1);
+  //     }
+  //     console.log("inde changed to ", currentIndex);
+  //   }, 3000);
 
-    return () => clearInterval(intervalId);
-  }, [currentIndex]);
+  //   return () => clearInterval(intervalId);
+  // }, [currentIndex]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -114,8 +116,11 @@ const Auth = () => {
     >
       <div
         className="left_section"
-        style={{ backgroundImage: `url("${randome[currentIndex]}")` }}
+        // style={{ backgroundImage: `url("${randome[currentIndex]}")` }}
       >
+        <div className="lottie_contain">
+          <Lottie animationData={animation} loop={true} />
+        </div>
         <img src={logo} className="logo_img" />
       </div>
       <div className="right_section">

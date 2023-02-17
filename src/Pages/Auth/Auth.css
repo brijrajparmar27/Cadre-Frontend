@@ -7,8 +7,12 @@
 }
 
 .auth .left_section {
+  background-color: rgb(241, 250, 255);
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: relative;
-  flex: 2;
+  flex: 1;
   background-image: url("./portrait.jpg");
   background-position: center;
   background-repeat: no-repeat;
@@ -20,6 +24,10 @@
   position: absolute;
   top: 20px;
   left: 20px;
+}
+
+.auth .left_section .lottie_contain {
+  width: 80%;
 }
 
 .auth .right_section {
