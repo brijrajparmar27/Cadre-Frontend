@@ -1,6 +1,6 @@
-
 :root {
-  --black: #0a0d18;
+  /* --black: #0a0d18; */
+  --black: #649eff;
   --white_bg: #fafafa;
 }
 
@@ -9,7 +9,7 @@
   padding: 0px;
 }
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 h1 {
   font-size: 36px;

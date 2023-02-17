@@ -137,7 +137,9 @@ const Auth = () => {
         >
           <div className="title_contain">
             <h1>{isLogin ? "Login" : "Sign up"}</h1>
-            <p>{isLogin ? "Welcome back" : "Lets get you started."}</p>
+            <p className="sub_text">
+              {isLogin ? "Welcome back" : "Lets get you started."}
+            </p>
           </div>
           <div className="form_contain">
             <form onSubmit={handleSubmit}>
@@ -176,7 +178,7 @@ const Auth = () => {
               </button>
             </form>
             <p
-              className="redirect"
+              className="redirect sub_text"
               onClick={() => {
                 setIsLogin((prev) => !prev);
               }}

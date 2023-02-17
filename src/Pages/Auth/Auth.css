@@ -57,6 +57,10 @@
   /* background-color: aqua; */
 }
 
+.auth .right_section .right_content .sub_text {
+  color: gray;
+}
+
 .auth .right_section .right_content .title_contain {
   /* background-color: bisque; */
   display: flex;
