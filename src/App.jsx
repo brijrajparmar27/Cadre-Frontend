@@ -1,15 +1,31 @@
-import { Routes, Route } from "react-router-dom";
+import {
+  Route,
+  createBrowserRouter,
+  createRoutesFromElements,
+  RouterProvider,
+} from "react-router-dom";
 import "./App.css";
 import Auth from "./Pages/Auth/Auth";
 import Dashboard from "./Pages/Dashboard/Dashboard";
+import Projects from "./Pages/Dashboard/SubRoutes/Projects/Projects";
+import Settings from "./Pages/Dashboard/SubRoutes/Settings/Settings";
+import Root from "./Pages/Root";
 
 function App() {
+  const Router = createBrowserRouter(
+    createRoutesFromElements(
+      <Route path="/" element={<Root />}>
+        <Route index element={<Auth />} />
+        <Route path="dashboard" element={<Dashboard />}>
+          <Route index element={<Projects />} />
+          <Route path="settings" element={<Settings />} />
+        </Route>
+      </Route>
+    )
+  );
   return (
     <div className="App">
-      <Routes>
-        <Route path="/" element={<Auth />} />
-        <Route path="/Dashboard" element={<Dashboard />} />
-      </Routes>
+      <RouterProvider router={Router} />
     </div>
   );
 }
