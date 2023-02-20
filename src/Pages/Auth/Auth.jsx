@@ -10,18 +10,23 @@ import garden from "../../assets/images/garden1.jpg";
 import garden1 from "../../assets/images/garden2.jpg";
 import loader from "../../assets/images/loader.svg";
 import "./Auth.css";
-import { Outlet } from "react-router";
+import { Outlet, useNavigate } from "react-router";
 import animation from "../../assets/Lottie/lottie.json";
 import API from "../axios/axios";
+import { toast } from "react-toastify";
+import { useDispatch } from "react-redux";
+import { setLoginData } from "../redux/logindataslice";
 
 const Auth = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [data,setdata]=useState({
     email:'',
     password:'',
-    username:'',
+    name:'',
     role_name:''
   })
+  const navigate=useNavigate();
+  const dispatch=useDispatch();
   // const [currentIndex, setCurrentIndex] = useState(0);
   // const randome = [portrait,garden, garden1];
 
@@ -54,16 +59,19 @@ const Auth = () => {
       if (isLogin && email.length > 0 && password.length > 0) {
         API.post("user-login", data)
           .then((res) => {
-            toast.success("sucssesfuly login");
+            navigate('dashboard');
+            dispatch(setLoginData(res.data));
           })
           .catch((err) => {
             console.log(err);
+            toast.error("sucssesfuly login");
+
           });
       } else {
         console.log("cannot be empty");
       }
     } else {
-      let username = e.target.username.value.trim();
+      let username = e.target.name.value.trim();
       if (email.length > 0 && password.length > 0 && username.length > 0) {
         API.post("user-register", data)
           .then((res) => {
@@ -195,11 +203,11 @@ const Auth = () => {
                     type="text"
                     className="username textbox"
                     placeholder="Username"
-                    name="username"
+                    name="name"
                     variants={inputVariant}
                     initial="hidden"
                     animate="visible"
-                    value={data.username}
+                    value={data.name}
                     onChange={inputEvent}
                   />
                   <select
