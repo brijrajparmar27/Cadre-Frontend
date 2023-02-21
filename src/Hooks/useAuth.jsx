@@ -28,7 +28,10 @@ const useAuth = () => {
         console.log(err);
       });
   };
-  return { Login, Signup };
+  const Logout = () => {
+    dispatch(setLoginData(null));
+  };
+  return { Login, Signup, Logout };
 };
 
 export default useAuth;

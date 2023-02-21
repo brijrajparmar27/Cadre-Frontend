@@ -1,0 +1,9 @@
+.dashboard {
+  background-color: aqua;
+  height: 100%;
+  width: 100%;
+  display: flex;
+}
+.dashboard .sidebar {
+  background-color: bisque;
+}
