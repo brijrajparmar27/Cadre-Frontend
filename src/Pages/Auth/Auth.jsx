@@ -4,29 +4,20 @@ import logo from "../../assets/images/logo.png";
 import Lottie from "lottie-react";
 import loader from "../../assets/images/loader.svg";
 import "./Auth.css";
-import { Outlet, useNavigate } from "react-router";
 import animation from "../../assets/Lottie/lottie.json";
-import { useDispatch, useSelector } from "react-redux";
 import useAuth from "../../Hooks/useAuth";
 
 const Auth = () => {
   const [isLogin, setIsLogin] = useState(true);
-  // const [data, setdata] = useState({
-  //   email: "",
-  //   password: "",
-  //   name: "",
-  //   role_name: "Sr Devloper",
-  // });
-  const { userData } = useSelector((state) => state.logindataslice);
-  console.log(userData);
 
   const { Login, Signup } = useAuth();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // console.log(data);
+
     let email = e.target.email.value.trim();
     let password = e.target.password.value.trim();
+
     if (isLogin) {
       if (isLogin && email.length > 0 && password.length > 0) {
         Login({ email, password });
@@ -93,15 +84,6 @@ const Auth = () => {
       },
     },
   };
-  // const inputEvent = (e) => {
-  //   const { name, value } = e.target;
-  //   setdata((pre) => {
-  //     return {
-  //       ...pre,
-  //       [name]: value,
-  //     };
-  //   });
-  // };
 
   return (
     <motion.div
@@ -138,16 +120,12 @@ const Auth = () => {
                 className="email textbox"
                 placeholder="Email"
                 name="email"
-                // value={data.email}
-                // onChange={inputEvent}
               />
               <input
                 type="password"
                 className="password textbox"
                 placeholder="Password"
                 name="password"
-                // value={data.password}
-                // onChange={inputEvent}
               />
               {!isLogin && (
                 <>
@@ -159,8 +137,6 @@ const Auth = () => {
                     variants={inputVariant}
                     initial="hidden"
                     animate="visible"
-                    // value={data.name}
-                    // onChange={inputEvent}
                   />
                   <motion.select
                     variants={inputVariant}
@@ -170,8 +146,6 @@ const Auth = () => {
                     id="cars"
                     className="username textbox"
                     placeholder="select role"
-                    // onChange={inputEvent}
-                    // value={data.role_name}
                   >
                     <option value="Sr Devloper">Sr Devloper</option>
                     <option value="Jr devloper">Jr devloper</option>

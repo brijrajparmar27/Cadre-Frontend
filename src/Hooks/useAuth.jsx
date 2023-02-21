@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 
 const useAuth = () => {
   const dispatch = useDispatch();
+
   const Login = (data) => {
     API.post("user-login", data)
       .then((res) => {
