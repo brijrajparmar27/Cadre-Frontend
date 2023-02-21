@@ -16,17 +16,19 @@ import API from "../axios/axios";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { setLoginData } from "../redux/logindataslice";
+import useAuth from "../../Hooks/useAuth";
 
 const Auth = () => {
   const [isLogin, setIsLogin] = useState(true);
-  const [data,setdata]=useState({
-    email:'',
-    password:'',
-    name:'',
-    role_name:''
-  })
-  const navigate=useNavigate();
-  const dispatch=useDispatch();
+  const [data, setdata] = useState({
+    email: "",
+    password: "",
+    name: "",
+    role_name: "",
+  });
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { Login, Signup } = useAuth();
   // const [currentIndex, setCurrentIndex] = useState(0);
   // const randome = [portrait,garden, garden1];
 
@@ -57,30 +59,14 @@ const Auth = () => {
     let password = e.target.password.value.trim();
     if (isLogin) {
       if (isLogin && email.length > 0 && password.length > 0) {
-        API.post("user-login", data)
-          .then((res) => {
-            navigate('dashboard');
-            dispatch(setLoginData(res.data));
-          })
-          .catch((err) => {
-            console.log(err);
-            toast.error("sucssesfuly login");
-
-          });
+        Login(data);
       } else {
         console.log("cannot be empty");
       }
     } else {
       let username = e.target.name.value.trim();
       if (email.length > 0 && password.length > 0 && username.length > 0) {
-        API.post("user-register", data)
-          .then((res) => {
-            console.log(res);
-            toast.success("sucssesfuly register");
-          })
-          .catch((err) => {
-            console.log(err);
-          });
+        Signup(data);
       } else {
         console.log("cannot be empty");
       }
