@@ -1,7 +1,82 @@
-.sidebar{
-    background-color: blue;
-    flex: 2;
+.sidebar {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-right: 1px solid gainsboro;
 }
-.sidebar .sidebar_header .sidebar_logo{
-    height: 50px;
+.sidebar .sidebar_header {
+}
+
+.sidebar .sidebar_footer {
+  padding: 10px;
+}
+.sidebar .sidebar_footer .footer_content {
+  padding: 10px;
+  border-radius: 10px;
+  column-gap: 10px;
+  background-color: gainsboro;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 9fr;
+  grid-template-areas:
+    "dp name"
+    "dp title";
+}
+.sidebar .sidebar_footer .dp_contain {
+  grid-area: dp;
+}
+.sidebar .sidebar_footer .dp_contain img {
+  width: 50px;
+  border-radius: 50%;
+}
+.sidebar .sidebar_footer .name_contain {
+  display: flex;
+  align-items: flex-end;
+  grid-area: name;
+}
+.sidebar .sidebar_footer .title_contain {
+  grid-area: title;
+}
+.sidebar .sidebar_content {
+  /* background-color: blueviolet; */
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  padding: 10px;
+}
+.sidebar .sidebar_content .project_list {
+  /* background-color: blue; */
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-left: 50px;
+}
+.sidebar .sidebar_content .project_list .project_card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.sidebar .sidebar_content .project_list .dot {
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+}
+.sidebar .sidebar_content .nav_contain {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: black;
+  gap: 10px;
+  padding: 15px 30px;
+  border-radius: 10px;
+  font-size: 22px;
+}
+.sidebar .sidebar_content .nav_contain.active {
+  background-color: var(--background);
+}
+.sidebar .sidebar_header .sidebar_logo {
+  padding: 20px 20px;
+  height: 40px;
+  cursor: pointer;
 }

@@ -13,23 +13,34 @@ import Auth from "./Pages/Auth/Auth";
 import Dashboard from "./Pages/Dashboard/Dashboard";
 import Projects from "./Pages/Dashboard/SubRoutes/Projects/Projects";
 import Settings from "./Pages/Dashboard/SubRoutes/Settings/Settings";
+import TimeSheets from "./Pages/Dashboard/SubRoutes/TimeSheets.jsx/TimeSheets";
 import Root from "./Pages/Root";
 
 function App() {
+  const { userData } = useSelector((state) => state.logindataslice);
 
-  const {userData}=useSelector((state)=>state.logindataslice)
-
-  useEffect(()=>{
+  useEffect(() => {
     console.log(userData);
-  },[userData])
+  }, [userData]);
 
   const Router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<Root />}>
-        <Route index element={userData && userData.jwt ?<Navigate to='/dashboard'/>:<Auth />} />
-        <Route path="dashboard" element={userData && userData.jwt ?<Dashboard />:<Navigate to='/'/>}>
+        <Route
+          index
+          element={
+            userData && userData.jwt ? <Navigate to="/dashboard" /> : <Auth />
+          }
+        />
+        <Route
+          path="dashboard"
+          element={
+            userData && userData.jwt ? <Dashboard /> : <Navigate to="/" />
+          }
+        >
           <Route index element={<Projects />} />
           <Route path="settings" element={<Settings />} />
+          <Route path="time-sheet" element={<TimeSheets />} />
         </Route>
         <Route path="*" element={<NotFound />} />
       </Route>
