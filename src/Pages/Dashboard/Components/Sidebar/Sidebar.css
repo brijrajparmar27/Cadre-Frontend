@@ -1,2 +1,7 @@
-.sidebar {
+.sidebar{
+    background-color: blue;
+    flex: 2;
+}
+.sidebar .sidebar_header .sidebar_logo{
+    height: 50px;
 }

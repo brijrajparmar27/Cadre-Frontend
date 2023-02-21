@@ -10,7 +10,9 @@ const Dashboard = () => {
   return (
     <div className="dashboard">
       <Sidebar />
+      <div className="dashboard_content">
       <Outlet />
+      </div>
     </div>
   );
 };
