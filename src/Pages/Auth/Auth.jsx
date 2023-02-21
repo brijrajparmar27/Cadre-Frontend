@@ -11,12 +11,12 @@ import useAuth from "../../Hooks/useAuth";
 
 const Auth = () => {
   const [isLogin, setIsLogin] = useState(true);
-  const [data, setdata] = useState({
-    email: "",
-    password: "",
-    name: "",
-    role_name: "Sr Devloper",
-  });
+  // const [data, setdata] = useState({
+  //   email: "",
+  //   password: "",
+  //   name: "",
+  //   role_name: "Sr Devloper",
+  // });
   const { userData } = useSelector((state) => state.logindataslice);
   console.log(userData);
 
@@ -24,19 +24,22 @@ const Auth = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(data);
+    // console.log(data);
     let email = e.target.email.value.trim();
     let password = e.target.password.value.trim();
     if (isLogin) {
       if (isLogin && email.length > 0 && password.length > 0) {
-        Login(data);
+        Login({ email, password });
+        // console.log({ email, password });
       } else {
         console.log("cannot be empty");
       }
     } else {
-      let username = e.target.name.value.trim();
-      if (email.length > 0 && password.length > 0 && username.length > 0) {
-        Signup(data);
+      let name = e.target.name.value.trim();
+      let role_name = e.target.role_name.value.trim();
+      if (email.length > 0 && password.length > 0 && name.length > 0) {
+        Signup({ email, password, name, role_name });
+        // console.log({ email, password, name, role_name });
       } else {
         console.log("cannot be empty");
       }
@@ -90,15 +93,15 @@ const Auth = () => {
       },
     },
   };
-  const inputEvent = (e) => {
-    const { name, value } = e.target;
-    setdata((pre) => {
-      return {
-        ...pre,
-        [name]: value,
-      };
-    });
-  };
+  // const inputEvent = (e) => {
+  //   const { name, value } = e.target;
+  //   setdata((pre) => {
+  //     return {
+  //       ...pre,
+  //       [name]: value,
+  //     };
+  //   });
+  // };
 
   return (
     <motion.div
@@ -115,7 +118,7 @@ const Auth = () => {
         <img src={logo} className="logo_img" />
       </div>
       <div className="right_section">
-        <h1 className="app_title">Cadre</h1>
+        <h1 className="app_title gradient-text">Cadre</h1>
         <motion.div
           className="right_content"
           variants={formVariant}
@@ -135,16 +138,16 @@ const Auth = () => {
                 className="email textbox"
                 placeholder="Email"
                 name="email"
-                value={data.email}
-                onChange={inputEvent}
+                // value={data.email}
+                // onChange={inputEvent}
               />
               <input
                 type="password"
                 className="password textbox"
                 placeholder="Password"
                 name="password"
-                value={data.password}
-                onChange={inputEvent}
+                // value={data.password}
+                // onChange={inputEvent}
               />
               {!isLogin && (
                 <>
@@ -156,21 +159,24 @@ const Auth = () => {
                     variants={inputVariant}
                     initial="hidden"
                     animate="visible"
-                    value={data.name}
-                    onChange={inputEvent}
+                    // value={data.name}
+                    // onChange={inputEvent}
                   />
-                  <select
+                  <motion.select
+                    variants={inputVariant}
+                    initial="hidden"
+                    animate="visible"
                     name="role_name"
                     id="cars"
                     className="username textbox"
                     placeholder="select role"
-                    onChange={inputEvent}
-                    value={data.role_name}
+                    // onChange={inputEvent}
+                    // value={data.role_name}
                   >
                     <option value="Sr Devloper">Sr Devloper</option>
                     <option value="Jr devloper">Jr devloper</option>
                     <option value="Admin">Admin</option>
-                  </select>
+                  </motion.select>
                 </>
               )}
               {/* {(LGError || SUError) && <p className="error_msg">{LGError ? LGError : SUError}</p>} */}
@@ -194,17 +200,12 @@ const Auth = () => {
                 <span>
                   {" "}
                   Dont have an account?{" "}
-                  <span style={{ fontWeight: "bold", color: "blue" }}>
-                    {" "}
-                    Signup
-                  </span>
+                  <span className="link_btn"> Signup</span>
                 </span>
               ) : (
                 <span>
                   Already have an account?{" "}
-                  <span style={{ fontWeight: "bold", color: "blue" }}>
-                    Login
-                  </span>
+                  <span className="link_btn">Login</span>
                 </span>
               )}
             </p>

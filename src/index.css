@@ -1,7 +1,9 @@
 :root {
   /* --black: #0a0d18; */
-  --black: #649eff;
-  --white_bg: #fafafa;
+  --primary: #26329f;
+  --primary-inactive: #6373ff;
+  --secondary: #d8b1fc;
+  --background: #90b3fd;
 }
 
 * {

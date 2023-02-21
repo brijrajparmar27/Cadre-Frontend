@@ -41,11 +41,36 @@
 }
 
 .auth .right_section .app_title {
-  font-size: 30px;
+  cursor: pointer;
+  font-size: 50px;
   position: absolute;
   font-weight: bolder;
   right: 30px;
   top: 20px;
+}
+
+.gradient-text {
+  /* Fallback: Set a background color. */
+  background-color: var(--primary);
+
+  /* Create the gradient. */
+  background: linear-gradient(
+    160deg,
+    rgba(38, 50, 159, 1) 0%,
+    rgb(167, 74, 255) 48%,
+    rgb(50, 115, 255) 100%
+  );
+
+  /* Set the background size and repeat properties. */
+  background-size: 100%;
+  background-repeat: repeat;
+
+  /* Use the text as a mask for the background. */
+  /* This will show the gradient as a text color rather than element bg. */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-background-clip: text;
+  -moz-text-fill-color: transparent;
 }
 
 .auth .right_section .right_content {
@@ -75,6 +100,11 @@
   justify-content: center;
   align-items: center;
   gap: 10px;
+}
+
+.auth .right_section .right_content .form_contain .link_btn {
+  font-weight: bold;
+  color: var(--primary);
 }
 
 .auth .right_section .right_content .form_contain form {
@@ -109,12 +139,20 @@
   font-size: 18px;
   outline: none;
   border: none;
-  background-color: var(--black);
+  background-color: var(--primary-inactive);
   color: white;
   border-radius: 10px;
   cursor: pointer;
   overflow-y: hidden;
   height: 50px;
+}
+
+.auth .right_section .right_content .form_contain form .submit_btn:hover {
+  background-color: var(--primary);
+}
+
+.sub_text {
+  cursor: pointer;
 }
 
 @media only screen and (max-width: 900px) {
