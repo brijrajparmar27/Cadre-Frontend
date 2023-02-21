@@ -6,7 +6,7 @@ import loader from "../../assets/images/loader.svg";
 import "./Auth.css";
 import { Outlet, useNavigate } from "react-router";
 import animation from "../../assets/Lottie/lottie.json";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import useAuth from "../../Hooks/useAuth";
 
 const Auth = () => {
@@ -17,6 +17,8 @@ const Auth = () => {
     name: "",
     role_name: "",
   });
+    const { userData } = useSelector((state) => state.logindataslice);
+  console.log(userData);
 
   const { Login, Signup } = useAuth();
 
@@ -195,7 +197,6 @@ const Auth = () => {
           </div>
         </motion.div>
       </div>
-      <Outlet></Outlet>
     </motion.div>
   );
 };
