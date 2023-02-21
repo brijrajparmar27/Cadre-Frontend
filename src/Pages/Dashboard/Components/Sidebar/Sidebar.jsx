@@ -2,9 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import useAuth from "../../../../Hooks/useAuth";
 import logo from "../../../../assets/images/logo.png";
-import { BsFolderFill } from "react-icons/bs";
-import { RiSettings4Fill } from "react-icons/ri";
-import { IoDocument } from "react-icons/io5";
+import { BsFolder2Open, BsClipboardData, BsGear } from "react-icons/bs";
 import "./Sidebar.css";
 import randomColor from "randomcolor";
 export default function Sidebar() {
@@ -24,13 +22,13 @@ export default function Sidebar() {
 
         <div className="sidebar_content">
           <NavLink to="/dashboard" className="nav_contain" end>
-            <BsFolderFill className="link_icon" />
+            <BsFolder2Open className="link_icon" />
             <p>Projects</p>
           </NavLink>
           <div className="project_list">
             {projects.map((each) => {
               return (
-                <div className="project_card">
+                <NavLink className="project_card" to="/dashboard/project">
                   <div
                     className="dot"
                     style={{
@@ -38,16 +36,16 @@ export default function Sidebar() {
                     }}
                   ></div>
                   <p>{each}</p>
-                </div>
+                </NavLink>
               );
             })}
           </div>
           <NavLink to="/dashboard/time-sheet" className="nav_contain">
-            <IoDocument className="link_icon" />
+            <BsClipboardData className="link_icon" />
             <p>Time Sheet</p>
           </NavLink>
           <NavLink to="/dashboard/settings" className="nav_contain">
-            <RiSettings4Fill className="link_icon" />
+            <BsGear className="link_icon" />
             <p>Settings</p>
           </NavLink>
         </div>
