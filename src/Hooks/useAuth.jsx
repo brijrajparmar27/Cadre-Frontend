@@ -20,6 +20,7 @@ const useAuth = () => {
     API.post("user-register", data)
       .then((res) => {
         console.log(res);
+        dispatch(setLoginData(res.data));
         toast.success("sucssesfuly register");
       })
       .catch((err) => {

@@ -15,9 +15,9 @@ const Auth = () => {
     email: "",
     password: "",
     name: "",
-    role_name: "",
+    role_name: "Sr Devloper",
   });
-    const { userData } = useSelector((state) => state.logindataslice);
+  const { userData } = useSelector((state) => state.logindataslice);
   console.log(userData);
 
   const { Login, Signup } = useAuth();
@@ -190,9 +190,23 @@ const Auth = () => {
                 setIsLogin((prev) => !prev);
               }}
             >
-              {isLogin
-                ? "Dont have an account? Signup"
-                : "Already have an account? Login"}
+              {isLogin ? (
+                <span>
+                  {" "}
+                  Dont have an account?{" "}
+                  <span style={{ fontWeight: "bold", color: "blue" }}>
+                    {" "}
+                    Signup
+                  </span>
+                </span>
+              ) : (
+                <span>
+                  Already have an account?{" "}
+                  <span style={{ fontWeight: "bold", color: "blue" }}>
+                    Login
+                  </span>
+                </span>
+              )}
             </p>
           </div>
         </motion.div>
