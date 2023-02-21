@@ -2,18 +2,24 @@ import API from "../Pages/axios/axios";
 import { useDispatch } from "react-redux";
 import { setLoginData } from "../Pages/redux/logindataslice";
 import { toast } from "react-toastify";
+import { useState } from "react";
 
 const useAuth = () => {
+  const [error,setError]=useState();
+  const [loading,setLoding]=useState(false);
   const dispatch = useDispatch();
 
   const Login = (data) => {
+    setLoding(true);
     API.post("user-login", data)
       .then((res) => {
         // navigate("dashboard");
+        setLoding(false);
         dispatch(setLoginData(res.data));
       })
       .catch((err) => {
-        console.log(err);
+        setError(err.response.data.message)
+        setLoding(false);
         toast.error("sucssesfuly login");
       });
   };
@@ -31,7 +37,7 @@ const useAuth = () => {
   const Logout = () => {
     dispatch(setLoginData(null));
   };
-  return { Login, Signup, Logout };
+  return { Login, Signup, Logout,error,loading,setError };
 };
 
 export default useAuth;

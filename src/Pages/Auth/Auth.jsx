@@ -10,7 +10,7 @@ import useAuth from "../../Hooks/useAuth";
 const Auth = () => {
   const [isLogin, setIsLogin] = useState(true);
 
-  const { Login, Signup } = useAuth();
+  const { Login, Signup,error,loading,setError } = useAuth();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -32,7 +32,7 @@ const Auth = () => {
         Signup({ email, password, name, role_name });
         // console.log({ email, password, name, role_name });
       } else {
-        console.log("cannot be empty");
+        setError(' field cannot be empty');
       }
     }
   };
@@ -146,6 +146,7 @@ const Auth = () => {
                     id="cars"
                     className="username textbox"
                     placeholder="select role"
+
                   >
                     <option value="Sr Devloper">Sr Devloper</option>
                     <option value="Jr devloper">Jr devloper</option>
@@ -153,9 +154,9 @@ const Auth = () => {
                   </motion.select>
                 </>
               )}
-              {/* {(LGError || SUError) && <p className="error_msg">{LGError ? LGError : SUError}</p>} */}
-              <button type="submit" className="submit_btn">
-                {false ? (
+               <p className="error_msg">{error}</p>
+              <button type="submit" disabled={loading} className="submit_btn">
+                {loading ? (
                   <img src={loader} className="loader" alt="loading" />
                 ) : isLogin ? (
                   "Login"
@@ -168,6 +169,7 @@ const Auth = () => {
               className="redirect sub_text"
               onClick={() => {
                 setIsLogin((prev) => !prev);
+                setError('');
               }}
             >
               {isLogin ? (
