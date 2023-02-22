@@ -6,6 +6,6 @@
 }
 .dashboard_content {
   flex: 8;
-  background-color: aqua;
+  /* background-color: aqua; */
   padding: 20px;
 }
