@@ -6,6 +6,8 @@ import loader from "../../assets/images/loader.svg";
 import "./Auth.css";
 import animation from "../../assets/Lottie/lottie.json";
 import useAuth from "../../Hooks/useAuth";
+import Select from 'react-select'
+
 
 const Auth = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -36,6 +38,11 @@ const Auth = () => {
       }
     }
   };
+  const options = [
+    { value: 'Sr Devloper', label: 'Sr Devloper' },
+    { value: 'Jr devloper', label: 'Jr devloper' },
+    { value: 'Admin', label: 'Admin' }
+  ]
 
   const formVariant = {
     hidden: {
@@ -138,7 +145,7 @@ const Auth = () => {
                     initial="hidden"
                     animate="visible"
                   />
-                  <motion.select
+                  {/* <motion.select
                     variants={inputVariant}
                     initial="hidden"
                     animate="visible"
@@ -151,7 +158,8 @@ const Auth = () => {
                     <option value="Sr Devloper">Sr Devloper</option>
                     <option value="Jr devloper">Jr devloper</option>
                     <option value="Admin">Admin</option>
-                  </motion.select>
+                  </motion.select> */}
+                  <Select options={options}/>
                 </>
               )}
                <p className="error_msg">{error}</p>
@@ -192,3 +200,4 @@ const Auth = () => {
   );
 };
 export default Auth;
+

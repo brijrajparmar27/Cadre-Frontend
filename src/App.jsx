@@ -11,6 +11,7 @@ import "./App.css";
 import NotFound from "./Pages/404";
 import Auth from "./Pages/Auth/Auth";
 import Dashboard from "./Pages/Dashboard/Dashboard";
+import CreateProject from "./Pages/Dashboard/SubRoutes/CreateProject/CreateProject";
 import Project from "./Pages/Dashboard/SubRoutes/Project/Project";
 import Projects from "./Pages/Dashboard/SubRoutes/Projects/Projects";
 import Settings from "./Pages/Dashboard/SubRoutes/Settings/Settings";
@@ -41,6 +42,7 @@ function App() {
         >
           <Route index element={<Projects />} />
           <Route path="project" element={<Project />} />
+          <Route path="addProject" element={<CreateProject></CreateProject>} />
           <Route path="settings" element={<Settings />} />
           <Route path="time-sheet" element={<TimeSheets />} />
         </Route>
