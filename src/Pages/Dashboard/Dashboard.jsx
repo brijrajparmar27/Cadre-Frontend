@@ -11,7 +11,7 @@ const Dashboard = () => {
     <div className="dashboard">
       <Sidebar />
       <div className="dashboard_content">
-      <Outlet />
+        <Outlet />
       </div>
     </div>
   );

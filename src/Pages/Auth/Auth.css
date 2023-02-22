@@ -150,7 +150,9 @@
 .auth .right_section .right_content .form_contain form .submit_btn:hover {
   background-color: var(--primary);
 }
-
+.auth .right_section .right_content .form_contain form .submit_btn:disabled {
+  background-color: var(--primary-inactive);
+}
 .sub_text {
   cursor: pointer;
 }
