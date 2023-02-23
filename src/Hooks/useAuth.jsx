@@ -13,7 +13,6 @@ const useAuth = () => {
     setLoding(true);
     API.post("user-login", data)
       .then((res) => {
-        // navigate("dashboard");
         setLoding(false);
         dispatch(setLoginData(res.data));
       })
@@ -26,7 +25,6 @@ const useAuth = () => {
   const Signup = (data) => {
     API.post("user-register", data)
       .then((res) => {
-        console.log(res);
         dispatch(setLoginData(res.data));
         toast.success("sucssesfuly register");
       })
