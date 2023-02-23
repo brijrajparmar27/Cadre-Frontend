@@ -13,6 +13,9 @@ export default function CreateProject() {
   useEffect(() => {
     getAlluser();
   }, []);
+  useEffect(() => {
+    console.log(selectMebers);
+  }, [selectMebers]);
   const populateMembers = (members) => {
     let memberArr = [];
     members.forEach((member) => {
@@ -28,7 +31,7 @@ export default function CreateProject() {
       discription: e.target.projectDescripation.value.trim(),
       assigned_date: e.target.assigenedate.value.trim(),
       deadline: e.target.DeadLine.value.trim(),
-      member: selectMebers
+      member: selectMebers,
     };
     console.log(projectdata);
     if (

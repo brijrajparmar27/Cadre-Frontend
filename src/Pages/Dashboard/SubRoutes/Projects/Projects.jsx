@@ -3,6 +3,8 @@ import { useNavigate } from "react-router";
 import { BsSearch, BsFilter, BsPlusLg } from "react-icons/bs";
 import "./Projects.css";
 import Select from "react-select";
+import { CircularProgressbar } from "react-circular-progressbar";
+import "react-circular-progressbar/dist/styles.css";
 
 export default function Projects() {
   const navigate = useNavigate();
@@ -12,6 +14,7 @@ export default function Projects() {
     { value: "tasks", label: "Tasks" },
     { value: "progress", label: "Progress" },
   ];
+  const percentage = 66;
   return (
     <div className="projects">
       <div className="section_title">
@@ -45,6 +48,22 @@ export default function Projects() {
               placeholder="Sort By"
             />
           </div>
+        </div>
+      </div>
+      <div className="projects_section">
+        <div className="card">
+          <h3 className="project_title">Title</h3>
+          <p className="tech_stack">stack</p>
+          <div className="project_progress">
+            <CircularProgressbar value={percentage} text={`${percentage}%`} />
+          </div>
+          <p className="project_description">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque ex
+            suscipit voluptatum architecto assumenda corrupti voluptate
+            necessitatibus, voluptatibus hic a porro provident omnis possimus?
+            Atque dicta omnis earum deserunt placeat.
+          </p>
+          <div className="project_members"></div>
         </div>
       </div>
     </div>

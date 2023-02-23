@@ -1,3 +1,8 @@
+.projects {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
 .projects .header_bar {
   box-sizing: border-box;
   /* background-color: blueviolet; */
@@ -64,4 +69,65 @@
   display: flex;
   max-width: 300px;
   flex: 2;
+}
+.projects_section {
+  box-sizing: border-box;
+  /* background-color: aqua; */
+  padding: 50px 0px;
+  margin-top: 25px;
+  overflow-y: auto;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  align-items: flex-start;
+  align-content: flex-start;
+}
+.projects_section .card {
+  box-sizing: border-box;
+  padding: 20px;
+  height: 250px;
+  width: 400px;
+  /* background-color: bisque; */
+  /* border: 1px solid gainsboro; */
+  box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px,
+    rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+  border-radius: 10px;
+  display: grid;
+  grid-template-rows: 1.5fr 1fr 4fr 1.5fr;
+  grid-template-columns: 8fr 2fr;
+  grid-template-areas:
+    "title progress"
+    "stack progress"
+    "desc desc"
+    "mems mems";
+  gap: 5px;
+}
+.projects_section .card .project_title {
+  /* background-color: aqua; */
+  display: flex;
+  align-items: center;
+  grid-area: title;
+}
+.projects_section .card .tech_stack {
+  /* background-color: violet; */
+  grid-area: stack;
+}
+.projects_section .card .project_progress {
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background-color: cadetblue; */
+  grid-area: progress;
+}
+.projects_section .card .project_description {
+  /* background-color: blueviolet; */
+  grid-area: desc;
+}
+.projects_section .card .project_members {
+  /* background-color: aquamarine; */
+  grid-area: mems;
 }
