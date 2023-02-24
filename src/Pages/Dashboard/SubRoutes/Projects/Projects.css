@@ -114,6 +114,8 @@
 .projects_section .card .tech_stack {
   /* background-color: violet; */
   grid-area: stack;
+  display: flex;
+  gap: 3px;
 }
 .projects_section .card .tech_stack .tech_icon {
   height: 25px;

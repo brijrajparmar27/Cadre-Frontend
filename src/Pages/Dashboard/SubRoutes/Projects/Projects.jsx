@@ -20,6 +20,7 @@ export default function Projects() {
   const { userData } = useSelector((state) => state.logindataslice);
   const { projectData } = useSelector((state) => state.projectdatareducer);
   const { getAllProject } = useProject();
+  console.log('projectdata',projectData)
   useEffect(() => {
     getAllProject(userData?._id);
   }, []);
@@ -63,11 +64,17 @@ export default function Projects() {
           <div className="card" key={data._id}>
             <h3 className="project_title">{data.project_name}</h3>
             <p className="tech_stack">
-              <img
+              {
+                data?.stack?.map((each)=>{
+                  return <img
+                  key={each._id}
                 className="tech_icon"
-                src="http://localhost:4040/public/stacks/react.svg"
-                alt=""
+                src={`http://localhost:4040/public/stacks/${each.url}`}
+                alt={each.title}
               />
+                })
+              }
+{/*               
               <img
                 className="tech_icon"
                 src="http://localhost:4040/public/stacks/mongo.svg"
@@ -77,7 +84,7 @@ export default function Projects() {
                 className="tech_icon"
                 src="http://localhost:4040/public/stacks/nodejs.svg"
                 alt=""
-              />
+              /> */}
             </p>
             <div className="project_progress">
               <CircularProgressbar
