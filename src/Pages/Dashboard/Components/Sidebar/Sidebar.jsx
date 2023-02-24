@@ -5,8 +5,11 @@ import logo from "../../../../assets/images/logo.png";
 import { BsFolder2Open, BsClipboardData, BsGear } from "react-icons/bs";
 import "./Sidebar.css";
 import randomColor from "randomcolor";
+import { useSelector } from "react-redux";
 export default function Sidebar() {
   const { Logout } = useAuth();
+  const {  userData } = useSelector((state) => state.logindataslice);
+  console.log('sordata',userData)
   let projects = [
     "project 1",
     "project 2",
@@ -59,8 +62,8 @@ export default function Sidebar() {
           <div className="dp_contain">
             <img src="https://avatars.githubusercontent.com/u/73275164" />
           </div>
-          <div className="name_contain">Brijrajsinh parmar</div>
-          <div className="title_contain">Sr. developer</div>
+          <div className="name_contain">{userData?.name}</div>
+          <div className="title_contain">{userData.role_name}</div>
         </div>
       </div>
     </div>
