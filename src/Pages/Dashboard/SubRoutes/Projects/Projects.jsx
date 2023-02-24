@@ -3,7 +3,7 @@ import { useNavigate } from "react-router";
 import { BsSearch, BsFilter, BsPlusLg } from "react-icons/bs";
 import "./Projects.css";
 import Select from "react-select";
-import { CircularProgressbar } from "react-circular-progressbar";
+import { buildStyles, CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import useProject from "../../../../Hooks/useProject";
 import { useSelector } from "react-redux";
@@ -60,7 +60,7 @@ export default function Projects() {
       </div>
       <div className="projects_section">
         {projectData?.map((data) => (
-          <div className="card">
+          <div className="card" key={data._id}>
             <h3 className="project_title">{data.project_name}</h3>
             <p className="tech_stack">
               <img
@@ -80,7 +80,11 @@ export default function Projects() {
               />
             </p>
             <div className="project_progress">
-              <CircularProgressbar value={percentage} text={`${percentage}%`} />
+              <CircularProgressbar
+                value={percentage}
+                text={`${percentage}%`}
+                styles={buildStyles({ textSize: "25px" })}
+              />
             </div>
             <p className="project_description">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque
@@ -89,36 +93,36 @@ export default function Projects() {
               Atque dicta omnis earum deserunt placeat.
             </p>
             <div className="project_members">
-              <div class="avatars">
-                <a href="#" class="avatars__item">
+              <div className="avatars">
+                <a href="#" className="avatars__item">
                   <img
-                    class="avatar"
+                    className="avatar"
                     src="https://randomuser.me/api/portraits/women/65.jpg"
                     alt=""
                   />
                 </a>
-                <a href="#" class="avatars__item">
+                <a href="#" className="avatars__item">
                   <img
-                    class="avatar"
+                    className="avatar"
                     src="https://randomuser.me/api/portraits/men/25.jpg"
                     alt=""
                   />
                 </a>
-                <a href="#" class="avatars__item">
+                <a href="#" className="avatars__item">
                   <img
-                    class="avatar"
+                    className="avatar"
                     src="https://randomuser.me/api/portraits/women/25.jpg"
                     alt=""
                   />
                 </a>
-                <a href="#" class="avatars__item">
+                <a href="#" className="avatars__item">
                   <img
-                    class="avatar"
+                    className="avatar"
                     src="https://randomuser.me/api/portraits/men/55.jpg"
                     alt=""
                   />
                 </a>
-                <a href="#" class="avatars__item">
+                <a href="#" className="avatars__item">
                   <p>+4</p>
                 </a>
               </div>

@@ -26,9 +26,13 @@ export default function Sidebar() {
             <p>Projects</p>
           </NavLink>
           <div className="project_list">
-            {projects.map((each) => {
+            {projects.map((each, index) => {
               return (
-                <NavLink className="project_card" to="/dashboard/project">
+                <NavLink
+                  className="project_card"
+                  to="/dashboard/project"
+                  key={index}
+                >
                   <div
                     className="dot"
                     style={{

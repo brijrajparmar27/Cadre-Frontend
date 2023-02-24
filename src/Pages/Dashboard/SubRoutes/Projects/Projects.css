@@ -120,7 +120,7 @@
   width: auto;
 }
 .projects_section .card .project_progress {
-  padding: 5px;
+  padding: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -129,6 +129,8 @@
 }
 .projects_section .card .project_description {
   /* background-color: blueviolet; */
+  display: flex;
+  align-items: center;
   font-size: 14px;
   color: rgb(42, 42, 42);
   /* font-style: italic; */
