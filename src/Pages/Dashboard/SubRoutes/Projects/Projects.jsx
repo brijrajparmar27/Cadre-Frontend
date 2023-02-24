@@ -18,8 +18,8 @@ export default function Projects() {
   ];
   const percentage = 66;
   const { userData } = useSelector((state) => state.logindataslice);
-  const {  projectData } = useSelector((state) => state.projectdatareducer);
-  const { getAllProject} = useProject();
+  const { projectData } = useSelector((state) => state.projectdatareducer);
+  const { getAllProject } = useProject();
   useEffect(() => {
     getAllProject(userData?._id);
   }, []);
@@ -58,10 +58,27 @@ export default function Projects() {
           </div>
         </div>
       </div>
-        <div className="projects_section">
-          {projectData?.map((data) => (<div className="card">
+      <div className="projects_section">
+        {projectData?.map((data) => (
+          <div className="card">
             <h3 className="project_title">{data.project_name}</h3>
-            <p className="tech_stack">stack</p>
+            <p className="tech_stack">
+              <img
+                className="tech_icon"
+                src="http://localhost:4040/public/stacks/react.svg"
+                alt=""
+              />
+              <img
+                className="tech_icon"
+                src="http://localhost:4040/public/stacks/mongo.svg"
+                alt=""
+              />
+              <img
+                className="tech_icon"
+                src="http://localhost:4040/public/stacks/nodejs.svg"
+                alt=""
+              />
+            </p>
             <div className="project_progress">
               <CircularProgressbar value={percentage} text={`${percentage}%`} />
             </div>
@@ -71,10 +88,44 @@ export default function Projects() {
               necessitatibus, voluptatibus hic a porro provident omnis possimus?
               Atque dicta omnis earum deserunt placeat.
             </p>
-            <div className="project_members"></div>
-          </div>))}
-        </div>
-      
+            <div className="project_members">
+              <div class="avatars">
+                <a href="#" class="avatars__item">
+                  <img
+                    class="avatar"
+                    src="https://randomuser.me/api/portraits/women/65.jpg"
+                    alt=""
+                  />
+                </a>
+                <a href="#" class="avatars__item">
+                  <img
+                    class="avatar"
+                    src="https://randomuser.me/api/portraits/men/25.jpg"
+                    alt=""
+                  />
+                </a>
+                <a href="#" class="avatars__item">
+                  <img
+                    class="avatar"
+                    src="https://randomuser.me/api/portraits/women/25.jpg"
+                    alt=""
+                  />
+                </a>
+                <a href="#" class="avatars__item">
+                  <img
+                    class="avatar"
+                    src="https://randomuser.me/api/portraits/men/55.jpg"
+                    alt=""
+                  />
+                </a>
+                <a href="#" class="avatars__item">
+                  <p>+4</p>
+                </a>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
