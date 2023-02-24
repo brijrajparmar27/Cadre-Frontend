@@ -1,20 +1,24 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import Select from "react-select";
 import useProject from "../../../../Hooks/useProject";
 import useUserCollection from "../../../../Hooks/useUserCollection";
 import "./CreateProject.css";
 export default function CreateProject() {
   const [selectMebers, setSelectMebers] = useState([]);
+  const[selectStack,setSelectStck]=useState([]);
   const { getAlluser, userdata } = useUserCollection();
-  const { AddProject } = useProject();
+  const { AddProject,getAllSatck,stackdata } = useProject();
   const {  userData } = useSelector((state) => state.logindataslice);
   let options = userdata.map(function (data) {
     return { value: data, label: data.name };
   });
+  let stckOption=stackdata.map((data)=>{
+      return{value:data,label:data.title}
+  })
   useEffect(() => {
     getAlluser();
+    getAllSatck();
   }, []);
   useEffect(() => {
     console.log(selectMebers);
@@ -27,6 +31,14 @@ export default function CreateProject() {
     });
     memberArr = [];
   };
+  const inputstck=(e)=>{
+      console.log(e)
+      let stackarry=[];
+      e.forEach((stack)=>{
+        stackarry.push(stack.value);
+        setSelectStck(stackarry);
+      })
+  }
   const handelsubmit = (e) => {
     e.preventDefault();
     delete userData.jwt;
@@ -37,6 +49,7 @@ export default function CreateProject() {
       deadline: e.target.DeadLine.value.trim(),
       member: selectMebers,
       lead: userData,
+      stack:selectStack
     };
     console.log(projectdata);
     if (
@@ -65,6 +78,7 @@ export default function CreateProject() {
           DeadLine
           <input type="Date" className="textbox" name="DeadLine" />
           <Select options={options} isMulti onChange={populateMembers} />
+          <Select options={stckOption} isMulti  onChange={inputstck}/>
           <button type="submit">addproject</button>
         </div>
       </form>
