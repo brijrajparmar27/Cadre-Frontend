@@ -9,15 +9,8 @@ import { useSelector } from "react-redux";
 export default function Sidebar() {
   const { Logout } = useAuth();
   const {  userData } = useSelector((state) => state.logindataslice);
-  console.log('sordata',userData)
-  let projects = [
-    "project 1",
-    "project 2",
-    "project 3",
-    "project 4",
-    "project 5",
-    "project 6",
-  ];
+  const { projectData } = useSelector((state) => state.projectdatareducer);
+  console.log('project',projectData);
   return (
     <div className="sidebar">
       <div className="sidebar_header">
@@ -29,7 +22,7 @@ export default function Sidebar() {
             <p>Projects</p>
           </NavLink>
           <div className="project_list">
-            {projects.map((each, index) => {
+            {projectData?.map((each, index) => {
               return (
                 <NavLink
                   className="project_card"
@@ -42,7 +35,7 @@ export default function Sidebar() {
                       backgroundColor: randomColor({ luminosity: "light" }),
                     }}
                   ></div>
-                  <p>{each}</p>
+                  <p>{each.project_name}</p>
                 </NavLink>
               );
             })}
@@ -63,7 +56,7 @@ export default function Sidebar() {
             <img src="https://avatars.githubusercontent.com/u/73275164" />
           </div>
           <div className="name_contain">{userData?.name}</div>
-          <div className="title_contain">{userData.role_name}</div>
+          <div className="title_contain">{userData?.role_name}</div>
         </div>
       </div>
     </div>

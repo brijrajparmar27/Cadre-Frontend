@@ -74,17 +74,6 @@ export default function Projects() {
               />
                 })
               }
-{/*               
-              <img
-                className="tech_icon"
-                src="http://localhost:4040/public/stacks/mongo.svg"
-                alt=""
-              />
-              <img
-                className="tech_icon"
-                src="http://localhost:4040/public/stacks/nodejs.svg"
-                alt=""
-              /> */}
             </p>
             <div className="project_progress">
               <CircularProgressbar
