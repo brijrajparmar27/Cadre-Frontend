@@ -8,7 +8,6 @@ export default function CreateProject() {
   const [selectMebers, setSelectMebers] = useState([]);
   const { getAlluser, userdata } = useUserCollection();
   const { AddProject } = useProject();
-  const { userData } = useSelector((state) => state.logindataslice);
   let options = userdata.map(function (data) {
     return { value: data, label: data.name };
   });
