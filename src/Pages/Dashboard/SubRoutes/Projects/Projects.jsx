@@ -3,27 +3,31 @@ import { useNavigate } from "react-router";
 import { BsSearch, BsFilter, BsPlusLg } from "react-icons/bs";
 import "./Projects.css";
 import Select from "react-select";
-import { buildStyles, CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import useProject from "../../../../Hooks/useProject";
 import { useSelector } from "react-redux";
+import ProjectCard from "./Components/ProjectCard/ProjectCard";
 
 export default function Projects() {
   const navigate = useNavigate();
+
   const sortingOptions = [
     { value: "created", label: "Start Time" },
     { value: "deadline", label: "Deadline" },
     { value: "tasks", label: "Tasks" },
     { value: "progress", label: "Progress" },
   ];
-  const percentage = 66;
+
   const { userData } = useSelector((state) => state.logindataslice);
   const { projectData } = useSelector((state) => state.projectdatareducer);
   const { getAllProject } = useProject();
-  console.log('projectdata',projectData)
+
+  console.log("projectdata", projectData);
+
   useEffect(() => {
     getAllProject(userData?._id);
   }, []);
+
   return (
     <div className="projects">
       <div className="section_title">
@@ -60,71 +64,9 @@ export default function Projects() {
         </div>
       </div>
       <div className="projects_section">
-        {projectData?.map((data) => (
-          <div className="card" key={data._id}>
-            <h3 className="project_title">{data.project_name}</h3>
-            <p className="tech_stack">
-              {
-                data?.stack?.map((each)=>{
-                  return <img
-                  key={each._id}
-                className="tech_icon"
-                src={`http://localhost:4040/public/stacks/${each.url}`}
-                alt={each.title}
-              />
-                })
-              }
-            </p>
-            <div className="project_progress">
-              <CircularProgressbar
-                value={percentage}
-                text={`${percentage}%`}
-                styles={buildStyles({ textSize: "25px" })}
-              />
-            </div>
-            <p className="project_description">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque
-              ex suscipit voluptatum architecto assumenda corrupti voluptate
-              necessitatibus, voluptatibus hic a porro provident omnis possimus?
-              Atque dicta omnis earum deserunt placeat.
-            </p>
-            <div className="project_members">
-              <div className="avatars">
-                <a href="#" className="avatars__item">
-                  <img
-                    className="avatar"
-                    src="https://randomuser.me/api/portraits/women/65.jpg"
-                    alt=""
-                  />
-                </a>
-                <a href="#" className="avatars__item">
-                  <img
-                    className="avatar"
-                    src="https://randomuser.me/api/portraits/men/25.jpg"
-                    alt=""
-                  />
-                </a>
-                <a href="#" className="avatars__item">
-                  <img
-                    className="avatar"
-                    src="https://randomuser.me/api/portraits/women/25.jpg"
-                    alt=""
-                  />
-                </a>
-                <a href="#" className="avatars__item">
-                  <img
-                    className="avatar"
-                    src="https://randomuser.me/api/portraits/men/55.jpg"
-                    alt=""
-                  />
-                </a>
-                <a href="#" className="avatars__item">
-                  <p>+4</p>
-                </a>
-              </div>
-            </div>
-          </div>
-        ))}
+        {projectData?.map((data) => {
+          return <ProjectCard data={data} key={data._id} />;
+        })}
       </div>
     </div>
   );
