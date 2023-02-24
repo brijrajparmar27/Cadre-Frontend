@@ -13,7 +13,6 @@ export default function CreateProject() {
   let options = userdata.map(function (data) {
     return { value: data, label: data.name };
   });
-  const navigate=useNavigate();
   useEffect(() => {
     getAlluser();
   }, []);
@@ -66,7 +65,7 @@ export default function CreateProject() {
           DeadLine
           <input type="Date" className="textbox" name="DeadLine" />
           <Select options={options} isMulti onChange={populateMembers} />
-          <button type="submit" onClick={()=>navigate('/dashboard')}>addproject</button>
+          <button type="submit">addproject</button>
         </div>
       </form>
     </div>

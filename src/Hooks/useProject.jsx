@@ -1,13 +1,15 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom';
 import API from '../Pages/axios/axios'
 import { setProjectData } from '../Pages/redux/projectDataSlice';
 
 function useProject() {
     const dispatch=useDispatch();
+    const navigate=useNavigate();
     const AddProject=(data)=>{
           API.post('/add-project',data).then((res)=>{
-              console.log(res)
+            navigate('/dashboard')
           }).catch((err)=>{
               console.log(err);
           })
