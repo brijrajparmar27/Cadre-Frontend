@@ -1,9 +1,11 @@
 import React from "react";
 import { buildStyles, CircularProgressbar } from "react-circular-progressbar";
+import avatar from "../../../../../../assets/images/avatar.svg";
 import "./ProjectCard.css";
 
 export default function ProjectCard({ data }) {
   const percentage = 66;
+
   return (
     <div className="card">
       <h3 className="project_title">{data.project_name}</h3>
@@ -34,37 +36,21 @@ export default function ProjectCard({ data }) {
       </p>
       <div className="project_members">
         <div className="avatars">
-          <a href="#" className="avatars__item">
-            <img
-              className="avatar"
-              src="https://randomuser.me/api/portraits/women/65.jpg"
-              alt=""
-            />
-          </a>
-          <a href="#" className="avatars__item">
-            <img
-              className="avatar"
-              src="https://randomuser.me/api/portraits/men/25.jpg"
-              alt=""
-            />
-          </a>
-          <a href="#" className="avatars__item">
-            <img
-              className="avatar"
-              src="https://randomuser.me/api/portraits/women/25.jpg"
-              alt=""
-            />
-          </a>
-          <a href="#" className="avatars__item">
-            <img
-              className="avatar"
-              src="https://randomuser.me/api/portraits/men/55.jpg"
-              alt=""
-            />
-          </a>
-          <a href="#" className="avatars__item">
-            <p>+4</p>
-          </a>
+          {data?.member?.map((each, index) => {
+            return (
+              index < 4 && (
+                <a href="#" className="avatars__item" key={each.id}>
+                  <img className="avatar" src={each.img || avatar} alt="" />
+                </a>
+              )
+            );
+          })}
+
+          {data?.member?.length > 4 && (
+            <a href="#" className="avatars__item">
+              <p>+{data.member.length - 4}</p>
+            </a>
+          )}
         </div>
       </div>
     </div>
