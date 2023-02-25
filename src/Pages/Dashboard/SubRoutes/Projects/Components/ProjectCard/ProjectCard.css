@@ -1,5 +1,6 @@
 .projects_section .card {
   box-sizing: border-box;
+  cursor: pointer;
   padding: 20px;
   height: 250px;
   width: 400px;

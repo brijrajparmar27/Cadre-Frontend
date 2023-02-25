@@ -6,16 +6,16 @@ import useUserCollection from "../../../../Hooks/useUserCollection";
 import "./CreateProject.css";
 export default function CreateProject() {
   const [selectMebers, setSelectMebers] = useState([]);
-  const[selectStack,setSelectStck]=useState([]);
+  const [selectStack, setSelectStck] = useState([]);
   const { getAlluser, userdata } = useUserCollection();
-  const { AddProject,getAllSatck,stackdata } = useProject();
-  const {  userData } = useSelector((state) => state.logindataslice);
+  const { AddProject, getAllSatck, stackdata } = useProject();
+  const { userData } = useSelector((state) => state.logindataslice);
   let options = userdata.map(function (data) {
     return { value: data, label: data.name };
   });
-  let stckOption=stackdata.map((data)=>{
-      return{value:data,label:data.title}
-  })
+  let stckOption = stackdata.map((data) => {
+    return { value: data, label: data.title };
+  });
   useEffect(() => {
     getAlluser();
     getAllSatck();
@@ -31,14 +31,14 @@ export default function CreateProject() {
     });
     memberArr = [];
   };
-  const inputstck=(e)=>{
-      console.log(e)
-      let stackarry=[];
-      e.forEach((stack)=>{
-        stackarry.push(stack.value);
-        setSelectStck(stackarry);
-      })
-  }
+  const inputstck = (e) => {
+    console.log(e);
+    let stackarry = [];
+    e.forEach((stack) => {
+      stackarry.push(stack.value);
+      setSelectStck(stackarry);
+    });
+  };
   const handelsubmit = (e) => {
     e.preventDefault();
     delete userData.jwt;
@@ -49,7 +49,7 @@ export default function CreateProject() {
       deadline: e.target.DeadLine.value.trim(),
       member: selectMebers,
       lead: userData,
-      stack:selectStack
+      stack: selectStack,
     };
     console.log(projectdata);
     if (
@@ -63,24 +63,34 @@ export default function CreateProject() {
     } else {
       console.log("cannot be empty");
     }
- 
   };
   return (
-    <div>
-      <form onSubmit={handelsubmit}>
-        <div className="">
-          Name
-          <input type="text" className="textbox" name="projectname" />
-          Descripation
-          <input type="text" className="textbox" name="projectDescripation" />
-          Assigend Date
-          <input type="Date" className="textbox" name="assigenedate" />
-          DeadLine
-          <input type="Date" className="textbox" name="DeadLine" />
-          <Select options={options} isMulti onChange={populateMembers} />
-          <Select options={stckOption} isMulti  onChange={inputstck}/>
-          <button type="submit">addproject</button>
-        </div>
+    <div className="create_project_section">
+      <div className="section_title">
+        <h1>Create Project</h1>
+      </div>
+
+      <form onSubmit={handelsubmit} className="create_content">
+        <p className="input_label">Project Name</p>
+        <input type="text" className="textbox" name="projectname" required />
+        <p className="input_label">Project Description</p>
+        <input
+          type="text"
+          className="textbox"
+          name="projectDescripation"
+          required
+        />
+        <p className="input_label">Assigned Date</p>
+        <input type="Date" className="textbox" name="assigenedate" required />
+        <p className="input_label">Project Deadline</p>
+        <input type="Date" className="textbox" name="DeadLine" />
+        <p className="input_label">Select Project Members</p>
+        <Select options={options} isMulti onChange={populateMembers} required />
+        <p className="input_label">Project Technologies</p>
+        <Select options={stckOption} isMulti onChange={inputstck} required />
+        <button type="submit" className="create_project">
+          Add Project
+        </button>
       </form>
     </div>
   );
