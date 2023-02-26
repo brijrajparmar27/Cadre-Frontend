@@ -8,9 +8,9 @@ import randomColor from "randomcolor";
 import { useSelector } from "react-redux";
 export default function Sidebar() {
   const { Logout } = useAuth();
-  const {  userData } = useSelector((state) => state.logindataslice);
+  const { userData } = useSelector((state) => state.logindataslice);
   const { projectData } = useSelector((state) => state.projectdatareducer);
-  console.log('project',projectData);
+  console.log("project", projectData);
   return (
     <div className="sidebar">
       <div className="sidebar_header">
@@ -35,7 +35,10 @@ export default function Sidebar() {
                       backgroundColor: randomColor({ luminosity: "light" }),
                     }}
                   ></div>
-                  <p>{each.project_name}</p>
+                  <p>
+                    {each?.project_name.substring(0, 20)}
+                    {each?.project_name.length > 20 && "..."}
+                  </p>
                 </NavLink>
               );
             })}

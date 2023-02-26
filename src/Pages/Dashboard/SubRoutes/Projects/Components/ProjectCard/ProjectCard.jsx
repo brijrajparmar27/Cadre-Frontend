@@ -8,7 +8,10 @@ export default function ProjectCard({ data }) {
 
   return (
     <div className="card">
-      <h3 className="project_title">{data.project_name}</h3>
+      <h3 className="project_title">
+        {data?.project_name.substring(0, 50)}
+        {data?.project_name.length > 50 && "..."}
+      </h3>
       <p className="tech_stack">
         {data?.stack?.map((each) => {
           return (
@@ -28,7 +31,10 @@ export default function ProjectCard({ data }) {
           styles={buildStyles({ textSize: "25px" })}
         />
       </div>
-      <p className="project_description">{data?.discription}</p>
+      <p className="project_description">
+        {data?.discription.substring(0, 236)}
+        {data?.discription.length > 236 && "..."}
+      </p>
       <div className="project_members">
         <div className="avatars">
           {data?.member?.map((each, index) => {
