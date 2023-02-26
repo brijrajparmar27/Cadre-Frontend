@@ -28,12 +28,7 @@ export default function ProjectCard({ data }) {
           styles={buildStyles({ textSize: "25px" })}
         />
       </div>
-      <p className="project_description">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque ex
-        suscipit voluptatum architecto assumenda corrupti voluptate
-        necessitatibus, voluptatibus hic a porro provident omnis possimus? Atque
-        dicta omnis earum deserunt placeat.
-      </p>
+      <p className="project_description">{data?.discription}</p>
       <div className="project_members">
         <div className="avatars">
           {data?.member?.map((each, index) => {
