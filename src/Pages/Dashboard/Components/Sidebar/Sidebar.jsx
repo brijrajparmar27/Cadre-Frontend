@@ -27,6 +27,7 @@ export default function Sidebar() {
                 <NavLink
                   className="project_card"
                   to="/dashboard/project"
+                  state={{ projectdata: each }}
                   key={index}
                 >
                   <div

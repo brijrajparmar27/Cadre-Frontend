@@ -1,13 +1,15 @@
 import React from "react";
 import { buildStyles, CircularProgressbar } from "react-circular-progressbar";
+import { useNavigate } from "react-router-dom";
 import avatar from "../../../../../../assets/images/avatar.svg";
 import "./ProjectCard.css";
 
 export default function ProjectCard({ data }) {
   const percentage = 66;
+  const navigate=useNavigate();
 
   return (
-    <div className="card">
+    <div className="card" onClick={()=>{navigate('/dashboard/project',{state:data})}}>
       <h3 className="project_title">
         {data?.project_name.substring(0, 50)}
         {data?.project_name.length > 50 && "..."}
