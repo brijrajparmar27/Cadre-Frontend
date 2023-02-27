@@ -4,7 +4,7 @@ import API from "../Pages/axios/axios";
 function useUserCollection() {
   const [userdata, setUserdata] = useState([]);
   const getAlluser = () => {
-    API.get("/get-alluser")
+    API.get(`/get-alluser?sort={"column":"name","order":"asc"}`)
       .then((res) => {
         setUserdata(res.data);
       })

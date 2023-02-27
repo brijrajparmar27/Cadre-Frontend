@@ -48,6 +48,7 @@
 }
 .filter_icon {
   font-size: 30px;
+  cursor: pointer;
 }
 .search_contain {
   max-width: 500px;

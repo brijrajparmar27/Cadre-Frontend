@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import useAuth from "../../../../Hooks/useAuth";
 import logo from "../../../../assets/images/logo.png";
@@ -10,7 +10,10 @@ export default function Sidebar() {
   const { Logout } = useAuth();
   const { userData } = useSelector((state) => state.logindataslice);
   const { projectData } = useSelector((state) => state.projectdatareducer);
-  console.log("project", projectData);
+  const [project,setProject]=useState();
+  useEffect(()=>{
+       setProject(projectData);
+  },[]);
   return (
     <div className="sidebar">
       <div className="sidebar_header">
@@ -22,7 +25,7 @@ export default function Sidebar() {
             <p>Projects</p>
           </NavLink>
           <div className="project_list">
-            {projectData?.map((each, index) => {
+            {project?.map((each, index) => {
               return (
                 <NavLink
                   className="project_card"

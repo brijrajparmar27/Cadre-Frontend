@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom';
 import API from '../Pages/axios/axios'
@@ -7,7 +7,10 @@ import { setProjectData } from '../Pages/redux/projectDataSlice';
 function useProject() {
     const dispatch=useDispatch();
     const navigate=useNavigate();
+    const [coloumname,setColoumname]=useState("project_name");
+    const [order,setOrder]=useState("desc");
     const [stackdata,setStackdata]=useState([]);
+    
     const AddProject=(data)=>{
           API.post('/add-project',data).then((res)=>{
             navigate('/dashboard')
@@ -16,8 +19,8 @@ function useProject() {
           })
     }
     const getAllProject=(id)=>{
-        console.log(id)
-        API.get(`/get-projectbyuserrole/${id}`).then((res)=>{
+        console.log(coloumname)
+        API.get(`/get-projectbyuserrole/${id}?sort={"column":"${coloumname}","order":"${order}"}`).then((res)=>{
             dispatch(setProjectData(res.data.res))
         }).catch((err)=>{
             console.log(err);
@@ -30,7 +33,7 @@ function useProject() {
             console.log(err);
         })
     }
-  return {AddProject,getAllProject,getAllSatck,stackdata}
+  return {AddProject,getAllProject,getAllSatck,stackdata,setColoumname,coloumname,order,setOrder}
 }
 
 export default useProject
