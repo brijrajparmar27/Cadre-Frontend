@@ -9,7 +9,7 @@ export default function ProjectCard({ data }) {
   const navigate=useNavigate();
 
   return (
-    <div className="card" onClick={()=>{navigate('/dashboard/project',{state:data})}}>
+    <div className="card" onClick={()=>{navigate('/dashboard/project',{state:{projectdata:data}})}}>
       <h3 className="project_title">
         {data?.project_name.substring(0, 50)}
         {data?.project_name.length > 50 && "..."}

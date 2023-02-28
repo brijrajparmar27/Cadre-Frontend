@@ -15,7 +15,7 @@ export default function Project() {
         <div className="section_header">
           <div className="top_bar">
             <div className="left">
-              <h2>Project Title</h2>
+              <h2>{location.state.projectdata.project_name}</h2>
               <BsInfoCircle className="proj_fun_icons" />
             </div>
             <button className="create_task btn">Create Task</button>
@@ -24,13 +24,12 @@ export default function Project() {
             <div className="desc_contain">
               {/* limit task desc to 521 characters */}
               <p className="task_desc">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum
-                cumque esse inventore placeat voluptatibus eligendi, temporibus
-                sint expedita, quidem magni saepe consequatur commodi sequi
-                perferendis, aspernatur architecto a harum incidunt. Lorem ipsum
-                dolor sit amet, consectetur adipisicing elit. Earum cumque esse
-                inventore placeat voluptatibus eligendi, temporibus sint
-                expedita, quidem magni saepe consequatur.
+               {
+                location.state.projectdata.discription.substring(0, 236)
+               }
+               {
+               location.state.projectdata.discription.length > 521  && "..."
+               }
               </p>
             </div>
             <div className="bottom_right">
