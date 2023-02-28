@@ -21,7 +21,7 @@ export default function Projects() {
     { value: "progress", label: "Progress" },
     {value:"project_name",label:"project Name"}
   ];
-  const { setOrder, setColoumname, order, coloumname } = useProject();
+  const { setOrder, setColoumname, order, coloumname,searchProject } = useProject();
   const selectinput = (e) => {
     setColoumname(e.value);
     setOrder("asc");
@@ -44,7 +44,9 @@ export default function Projects() {
         console.log(err);
       });
   }, [order, coloumname]);
-
+  const searchinput=(e)=>{
+      searchProject(e.target.value)
+    }
   return (
     <div className="projects">
       <div className="section_title">
@@ -67,6 +69,7 @@ export default function Projects() {
             type="text"
             className="proj_search_tb"
             placeholder="Search Project"
+            onChange={searchinput}
           />
         </div>
         <div className="sortby">
