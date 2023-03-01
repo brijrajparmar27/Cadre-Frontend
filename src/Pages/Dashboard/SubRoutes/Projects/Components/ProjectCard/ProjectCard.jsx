@@ -6,10 +6,15 @@ import "./ProjectCard.css";
 
 export default function ProjectCard({ data }) {
   const percentage = 66;
-  const navigate=useNavigate();
+  const navigate = useNavigate();
 
   return (
-    <div className="card" onClick={()=>{navigate('/dashboard/project',{state:data})}}>
+    <div
+      className="card"
+      onClick={() => {
+        navigate("/dashboard/project", { state: data });
+      }}
+    >
       <h3 className="project_title">
         {data?.project_name.substring(0, 50)}
         {data?.project_name.length > 50 && "..."}
@@ -42,7 +47,7 @@ export default function ProjectCard({ data }) {
           {data?.member?.map((each, index) => {
             return (
               index < 4 && (
-                <a href="#" className="avatars__item" key={each.id}>
+                <a href="#" className="avatars__item" key={each._id}>
                   <img className="avatar" src={each.img || avatar} alt="" />
                 </a>
               )

@@ -17,22 +17,29 @@ export default function Projects() {
     { value: "created", label: "Start Time" },
     { value: "deadline", label: "Deadline" },
     { value: "tasks", label: "Tasks" },
-    {value:'completed',label:"Completed"},
+    { value: "completed", label: "Completed" },
     { value: "progress", label: "Progress" },
-    {value:"project_name",label:"project Name"}
+    { value: "project_name", label: "project Name" },
   ];
-  const { setOrder, setColoumname, order, coloumname,searchProject } = useProject();
+
+  const { setOrder, setColoumname, order, coloumname, searchProject } =
+    useProject();
+
   const selectinput = (e) => {
     setColoumname(e.value);
     setOrder("asc");
   };
+
   const { userData } = useSelector((state) => state.logindataslice);
   const { projectData } = useSelector((state) => state.projectdatareducer);
+
   const { getAllProject } = useProject();
   const dispatch = useDispatch();
+
   useEffect(() => {
     getAllProject(userData?._id);
   }, []);
+
   useEffect(() => {
     API.get(
       `/get-projectbyuserrole/${userData?._id}?sort={"column":"${coloumname}","order":"${order}"}`
@@ -44,9 +51,11 @@ export default function Projects() {
         console.log(err);
       });
   }, [order, coloumname]);
-  const searchinput=(e)=>{
-      searchProject(e.target.value)
-    }
+
+  const searchinput = (e) => {
+    searchProject(e.target.value);
+  };
+
   return (
     <div className="projects">
       <div className="section_title">
@@ -73,7 +82,12 @@ export default function Projects() {
           />
         </div>
         <div className="sortby">
-          <BsFilter className="filter_icon" onClick={()=>setOrder((prevState) => prevState === "Asc" ? "Desc" : "Asc")} />
+          <BsFilter
+            className="filter_icon"
+            onClick={() =>
+              setOrder((prevState) => (prevState === "Asc" ? "Desc" : "Asc"))
+            }
+          />
           <div style={{ width: "100%" }}>
             <Select
               options={sortingOptions}
