@@ -7,7 +7,7 @@ import "./ProjectCard.css";
 export default function ProjectCard({ data }) {
   const percentage = 66;
   const navigate = useNavigate();
-
+console.log(data)
   return (
     <div
       className="card"

@@ -51,7 +51,6 @@ export default function Projects() {
         console.log(err);
       });
   }, [order, coloumname]);
-
   const searchinput = (e) => {
     searchProject(e.target.value);
   };
@@ -99,9 +98,10 @@ export default function Projects() {
         </div>
       </div>
       <div className="projects_section">
-        {projectData?.map((data) => {
-          return <ProjectCard data={data} key={data._id} />;
-        })}
+        {
+          projectData?.map((data) => {
+            return <ProjectCard data={data} key={data._id} />;
+          })}
       </div>
     </div>
   );

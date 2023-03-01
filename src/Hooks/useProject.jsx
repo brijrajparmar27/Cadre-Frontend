@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import API from "../Pages/axios/axios";
 import { setProjectData } from "../Pages/redux/projectDataSlice";
@@ -7,6 +7,7 @@ import { setProjectData } from "../Pages/redux/projectDataSlice";
 function useProject() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { userData } = useSelector((state) => state.logindataslice);
   const [coloumname, setColoumname] = useState("project_name");
   const [order, setOrder] = useState("desc");
   const [stackdata, setStackdata] = useState([]);
@@ -41,9 +42,9 @@ function useProject() {
       });
   };
   const searchProject = (val) => {
-    API.get(`/get-project-by-search?search=${val}`)
+    API.get(`/get-project-by-search/${userData?._id}?search=${val}`)
       .then((res) => {
-        dispatch(setProjectData(res.data));
+        dispatch(setProjectData(res.data.res));
       })
       .catch((err) => {
         console.log(err);
