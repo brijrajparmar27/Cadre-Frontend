@@ -1,7 +1,12 @@
 import "./Project.css";
 import React from "react";
 import { useLocation } from "react-router-dom";
-import { BsInfoCircle, BsChatLeftText, BsPeople } from "react-icons/bs";
+import {
+  BsInfoCircle,
+  BsChatLeftText,
+  BsPeople,
+  BsPlusLg,
+} from "react-icons/bs";
 
 export default function Project() {
   let location = useLocation();
@@ -18,18 +23,17 @@ export default function Project() {
               <h2>{location.state.projectdata.project_name}</h2>
               <BsInfoCircle className="proj_fun_icons" />
             </div>
-            <button className="create_task btn">Create Task</button>
+            <button className="create_task btn">
+              <BsPlusLg className="add_btn" />
+              Create Task
+            </button>
           </div>
           <div className="bottom_bar">
             <div className="desc_contain">
               {/* limit task desc to 521 characters */}
               <p className="task_desc">
-               {
-                location.state.projectdata.discription.substring(0, 236)
-               }
-               {
-               location.state.projectdata.discription.length > 521  && "..."
-               }
+                {location.state.projectdata.discription.substring(0, 236)}
+                {location.state.projectdata.discription.length > 521 && "..."}
               </p>
             </div>
             <div className="bottom_right">
