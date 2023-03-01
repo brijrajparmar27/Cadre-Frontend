@@ -1,6 +1,10 @@
 import "./Project.css";
-import React from "react";
+import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
+import {
+  MdOutlineKeyboardArrowUp,
+  MdOutlineKeyboardArrowDown,
+} from "react-icons/md";
 import {
   BsInfoCircle,
   BsChatLeftText,
@@ -9,7 +13,15 @@ import {
 } from "react-icons/bs";
 
 export default function Project() {
+  const [showClosed, setShowClosed] = useState(false);
   let location = useLocation();
+  const hideClosed = {
+    gridTemplateRows: `6fr 0.3fr`,
+    gridTemplateColumns: `1fr 1fr 1fr`,
+    gridTemplateAreas: `
+        pending running completed
+        footer footer footer`,
+  };
   console.log(location);
   return (
     <div className="project">
@@ -42,7 +54,28 @@ export default function Project() {
             </div>
           </div>
         </div>
-        <div className="kanban_contain">kanban</div>
+        <div className="kanban_contain">
+          <div className="kanban" style={showClosed ? {} : hideClosed}>
+            <div className="pending">pending</div>
+            <div className="running">running</div>
+            <div className="completed">completed</div>
+            <div
+              className="kanban_footer"
+              onClick={() => {
+                setShowClosed((prev) => !prev);
+              }}
+            >
+              <p>{showClosed ? "Hide Closed" : "Show Closed"}</p>
+              {!showClosed && (
+                <MdOutlineKeyboardArrowUp className="footer_icon" />
+              )}
+              {showClosed && (
+                <MdOutlineKeyboardArrowDown className="footer_icon" />
+              )}
+            </div>
+            {showClosed && <div className="closed">closed</div>}
+          </div>
+        </div>
       </div>
     </div>
   );

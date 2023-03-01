@@ -1,9 +1,13 @@
 .project {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
   height: 100%;
   width: 100%;
 }
 .project .section_content {
-  padding-top: 20px;
+  /* padding-top: 20px; */
+  /* margin-top: 20px; */
   /* background-color: aqua; */
   height: 100%;
   width: 100%;
@@ -57,6 +61,9 @@
 .project .section_header .bottom_bar .bottom_right .proj_fun_icons {
   font-size: 25px;
 }
+.proj_fun_icons {
+  font-size: 20px;
+}
 .project .section_header .bottom_bar .bottom_right {
   display: flex;
   gap: 20px;
@@ -70,9 +77,47 @@
   width: min-content;
 }
 .section_content .kanban_contain {
+  display: flex;
   background-color: rgb(233, 233, 233);
   height: 100%;
+  width: 100%;
 }
-.proj_fun_icons {
-  font-size: 20px;
+.section_content .kanban_contain .kanban {
+  display: grid;
+  background-color: aqua;
+  height: 100%;
+  width: 100%;
+  grid-template-rows: 6fr 0.5fr 3fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas:
+    "pending running completed"
+    "footer footer footer"
+    "closed closed closed";
+}
+.section_content .kanban_contain .kanban .kanban_footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  background-color: bisque;
+  grid-area: footer;
+  font-size: 12px;
+}
+.section_content .kanban_contain .kanban .kanban_footer .footer_icon {
+  font-size: 25px;
+}
+.section_content .kanban_contain .kanban .pending {
+  background-color: rgb(97, 97, 97);
+  grid-area: pending;
+}
+.section_content .kanban_contain .kanban .running {
+  background-color: rgb(164, 163, 163);
+  grid-area: running;
+}
+.section_content .kanban_contain .kanban .completed {
+  background-color: rgb(218, 215, 215);
+  grid-area: completed;
+}
+.section_content .kanban_contain .kanban .closed {
+  background-color: brown;
+  grid-area: closed;
 }
