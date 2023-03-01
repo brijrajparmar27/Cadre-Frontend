@@ -63,6 +63,7 @@
 }
 .proj_fun_icons {
   font-size: 20px;
+  cursor: pointer;
 }
 .project .section_header .bottom_bar .bottom_right {
   display: flex;

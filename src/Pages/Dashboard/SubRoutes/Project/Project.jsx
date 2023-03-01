@@ -34,12 +34,14 @@ export default function Project() {
           <div className="top_bar">
             <div className="left">
               <h2>{location?.state?.projectdata.project_name}</h2>
-              <BsInfoCircle className="proj_fun_icons" />
+              <BsInfoCircle className="proj_fun_icons" onClick={(e) => {
+                      navigate("details");
+                    }}/>
             </div>
             <button
               className="create_task btn"
               onClick={() => {
-                navigate("createTask");
+                navigate("createTask",{state:location.state?.projectdata});
               }}
             >
               <BsPlusLg className="add_btn" />
@@ -54,9 +56,6 @@ export default function Project() {
                 {location?.state?.projectdata.discription.length > 521 && (
                   <span
                     className="view-more"
-                    onClick={(e) => {
-                      navigate("details");
-                    }}
                   >
                     "..."
                   </span>
