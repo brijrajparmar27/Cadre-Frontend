@@ -1,6 +1,6 @@
 import "./Project.css";
 import React from "react";
-import { useLocation } from "react-router-dom";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import {
   BsInfoCircle,
   BsChatLeftText,
@@ -10,7 +10,7 @@ import {
 
 export default function Project() {
   let location = useLocation();
-  console.log(location);
+  const navigate=useNavigate();
   return (
     <div className="project">
       <div className="section_title">
@@ -20,10 +20,10 @@ export default function Project() {
         <div className="section_header">
           <div className="top_bar">
             <div className="left">
-              <h2>{location.state.projectdata.project_name}</h2>
+              <h2>{location?.state?.projectdata.project_name}</h2>
               <BsInfoCircle className="proj_fun_icons" />
             </div>
-            <button className="create_task btn">
+            <button className="create_task btn" onClick={()=>{navigate('createTask')}}>
               <BsPlusLg className="add_btn" />
               Create Task
             </button>
@@ -32,8 +32,9 @@ export default function Project() {
             <div className="desc_contain">
               {/* limit task desc to 521 characters */}
               <p className="task_desc">
-                {location.state.projectdata.discription.substring(0, 236)}
-                {location.state.projectdata.discription.length > 521 && "..."}
+                {location?.state?.projectdata.discription.substring(0, 236)}
+                {location?.state?.projectdata.discription.length > 521 && <span className="view-more" onClick={(e)=>{
+                  navigate('details')}}>"..."</span>}
               </p>
             </div>
             <div className="bottom_right">
