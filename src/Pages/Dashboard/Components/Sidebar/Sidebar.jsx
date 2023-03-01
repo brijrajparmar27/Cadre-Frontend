@@ -25,7 +25,7 @@ export default function Sidebar() {
             <p>Projects</p>
           </NavLink>
           <div className="project_list">
-            {project?.map((each, index) => {
+            {projectData?.map((each, index) => {
               return (
                 <NavLink
                   className="project_card"

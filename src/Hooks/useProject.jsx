@@ -21,7 +21,6 @@ function useProject() {
       });
   };
   const getAllProject = (id) => {
-    console.log(coloumname);
     API.get(
       `/get-projectbyuserrole/${id}?sort={"column":"${coloumname}","order":"${order}"}`
     )
@@ -44,7 +43,6 @@ function useProject() {
   const searchProject = (val) => {
     API.get(`/get-project-by-search?search=${val}`)
       .then((res) => {
-        console.log(res)
         dispatch(setProjectData(res.data));
       })
       .catch((err) => {

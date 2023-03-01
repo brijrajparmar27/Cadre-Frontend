@@ -12,7 +12,7 @@ export default function ProjectCard({ data }) {
     <div
       className="card"
       onClick={() => {
-        navigate("/dashboard/project", { state: data });
+        navigate("/dashboard/project", { state: { projectdata: data } });
       }}
     >
       <h3 className="project_title">
