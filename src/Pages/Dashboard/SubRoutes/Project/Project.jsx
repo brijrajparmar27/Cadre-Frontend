@@ -27,7 +27,8 @@ export default function Project() {
     });
   }, [location]);
   useEffect(() => {
-    console.log("project data ", projectData);
+    // console.log("project data ", projectData);
+    projectData && console.log(projectData.task);
   }, [projectData]);
   return (
     <>
@@ -75,7 +76,7 @@ export default function Project() {
               </div>
             </div>
             <div className="kanban_contain">
-              <Kanban />
+              <Kanban data={projectData} />
             </div>
           </div>
         </div>
