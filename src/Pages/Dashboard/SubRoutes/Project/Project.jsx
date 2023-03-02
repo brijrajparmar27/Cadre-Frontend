@@ -1,10 +1,7 @@
 import "./Project.css";
 import React, { useEffect, useState } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
-import {
-  MdOutlineKeyboardArrowUp,
-  MdOutlineKeyboardArrowDown,
-} from "react-icons/md";
+
 import {
   BsInfoCircle,
   BsChatLeftText,
@@ -13,18 +10,12 @@ import {
 } from "react-icons/bs";
 import { useSelector } from "react-redux";
 import useProject from "../../../../Hooks/useProject";
+import Kanban from "./Components/Kanban/Kanban";
 
 export default function Project() {
-  const [showClosed, setShowClosed] = useState(false);
   const [projectData, setProjectData] = useState(null);
   let location = useLocation();
-  const hideClosed = {
-    gridTemplateRows: `6fr 0.3fr`,
-    gridTemplateColumns: `1fr 1fr 1fr`,
-    gridTemplateAreas: `
-        pending running completed
-        footer footer footer`,
-  };
+
   console.log(location);
   const navigate = useNavigate();
   const { userData } = useSelector((state) => state.logindataslice);
@@ -84,26 +75,7 @@ export default function Project() {
               </div>
             </div>
             <div className="kanban_contain">
-              <div className="kanban" style={showClosed ? {} : hideClosed}>
-                <div className="pending">pending</div>
-                <div className="running">running</div>
-                <div className="completed">completed</div>
-                <div
-                  className="kanban_footer"
-                  onClick={() => {
-                    setShowClosed((prev) => !prev);
-                  }}
-                >
-                  <p>{showClosed ? "Hide Closed" : "Show Closed"}</p>
-                  {!showClosed && (
-                    <MdOutlineKeyboardArrowUp className="footer_icon" />
-                  )}
-                  {showClosed && (
-                    <MdOutlineKeyboardArrowDown className="footer_icon" />
-                  )}
-                </div>
-                {showClosed && <div className="closed">closed</div>}
-              </div>
+              <Kanban />
             </div>
           </div>
         </div>

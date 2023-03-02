@@ -1,0 +1,39 @@
+.section_content .kanban_contain .kanban {
+  display: grid;
+  background-color: aqua;
+  height: 100%;
+  width: 100%;
+  grid-template-rows: 6fr 0.5fr 3fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas:
+    "pending running completed"
+    "footer footer footer"
+    "closed closed closed";
+}
+.section_content .kanban_contain .kanban .kanban_footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  background-color: bisque;
+  grid-area: footer;
+  font-size: 12px;
+}
+.section_content .kanban_contain .kanban .kanban_footer .footer_icon {
+  font-size: 25px;
+}
+.section_content .kanban_contain .kanban .pending {
+  background-color: rgb(97, 97, 97);
+  grid-area: pending;
+}
+.section_content .kanban_contain .kanban .running {
+  background-color: rgb(164, 163, 163);
+  grid-area: running;
+}
+.section_content .kanban_contain .kanban .completed {
+  background-color: rgb(218, 215, 215);
+  grid-area: completed;
+}
+.section_content .kanban_contain .kanban .closed {
+  background-color: brown;
+  grid-area: closed;
+}
