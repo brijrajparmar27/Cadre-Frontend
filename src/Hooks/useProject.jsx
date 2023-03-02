@@ -50,6 +50,13 @@ function useProject() {
         console.log(err);
       });
   };
+  const addTask=(data)=>{
+    API.post('/add-task',data).then((res)=>{
+         console.log(res)
+    }).catch((err)=>{
+      console,log(err);
+    })
+  }
   return {
     AddProject,
     getAllProject,
@@ -59,7 +66,8 @@ function useProject() {
     coloumname,
     order,
     setOrder,
-    searchProject
+    searchProject,
+    addTask
   };
 }
 
