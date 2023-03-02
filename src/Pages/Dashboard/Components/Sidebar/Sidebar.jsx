@@ -10,10 +10,10 @@ export default function Sidebar() {
   const { Logout } = useAuth();
   const { userData } = useSelector((state) => state.logindataslice);
   const { projectData } = useSelector((state) => state.projectdatareducer);
-  const [project,setProject]=useState();
-  useEffect(()=>{
-       setProject(projectData);
-  },[]);
+  const [project, setProject] = useState();
+  useEffect(() => {
+    setProject(projectData);
+  }, []);
   return (
     <div className="sidebar">
       <div className="sidebar_header">
