@@ -19,7 +19,6 @@ function CreateTask() {
       lead: location.state.lead,
       project: location.state._id,
     };
-    console.log(obj);
     const data = { prev: [...location?.state?.task], new: obj };
     addTask(data);
   };

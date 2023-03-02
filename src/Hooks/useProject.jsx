@@ -52,7 +52,7 @@ function useProject() {
   };
   const addTask=(data)=>{
     API.post('/add-task',data).then((res)=>{
-         console.log(res)
+      navigate("/project");
     }).catch((err)=>{
       console,log(err);
     })
