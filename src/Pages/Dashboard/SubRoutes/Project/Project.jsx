@@ -1,5 +1,5 @@
 import "./Project.css";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import {
   MdOutlineKeyboardArrowUp,
@@ -11,9 +11,12 @@ import {
   BsPeople,
   BsPlusLg,
 } from "react-icons/bs";
+import { useSelector } from "react-redux";
+import useProject from "../../../../Hooks/useProject";
 
 export default function Project() {
   const [showClosed, setShowClosed] = useState(false);
+  const [projectData,setProjectData] = useState(null);
   let location = useLocation();
   const hideClosed = {
     gridTemplateRows: `6fr 0.3fr`,
@@ -24,8 +27,21 @@ export default function Project() {
   };
   console.log(location);
   const navigate = useNavigate();
-  return (
-    <div className="project">
+  const { userData } = useSelector((state) => state.logindataslice);
+  const { getprojectbyProjectId } = useProject();
+  
+  useEffect(() => {
+    console.log("-----get projectData--------");
+    getprojectbyProjectId(location?.state?.projectdata._id).then(res=>{
+      console.log(res.data);
+      setProjectData(res.data);
+    });
+  }, []);
+  useEffect(()=>{
+    console.log("project data",projectData);
+  },[projectData])
+  return (<>
+    { projectData && <div className="project">
       <div className="section_title">
         <h1>Create Project</h1>
       </div>
@@ -33,7 +49,7 @@ export default function Project() {
         <div className="section_header">
           <div className="top_bar">
             <div className="left">
-              <h2>{location?.state?.projectdata.project_name}</h2>
+              <h2>{projectData?.project_name}</h2>
               <BsInfoCircle className="proj_fun_icons" onClick={(e) => {
                       navigate("details");
                     }}/>
@@ -41,7 +57,7 @@ export default function Project() {
             <button
               className="create_task btn"
               onClick={() => {
-                navigate("createTask",{state:location.state?.projectdata});
+                navigate("createTask",{state:projectData});
               }}
             >
               <BsPlusLg className="add_btn" />
@@ -52,8 +68,8 @@ export default function Project() {
             <div className="desc_contain">
               {/* limit task desc to 521 characters */}
               <p className="task_desc">
-                {location?.state?.projectdata.discription.substring(0, 236)}
-                {location?.state?.projectdata.discription.length > 521 && (
+                {projectData?.discription.substring(0, 236)}
+                {projectData?.discription.length > 521 && (
                   <span
                     className="view-more"
                   >
@@ -91,6 +107,7 @@ export default function Project() {
           </div>
         </div>
       </div>
-    </div>
+    </div>}
+    </>
   );
 }

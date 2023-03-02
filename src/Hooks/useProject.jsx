@@ -50,12 +50,34 @@ function useProject() {
         console.log(err);
       });
   };
-  const addTask=(data)=>{
-    API.post('/add-task',data).then((res)=>{
-      navigate("/project");
-    }).catch((err)=>{
-      console,log(err);
-    })
+  const addTask=async (data)=>{
+    // API.post('/add-task',data).then((res)=>{
+    //   navigate("/project");
+    // }).catch((err)=>{
+    //   console.log(err);
+    // })
+    try{
+      let res = await API.post('/add-task',data);
+      return res
+    }catch(err){
+      console.log(err);
+      return err
+    }
+  }
+  const getprojectbyProjectId= async (id)=>{
+    try{
+      let res = await API.get(`/get-projectbyid/${id}`)
+      return res
+    } 
+    catch(err) {
+      return err
+    } 
+      // API.get(`/get-projectbyid/${id}`).then((res)=>{
+      //   setProjectData(res.data)
+      //   console.log(res.data)
+      // }).catch((err)=>{
+      //   console.log(err);
+      // })
   }
   return {
     AddProject,
@@ -67,7 +89,8 @@ function useProject() {
     order,
     setOrder,
     searchProject,
-    addTask
+    addTask,
+    getprojectbyProjectId
   };
 }
 

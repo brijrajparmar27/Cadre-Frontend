@@ -1,15 +1,17 @@
 import React, { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Select from "react-select";
 import useProject from "../../../../../Hooks/useProject";
 
 function CreateTask() {
   const location = useLocation();
+  const navigate = useNavigate();
   const [membes, setMembers] = useState([]);
   const { addTask } = useProject();
   let options = location?.state?.member.map(function (data) {
     return { value: data, label: data.name };
   });
+  console.log(location.state);
   const inputSubmit = (e) => {
     e.preventDefault();
     const obj = {
@@ -20,7 +22,10 @@ function CreateTask() {
       project: location.state._id,
     };
     const data = { prev: [...location?.state?.task], new: obj };
-    addTask(data);
+    addTask(data).then(res=>{
+      console.log(res);
+      navigate("/dashboard/project",{state:{projectdata:res.data}})
+    });
   };
   const inputmember = (e) => {
     let membersarry = [];
