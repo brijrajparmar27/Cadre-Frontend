@@ -6,13 +6,12 @@ import loader from "../../assets/images/loader.svg";
 import "./Auth.css";
 import animation from "../../assets/Lottie/lottie.json";
 import useAuth from "../../Hooks/useAuth";
-import Select from 'react-select'
-
+import Select from "react-select";
 
 const Auth = () => {
   const [isLogin, setIsLogin] = useState(true);
-
-  const { Login, Signup,error,loading,setError } = useAuth();
+  const [role, setRole] = useState(null);
+  const { Login, Signup, error, loading, setError } = useAuth();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -29,20 +28,20 @@ const Auth = () => {
       }
     } else {
       let name = e.target.name.value.trim();
-      let role_name = e.target.role_name.value.trim();
+      // let role_name = e.target.role_name.value.trim();
       if (email.length > 0 && password.length > 0 && name.length > 0) {
-        Signup({ email, password, name, role_name });
+        Signup({ email, password, name, role_name: role });
         // console.log({ email, password, name, role_name });
       } else {
-        setError(' field cannot be empty');
+        setError(" field cannot be empty");
       }
     }
   };
   const options = [
-    { value: 'Sr Devloper', label: 'Sr Devloper' },
-    { value: 'Jr devloper', label: 'Jr devloper' },
-    { value: 'Admin', label: 'Admin' }
-  ]
+    { value: "Sr Devloper", label: "Sr Devloper" },
+    { value: "Jr devloper", label: "Jr devloper" },
+    { value: "Admin", label: "Admin" },
+  ];
 
   const formVariant = {
     hidden: {
@@ -159,10 +158,15 @@ const Auth = () => {
                     <option value="Jr devloper">Jr devloper</option>
                     <option value="Admin">Admin</option>
                   </motion.select> */}
-                  <Select options={options}/>
+                  <Select
+                    options={options}
+                    onChange={(role) => {
+                      setRole(role.value);
+                    }}
+                  />
                 </>
               )}
-               <p className="error_msg">{error}</p>
+              <p className="error_msg">{error}</p>
               <button type="submit" disabled={loading} className="submit_btn">
                 {loading ? (
                   <img src={loader} className="loader" alt="loading" />
@@ -177,7 +181,7 @@ const Auth = () => {
               className="redirect sub_text"
               onClick={() => {
                 setIsLogin((prev) => !prev);
-                setError('');
+                setError("");
               }}
             >
               {isLogin ? (
@@ -200,4 +204,3 @@ const Auth = () => {
   );
 };
 export default Auth;
-
