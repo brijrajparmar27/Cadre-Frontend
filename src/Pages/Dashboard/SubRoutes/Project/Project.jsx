@@ -32,9 +32,9 @@ export default function Project() {
 
   useEffect(() => {
     getprojectbyProjectId(location?.state?.projectdata._id).then((res) => {
-      setProjectData(res.data);
+      setProjectData({ ...res.data });
     });
-  }, []);
+  }, [location]);
   useEffect(() => {
     console.log("project data ", projectData);
   }, [projectData]);
