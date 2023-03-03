@@ -48,6 +48,7 @@ export default function CreateProject() {
       assigned_date: e.target.assigenedate.value.trim(),
       deadline: e.target.DeadLine.value.trim(),
       member: selectMebers,
+      progress:0,
       lead: userData,
       stack: selectStack,
     };
