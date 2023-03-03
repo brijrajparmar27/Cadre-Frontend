@@ -213,14 +213,15 @@ export default function Kanban({ data }) {
           {!showClosed && <MdOutlineKeyboardArrowUp className="footer_icon" />}
           {showClosed && <MdOutlineKeyboardArrowDown className="footer_icon" />}
         </div>
+
         {showClosed && (
           <div className="closed column">
             <p className="col_name"> closed</p>
-            <Droppable droppableId="closed">
+            <Droppable droppableId="closed" direction="horizontal">
               {(provided) => {
                 return (
                   <div
-                    className="card_holder"
+                    className="card_holder horizontal_card_holder"
                     {...provided.droppableProps}
                     ref={provided.innerRef}
                   >

@@ -70,3 +70,7 @@
 .section_content .kanban_contain .kanban .closed {
   grid-area: closed;
 }
+.section_content .kanban_contain .kanban .closed .horizontal_card_holder {
+  display: flex;
+  flex-direction: row;
+}

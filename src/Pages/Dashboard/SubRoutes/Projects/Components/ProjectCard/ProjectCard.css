@@ -59,7 +59,7 @@
 }
 
 /* cardas */
-.avatars {
+.projects_section .card .avatars {
   display: flex;
   list-style-type: none;
   margin: auto;
@@ -67,7 +67,7 @@
   flex-direction: row;
   margin-left: 10px;
 }
-.avatars__item {
+.projects_section .card .avatars__item {
   text-decoration: none;
   display: flex;
   justify-content: center;
@@ -87,9 +87,9 @@
   overflow: hidden;
   margin-left: -10px;
 }
-.avatars__item:last-child {
+.projects_section .card .avatars__item:last-child {
   z-index: 0;
 }
-.avatars__item img {
+.projects_section .card .avatars__item img {
   width: 100%;
 }
