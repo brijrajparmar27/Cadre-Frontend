@@ -1,6 +1,6 @@
 .section_content .kanban_contain .kanban {
   display: grid;
-  background-color: aqua;
+  column-gap: 10px;
   height: 100%;
   width: 100%;
   grid-template-rows: 6fr 0.5fr 3fr;
@@ -14,26 +14,53 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  background-color: bisque;
   grid-area: footer;
   font-size: 12px;
 }
 .section_content .kanban_contain .kanban .kanban_footer .footer_icon {
   font-size: 25px;
 }
+.section_content .kanban_contain .kanban .column {
+  /* overflow-y: scroll; */
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  /* background-color: aqua; */
+  border: 1px solid gainsboro;
+  border-radius: 5px;
+}
+.section_content .kanban_contain .kanban .column .col_name {
+  font-size: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid gainsboro;
+  /* background-color: brown; */
+  padding: 4px 0px;
+  /* font-style: italic; */
+}
+.section_content .kanban_contain .kanban .column .card_holder {
+  /* overflow-y: scroll; */
+  overflow: auto;
+  /* min-height: 100%; */
+  /* max-height: 100%; */
+  /* height: 100%; */
+  /* height: calc(100%); */
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 5px;
+  /* background-color: blue; */
+}
 .section_content .kanban_contain .kanban .pending {
-  background-color: rgb(97, 97, 97);
   grid-area: pending;
 }
 .section_content .kanban_contain .kanban .running {
-  background-color: rgb(164, 163, 163);
   grid-area: running;
 }
 .section_content .kanban_contain .kanban .completed {
-  background-color: rgb(218, 215, 215);
   grid-area: completed;
 }
 .section_content .kanban_contain .kanban .closed {
-  background-color: brown;
   grid-area: closed;
 }

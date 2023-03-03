@@ -79,7 +79,7 @@
 }
 .section_content .kanban_contain {
   display: flex;
-  background-color: rgb(233, 233, 233);
+  /* background-color: rgb(233, 233, 233); */
   height: 100%;
   width: 100%;
 }

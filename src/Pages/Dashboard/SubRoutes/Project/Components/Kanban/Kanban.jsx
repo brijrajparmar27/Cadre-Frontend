@@ -140,63 +140,69 @@ export default function Kanban({ data }) {
   return (
     <DragDropContext onDragEnd={onDragEnd}>
       <div className="kanban" style={showClosed ? {} : hideClosed}>
-        <Droppable droppableId="pending">
-          {(provided) => {
-            return (
-              <div
-                className="pending"
-                {...provided.droppableProps}
-                ref={provided.innerRef}
-              >
-                pending
-                {pending?.map((each, index) => {
-                  return (
-                    <KanbanCard each={each} key={each._id} index={index} />
-                  );
-                })}
-                {provided.placeholder}
-              </div>
-            );
-          }}
-        </Droppable>
-        <Droppable droppableId="running">
-          {(provided) => {
-            return (
-              <div
-                className="running"
-                {...provided.droppableProps}
-                ref={provided.innerRef}
-              >
-                running
-                {running?.map((each, index) => {
-                  return (
-                    <KanbanCard each={each} key={each._id} index={index} />
-                  );
-                })}
-                {provided.placeholder}
-              </div>
-            );
-          }}
-        </Droppable>
-        <Droppable droppableId="completed">
-          {(provided) => {
-            return (
-              <div
-                className="completed"
-                {...provided.droppableProps}
-                ref={provided.innerRef}
-              >
-                completed
-                {completed?.map((each, index) => {
-                  return (
-                    <KanbanCard each={each} key={each._id} index={index} />
-                  );
-                })}
-                {provided.placeholder}
-              </div>
-            );
-          }}
-        </Droppable>
+        <div className="pending column">
+          <p className="col_name">Pending</p>
+          <Droppable droppableId="pending">
+            {(provided) => {
+              return (
+                <div
+                  className="card_holder"
+                  {...provided.droppableProps}
+                  ref={provided.innerRef}
+                >
+                  {pending?.map((each, index) => {
+                    return (
+                      <KanbanCard each={each} key={each._id} index={index} />
+                    );
+                  })}
+                  {provided.placeholder}
+                </div>
+              );
+            }}
+          </Droppable>
+        </div>
+        <div className="running column">
+          <p className="col_name"> running</p>
+          <Droppable droppableId="running">
+            {(provided) => {
+              return (
+                <div
+                  className="card_holder"
+                  {...provided.droppableProps}
+                  ref={provided.innerRef}
+                >
+                  {running?.map((each, index) => {
+                    return (
+                      <KanbanCard each={each} key={each._id} index={index} />
+                    );
+                  })}
+                  {provided.placeholder}
+                </div>
+              );
+            }}
+          </Droppable>
+        </div>
+        <div className="completed column">
+          <p className="col_name"> completed</p>
+          <Droppable droppableId="completed">
+            {(provided) => {
+              return (
+                <div
+                  className="card_holder"
+                  {...provided.droppableProps}
+                  ref={provided.innerRef}
+                >
+                  {completed?.map((each, index) => {
+                    return (
+                      <KanbanCard each={each} key={each._id} index={index} />
+                    );
+                  })}
+                  {provided.placeholder}
+                </div>
+              );
+            }}
+          </Droppable>
+        </div>
         <div
           className="kanban_footer"
           onClick={() => {
@@ -208,25 +214,27 @@ export default function Kanban({ data }) {
           {showClosed && <MdOutlineKeyboardArrowDown className="footer_icon" />}
         </div>
         {showClosed && (
-          <Droppable droppableId="closed">
-            {(provided) => {
-              return (
-                <div
-                  className="closed"
-                  {...provided.droppableProps}
-                  ref={provided.innerRef}
-                >
-                  closed
-                  {closed?.map((each, index) => {
-                    return (
-                      <KanbanCard each={each} key={each._id} index={index} />
-                    );
-                  })}
-                  {provided.placeholder}
-                </div>
-              );
-            }}
-          </Droppable>
+          <div className="closed column">
+            <p className="col_name"> closed</p>
+            <Droppable droppableId="closed">
+              {(provided) => {
+                return (
+                  <div
+                    className="card_holder"
+                    {...provided.droppableProps}
+                    ref={provided.innerRef}
+                  >
+                    {closed?.map((each, index) => {
+                      return (
+                        <KanbanCard each={each} key={each._id} index={index} />
+                      );
+                    })}
+                    {provided.placeholder}
+                  </div>
+                );
+              }}
+            </Droppable>
+          </div>
         )}
       </div>
     </DragDropContext>
