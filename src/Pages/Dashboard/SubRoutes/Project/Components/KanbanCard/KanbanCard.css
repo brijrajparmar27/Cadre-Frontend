@@ -5,18 +5,24 @@
   gap: 2px;
   /* background-color: rgba(220, 220, 220, 0.493); */
   background-color: white;
-  border: 1px solid gainsboro;
+  border: 1px solid rgb(186, 186, 186);
   box-sizing: border-box;
   padding: 10px;
   height: 110px;
   width: 250px;
   border-radius: 10px;
+  transition: box-shadow 0.1s ease-in-out;
 }
 .kanbancard .title {
   font-size: 15px;
 }
 .kanbancard .description {
   font-size: 12px;
+}
+
+.lifted {
+  border: none;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 /* cardas */

@@ -6,13 +6,13 @@ import "./KanbanCard.css";
 export default function KanbanCard({ each, index }) {
   return (
     <Draggable draggableId={`${each._id}`} index={parseInt(index)}>
-      {(provided) => {
+      {(provided, snapshot) => {
         return (
           <div
-            className="kanbancard"
             {...provided.dragHandleProps}
             {...provided.draggableProps}
             ref={provided.innerRef}
+            className={snapshot.isDragging ? "kanbancard lifted" : "kanbancard"}
           >
             <h3 className="title">{each.title}</h3>
             <p className="description">
