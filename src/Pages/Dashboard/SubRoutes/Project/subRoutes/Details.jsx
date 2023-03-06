@@ -32,7 +32,7 @@ function Details() {
             </div>
             <div className="timings">
               <span className="creation pill">
-                {`Created | ${moment(projectData.assigned_date).format(
+                {`Created at ${moment(projectData.assigned_date).format(
                   "Do MMMM YYYY"
                 )}`}
               </span>

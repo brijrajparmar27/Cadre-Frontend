@@ -58,7 +58,7 @@
   border-radius: 5px;
 }
 .details .details_contain .titlebar_left .timings .creation {
-  background-color: rgba(0, 255, 72, 0.629);
+  /* background-color: rgba(220, 220, 220, 0.442); */
 }
 .details .details_contain .titlebar_left .timings .due {
   color: white;
@@ -132,15 +132,22 @@
   justify-content: space-between;
   height: 50px;
   width: 100%;
-  background-color: brown;
+  border: 1px solid rgba(137, 137, 137, 0.468);
+  border-bottom: none;
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
+  /* background-color: brown; */
+  background-color: rgba(220, 220, 220, 0.522);
 }
-.details .details_contain .tasks_switcher .switcher_header:first-child {
-  background-color: aqua;
+.details .details_contain .tasks_switcher .switcher_header .tab:first-child {
+  border-top-left-radius: 15px;
+  background-color: white;
 }
-.details .details_contain .tasks_switcher .switcher_header:last-child {
-  background-color: gainsboro;
+.details .details_contain .tasks_switcher .switcher_header .tab:last-child {
+  border-top-right-radius: 15px;
 }
 .details .details_contain .tasks_switcher .switcher_header .tab {
+  cursor: pointer;
   flex: 1;
   height: 100%;
   /* background-color: aqua; */
@@ -152,7 +159,9 @@
 .details .details_contain .tasks_switcher .switcher_body {
   height: 100%;
   width: 100%;
-  background-color: aqua;
+  /* background-color: aqua; */
+  border: 1px solid rgba(137, 137, 137, 0.468);
+  border-top: none;
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
 }
