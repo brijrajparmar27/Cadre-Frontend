@@ -41,15 +41,17 @@ export default function CreateProject() {
   };
   const handelsubmit = (e) => {
     e.preventDefault();
-    delete userData.jwt;
+    console.log(userData);
+    const currentUser = { ...userData };
+    delete currentUser.jwt;
     const projectdata = {
       project_name: e.target.projectname.value.trim(),
       description: e.target.projectDescripation.value.trim(),
       assigned_date: e.target.assigenedate.value.trim(),
       deadline: e.target.DeadLine.value.trim(),
       member: selectMebers,
-      progress:0,
-      lead: userData,
+      progress: 0,
+      lead: currentUser,
       stack: selectStack,
     };
     console.log(projectdata);

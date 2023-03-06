@@ -9,6 +9,7 @@ function CreateTask() {
   const [membes, setMembers] = useState([]);
   const [error, setError] = useState();
   const { addTask } = useProject();
+  console.log(location);
   let options = location?.state?.member.map(function (data) {
     return { value: data, label: data.name };
   });
@@ -22,7 +23,7 @@ function CreateTask() {
       project: location.state._id,
     };
     const data = { prev: [...location?.state?.task], new: obj };
-    console.log(obj.title)
+    console.log(obj.title);
     if (
       obj.title.length > 0 &&
       obj.description.length > 0 &&
@@ -31,13 +32,14 @@ function CreateTask() {
       console.log(data);
       addTask(data).then((res) => {
         console.log(res, "in create Task");
-        navigate("/dashboard/project", { state: { projectdata: res.data } });
-      }); 
+        // console.log({state:{projectdata: {...}}});
+        navigate("/dashboard/project", {
+          state: { projectdata: { ...location.state } },
+        });
+      });
+    } else {
+      setError("field cannot be empty");
     }
-    else{
-        setError('field cannot be empty')
-    }
-   
   };
   const inputmember = (e) => {
     let membersarry = [];

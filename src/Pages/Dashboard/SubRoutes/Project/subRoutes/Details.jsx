@@ -41,7 +41,7 @@ function Details() {
                 {`Due | ${moment(projectData.deadline).format("Do MMMM YYYY")}`}
               </span>
             </div>
-            <div className="details_text">{projectData.discription}</div>
+            <div className="details_text">{projectData.description}</div>
           </div>
           <div className="titlebar_right">
             <div className="stacks">
@@ -60,7 +60,7 @@ function Details() {
             <div className="members">
               {projectData.member.map((each) => {
                 return (
-                  <div key={each.id} className="member_card">
+                  <div key={each._id} className="member_card">
                     <img
                       src={
                         projectData.member.img ? projectData.member.img : avatar

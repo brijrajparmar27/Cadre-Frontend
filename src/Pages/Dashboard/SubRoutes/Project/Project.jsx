@@ -22,7 +22,7 @@ export default function Project() {
   const { getprojectbyProjectId } = useProject();
 
   useEffect(() => {
-    console.log(location.state.projectdata._id);
+    // console.log(location.state.projectdata._id);
     getprojectbyProjectId(location.state.projectdata._id).then((res) => {
       console.log(res);
       setProjectData({ ...res.data });
@@ -30,7 +30,7 @@ export default function Project() {
   }, [location]);
   useEffect(() => {
     // console.log("project data ", projectData);
-    projectData && console.log(projectData.task);
+    // projectData && console.log(projectData.task);
   }, [projectData]);
   return (
     <>
