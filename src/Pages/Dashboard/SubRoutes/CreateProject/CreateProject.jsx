@@ -44,7 +44,7 @@ export default function CreateProject() {
     delete userData.jwt;
     const projectdata = {
       project_name: e.target.projectname.value.trim(),
-      discription: e.target.projectDescripation.value.trim(),
+      description: e.target.projectDescripation.value.trim(),
       assigned_date: e.target.assigenedate.value.trim(),
       deadline: e.target.DeadLine.value.trim(),
       member: selectMebers,
@@ -55,7 +55,7 @@ export default function CreateProject() {
     console.log(projectdata);
     if (
       projectdata.project_name.length > 0 &&
-      projectdata.discription.length > 0 &&
+      projectdata.description.length > 0 &&
       projectdata.assigned_date.length > 0 &&
       projectdata.deadline.length > 0 &&
       projectdata.member.length > 0

@@ -16,8 +16,8 @@ export default function KanbanCard({ each, index }) {
           >
             <h3 className="title">{each.title}</h3>
             <p className="description">
-              {each?.descripation?.substring(0, 100)}
-              {each?.descripation?.length > 100 && (
+              {each?.description?.substring(0, 100)}
+              {each?.description?.length > 100 && (
                 <span className="view-more">...</span>
               )}
             </p>

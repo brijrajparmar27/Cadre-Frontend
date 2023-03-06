@@ -16,7 +16,7 @@ function CreateTask() {
     e.preventDefault();
     const obj = {
       title: e.target.title.value,
-      descripation: e.target.descripation.value,
+      description: e.target.description.value,
       assigned: membes,
       lead: location.state.lead,
       project: location.state._id,
@@ -25,11 +25,12 @@ function CreateTask() {
     console.log(obj.title)
     if (
       obj.title.length > 0 &&
-      obj.descripation.length > 0 &&
+      obj.description.length > 0 &&
       obj.assigned.length > 0
     ) {
+      console.log(data);
       addTask(data).then((res) => {
-        console.log(res);
+        console.log(res, "in create Task");
         navigate("/dashboard/project", { state: { projectdata: res.data } });
       }); 
     }
@@ -48,7 +49,7 @@ function CreateTask() {
   return (
     <div>
       <form onSubmit={inputSubmit}>
-        descripation <input name="descripation" type="text" />
+        description <input name="description" type="text" />
         Title <input name="title" type="text" />
         <Select options={options} isMulti onChange={inputmember}></Select>
         <p className="error_msg">{error}</p>

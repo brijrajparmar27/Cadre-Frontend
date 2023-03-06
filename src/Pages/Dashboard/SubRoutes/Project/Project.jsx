@@ -22,7 +22,9 @@ export default function Project() {
   const { getprojectbyProjectId } = useProject();
 
   useEffect(() => {
-    getprojectbyProjectId(location?.state?.projectdata._id).then((res) => {
+    console.log(location.state.projectdata._id);
+    getprojectbyProjectId(location.state.projectdata._id).then((res) => {
+      console.log(res);
       setProjectData({ ...res.data });
     });
   }, [location]);
@@ -63,8 +65,8 @@ export default function Project() {
                 <div className="desc_contain">
                   {/* limit task desc to 521 characters */}
                   <p className="task_desc">
-                    {projectData?.discription.substring(0, 236)}
-                    {projectData?.discription.length > 521 && (
+                    {projectData?.description?.substring(0, 236)}
+                    {projectData?.description?.length > 521 && (
                       <span className="view-more">"..."</span>
                     )}
                   </p>

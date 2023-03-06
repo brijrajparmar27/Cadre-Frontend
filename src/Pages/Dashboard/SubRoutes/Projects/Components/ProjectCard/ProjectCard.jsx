@@ -12,6 +12,7 @@ export default function ProjectCard({ data }) {
     <div
       className="card"
       onClick={() => {
+        console.log(data, " on project card");
         navigate("/dashboard/project", { state: { projectdata: data } });
       }}
     >
@@ -39,8 +40,8 @@ export default function ProjectCard({ data }) {
         />
       </div>
       <p className="project_description">
-        {data?.discription.substring(0, 236)}
-        {data?.discription.length > 236 && "..."}
+        {data?.description?.substring(0, 236)}
+        {data?.description?.length > 236 && "..."}
       </p>
       <div className="project_members">
         <div className="avatars">

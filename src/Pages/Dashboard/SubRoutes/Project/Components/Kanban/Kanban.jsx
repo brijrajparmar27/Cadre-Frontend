@@ -16,9 +16,9 @@ export default function Kanban({ data }) {
   const [closed, setClosed] = useState([]);
 
   useEffect(() => {
-    // console.log(data);
-    data.task.forEach((each) => {
-      switch (each.status) {
+    console.log(data);
+    data?.task?.forEach((each) => {
+      switch (each.status.toLowerCase()) {
         case "pending":
           setPending((prev) => [...prev, each]);
           break;
