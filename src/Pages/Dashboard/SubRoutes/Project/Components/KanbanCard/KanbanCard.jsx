@@ -22,21 +22,27 @@ export default function KanbanCard({ each, index }) {
               )}
             </p>
             <div className="assigned">
-              {each?.assigned?.map((each, index) => {
-                return (
-                  index < 4 && (
-                    <a href="#" className="avatars__item" key={each._id}>
-                      <img className="avatar" src={each.img || avatar} alt="" />
-                    </a>
-                  )
-                );
-              })}
+              <div className="avatars">
+                {each?.assigned?.map((each, index) => {
+                  return (
+                    index < 4 && (
+                      <a href="#" className="avatars__item" key={each._id}>
+                        <img
+                          className="avatar"
+                          src={each.img || avatar}
+                          alt=""
+                        />
+                      </a>
+                    )
+                  );
+                })}
 
-              {each?.assigned?.length > 4 && (
-                <a href="#" className="avatars__item">
-                  <p>+{each.assigned.length - 4}</p>
-                </a>
-              )}
+                {each?.assigned?.length > 4 && (
+                  <a href="#" className="avatars__item">
+                    <p>+{each.assigned.length - 4}</p>
+                  </a>
+                )}
+              </div>
             </div>
           </div>
         );

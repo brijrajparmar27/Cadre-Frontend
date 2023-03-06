@@ -19,6 +19,12 @@
 .kanbancard .description {
   font-size: 12px;
 }
+.kanbancard .assigned {
+  display: flex;
+}
+.kanbancard .assigned img {
+  height: 20px;
+}
 
 .lifted {
   border: none;
@@ -26,15 +32,15 @@
 }
 
 /* cardas */
-.avatars {
+.kanbancard .assigned .avatars {
   display: flex;
   list-style-type: none;
   margin: auto;
   padding: 0px;
   flex-direction: row;
-  margin-left: 10px;
+  margin-left: 8px;
 }
-.avatars__item {
+.kanbancard .assigned .avatars__item {
   text-decoration: none;
   display: flex;
   justify-content: center;
@@ -52,10 +58,11 @@
   text-align: center;
   transition: margin 0.1s ease-in-out;
   overflow: hidden;
+  margin-left: -8px;
 }
-.avatars__item:last-child {
+.kanbancard .assigned .avatars__item:last-child {
   z-index: 0;
 }
-.avatars__item img {
+.kanbancard .assigned .avatars__item img {
   width: 100%;
 }
