@@ -1,0 +1,172 @@
+.details {
+  /* background-color: aquamarine; */
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.details .details_contain {
+  overflow-y: auto;
+  display: flex;
+  /* background-color: rgb(158, 158, 255); */
+  height: 100%;
+}
+.details .details_contain .details_content {
+  padding: 30px 20px;
+  height: 150vh;
+  gap: 10px;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas:
+    "details members"
+    "tasks progress";
+}
+.details .details_contain .titlebar_left {
+  overflow: hidden;
+  /* background-color: aliceblue; */
+  grid-area: details;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.details .details_contain .titlebar_left .project_title {
+}
+.details .details_contain .titlebar_left .lead {
+  margin: 10px 0px 10px 10px;
+  /* margin-left: 10px; */
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.details .details_contain .titlebar_left .lead img {
+  height: 30px;
+  width: 30px;
+}
+.details .details_contain .titlebar_left .timings {
+  margin-left: 10px;
+  display: flex;
+  gap: 10px;
+  flex-direction: row;
+}
+.details .details_contain .titlebar_left .timings .pill {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  padding: 5px;
+  /* background-color: aqua; */
+  border-radius: 5px;
+}
+.details .details_contain .titlebar_left .timings .creation {
+  background-color: rgba(0, 255, 72, 0.629);
+}
+.details .details_contain .titlebar_left .timings .due {
+  color: white;
+  background-color: rgb(255, 63, 63);
+}
+.details .details_contain .titlebar_left .details_text {
+  border-radius: 5px;
+  margin: 5px;
+  background-color: rgba(220, 220, 220, 0.442);
+  padding: 15px;
+  height: 100%;
+  overflow-y: auto;
+}
+.details .details_contain .titlebar_right {
+  overflow: hidden;
+  /* background-color: bisque; */
+  grid-area: members;
+  display: flex;
+  flex-direction: column;
+}
+.details .details_contain .subsection_title {
+  font-size: 20px;
+  padding: 10px 0px;
+  font-weight: bold;
+}
+.details .details_contain .titlebar_right .members {
+  padding: 20px 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow-y: auto;
+  flex: 15;
+}
+.details .details_contain .titlebar_right .members .member_card {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  /* background-color: aqua; */
+  border-radius: 5px;
+  background-color: rgba(220, 220, 220, 0.501);
+  padding: 10px;
+  margin: 0px 10px;
+}
+.details .details_contain .titlebar_right .members .member_avatar {
+  height: 25px;
+}
+.details .details_contain .titlebar_right .stacks {
+  flex: 1;
+  /* background-color: aquamarine; */
+  align-items: center;
+  justify-content: flex-end;
+  display: flex;
+  gap: 5px;
+}
+.details .details_contain .titlebar_right .stacks .tech_icon {
+  height: 30px;
+}
+.details .details_contain .tasks_switcher {
+  /* background-color: rgb(180, 112, 244); */
+  grid-area: tasks;
+}
+.details .details_contain .tasks_switcher .switcher {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+.details .details_contain .tasks_switcher .switcher_header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 50px;
+  width: 100%;
+  background-color: brown;
+}
+.details .details_contain .tasks_switcher .switcher_header:first-child {
+  background-color: aqua;
+}
+.details .details_contain .tasks_switcher .switcher_header:last-child {
+  background-color: gainsboro;
+}
+.details .details_contain .tasks_switcher .switcher_header .tab {
+  flex: 1;
+  height: 100%;
+  /* background-color: aqua; */
+  /* border: 1px solid black; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.details .details_contain .tasks_switcher .switcher_body {
+  height: 100%;
+  width: 100%;
+  background-color: aqua;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+.details .details_contain .progress {
+  /* background-color: rgb(250, 250, 123); */
+  grid-area: progress;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.details .details_contain .project_progress {
+  height: 200px;
+  width: 200px;
+}
+.overflow {
+  height: 150vh;
+}

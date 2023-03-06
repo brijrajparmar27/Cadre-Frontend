@@ -37,7 +37,7 @@ export default function Project() {
       {projectData && (
         <div className="project">
           <div className="section_title">
-            <h1>Create Project</h1>
+            <h1>Project Dashboard</h1>
           </div>
           <div className="section_content">
             <div className="section_header">
@@ -47,7 +47,7 @@ export default function Project() {
                   <BsInfoCircle
                     className="proj_fun_icons"
                     onClick={(e) => {
-                      navigate("details");
+                      navigate("details", { state: projectData });
                     }}
                   />
                 </div>
