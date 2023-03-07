@@ -6,6 +6,7 @@ import {
 } from "react-icons/md";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import KanbanCard from "../KanbanCard/KanbanCard";
+import useTask from "../../../../../../Hooks/useTask";
 
 export default function Kanban({ data }) {
   const [showClosed, setShowClosed] = useState(false);
@@ -14,6 +15,7 @@ export default function Kanban({ data }) {
   const [running, setRunning] = useState([]);
   const [completed, setCompleted] = useState([]);
   const [closed, setClosed] = useState([]);
+  const {updatetaskstatus}=useTask();
 
   useEffect(() => {
     console.log(data);
@@ -109,7 +111,9 @@ export default function Kanban({ data }) {
             ...grabbed,
             status: "pending",
           })
+         
         );
+        updatetaskstatus({ ...grabbed, status: "pending" })
         break;
       case "running":
         console.log({ ...grabbed, status: "running" });
@@ -119,6 +123,7 @@ export default function Kanban({ data }) {
             status: "running",
           })
         );
+        updatetaskstatus({ ...grabbed, status: "running" })
         break;
       case "completed":
         console.log({ ...grabbed, status: "completed" });
@@ -128,6 +133,7 @@ export default function Kanban({ data }) {
             status: "completed",
           })
         );
+        updatetaskstatus({ ...grabbed, status: "completed" })
         break;
       case "closed":
         console.log({ ...grabbed, status: "closed" });
@@ -137,6 +143,7 @@ export default function Kanban({ data }) {
             status: "closed",
           })
         );
+        updatetaskstatus({ ...grabbed, status: "closed" })
         break;
     }
   };
