@@ -10,7 +10,7 @@
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
   box-sizing: border-box;
   padding: 10px;
-  height: 110px;
+  min-height: 110px;
   width: 250px;
   border-radius: 10px;
   transition: box-shadow 0.1s ease-in-out;

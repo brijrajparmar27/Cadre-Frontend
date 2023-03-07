@@ -9,6 +9,7 @@
   /* padding-top: 20px; */
   /* margin-top: 20px; */
   /* background-color: aqua; */
+  overflow: hidden;
   height: 100%;
   width: 100%;
   display: flex;
@@ -82,6 +83,7 @@
   /* background-color: rgb(233, 233, 233); */
   height: 100%;
   width: 100%;
+  overflow: hidden;
 }
 
 .view-more {
