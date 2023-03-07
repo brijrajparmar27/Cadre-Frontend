@@ -28,10 +28,10 @@ export default function Project() {
       setProjectData({ ...res.data });
     });
   }, [location]);
-  useEffect(() => {
-    // console.log("project data ", projectData);
-    // projectData && console.log(projectData.task);
-  }, [projectData]);
+  // useEffect(() => {
+  // console.log("project data ", projectData);
+  // projectData && console.log(projectData.task);
+  // }, [projectData]);
   return (
     <>
       {projectData && (

@@ -114,12 +114,7 @@ function Details() {
                     return (
                       <div className={"taskcard"}>
                         <h3 className="title">{each.title}</h3>
-                        <p className="description">
-                          {each?.description?.substring(0, 100)}
-                          {each?.description?.length > 100 && (
-                            <span className="view-more">...</span>
-                          )}
-                        </p>
+                        <p className="description">{each?.description}</p>
                         <div className="assigned">
                           <div className="avatars">
                             {each?.assigned?.map((each, index) => {

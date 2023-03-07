@@ -14,7 +14,12 @@ export default function KanbanCard({ each, index }) {
             ref={provided.innerRef}
             className={snapshot.isDragging ? "kanbancard lifted" : "kanbancard"}
           >
-            <h3 className="title">{each.title}</h3>
+            <h3 className="title">
+              {each?.title?.substring(0, 54)}
+              {each?.title?.length > 54 && (
+                <span className="view-more">...</span>
+              )}
+            </h3>
             <p className="description">
               {each?.description?.substring(0, 100)}
               {each?.description?.length > 100 && (
@@ -25,15 +30,20 @@ export default function KanbanCard({ each, index }) {
               <div className="avatars">
                 {each?.assigned?.map((each, index) => {
                   return (
-                    index < 4 && (
-                      <a href="#" className="avatars__item" key={each._id}>
-                        <img
-                          className="avatar"
-                          src={each.img || avatar}
-                          alt=""
-                        />
-                      </a>
-                    )
+                    <>
+                      {index < 4 && (
+                        <div className="avatars__item_contain">
+                          <p className="whoami">{each.name}</p>
+                          <a href="#" className="avatars__item" key={each._id}>
+                            <img
+                              className="avatar"
+                              src={each.img || avatar}
+                              alt=""
+                            />
+                          </a>
+                        </div>
+                      )}
+                    </>
                   );
                 })}
 
