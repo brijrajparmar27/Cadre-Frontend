@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 import avatar from "../../../../../assets/images/avatar.svg";
 import "./Details.css";
@@ -6,6 +6,13 @@ import moment from "moment/moment";
 import { buildStyles, CircularProgressbar } from "react-circular-progressbar";
 
 function Details() {
+  const [active, setActive] = useState(0);
+  const tabs = [
+    { title: "Pending", index: 0 },
+    { title: "Running", index: 1 },
+    { title: "Completed", index: 2 },
+    { title: "Closed", index: 3 },
+  ];
   let percentage = 30;
   const location = useLocation();
   const projectData = { ...location.state };
@@ -77,12 +84,74 @@ function Details() {
           <div className="tasks_switcher">
             <div className="switcher">
               <div className="switcher_header">
-                <p className="tab">Pending</p>
-                <p className="tab">Running</p>
-                <p className="tab">Completed</p>
-                <p className="tab">Closed</p>
+                {tabs.map((each) => {
+                  return (
+                    <p
+                      className={
+                        each.index == active ? "tab active" : "tab inactive"
+                      }
+                      key={each.index}
+                      onClick={() => {
+                        console.log(each.index);
+                        setActive(each.index);
+                      }}
+                    >
+                      {each.title}
+                    </p>
+                  );
+                })}
               </div>
-              <div className="switcher_body"></div>
+              <div className="switcher_body">
+                {/* <div className="overflow"></div>
+                <div className="overflow"></div>
+                <div className="overflow"></div> */}
+                {projectData.task.map((each) => {
+                  if (
+                    each.status.toLowerCase() ==
+                    tabs[active].title.toLowerCase()
+                  ) {
+                    console.log(each);
+                    return (
+                      <div className={"taskcard"}>
+                        <h3 className="title">{each.title}</h3>
+                        <p className="description">
+                          {each?.description?.substring(0, 100)}
+                          {each?.description?.length > 100 && (
+                            <span className="view-more">...</span>
+                          )}
+                        </p>
+                        <div className="assigned">
+                          <div className="avatars">
+                            {each?.assigned?.map((each, index) => {
+                              return (
+                                index < 4 && (
+                                  <a
+                                    href="#"
+                                    className="avatars__item"
+                                    key={each._id}
+                                  >
+                                    <img
+                                      className="avatar"
+                                      src={each.img || avatar}
+                                      alt=""
+                                    />
+                                  </a>
+                                )
+                              );
+                            })}
+
+                            {each?.assigned?.length > 4 && (
+                              <a href="#" className="avatars__item">
+                                <p>+{each.assigned.length - 4}</p>
+                              </a>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  }
+                })}
+              </div>
             </div>
           </div>
           <div className="progress">
