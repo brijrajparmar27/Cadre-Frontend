@@ -65,7 +65,7 @@ function Details() {
             </div>
             <p className="subsection_title">Members</p>
             <div className="members">
-              {projectData.member.map((each) => {
+              {projectData?.member?.map((each) => {
                 return (
                   <div key={each._id} className="member_card">
                     <img

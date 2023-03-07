@@ -22,15 +22,14 @@ function CreateTask() {
       lead: location.state.lead,
       project: location.state._id,
     };
-    const data = { prev: [...location?.state?.task], new: obj };
     console.log(obj.title);
     if (
       obj.title.length > 0 &&
       obj.description.length > 0 &&
       obj.assigned.length > 0
     ) {
-      console.log(data);
-      addTask(data).then((res) => {
+      
+      addTask(obj).then((res) => {
         console.log(res, "in create Task");
         // console.log({state:{projectdata: {...}}});
         navigate("/dashboard/project", {

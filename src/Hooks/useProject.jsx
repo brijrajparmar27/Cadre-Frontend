@@ -59,6 +59,7 @@ function useProject() {
     try{
       let res = await API.post('/add-task',data);
       return res
+      // console.log(data);
     }catch(err){
       console.log(err);
       return err
