@@ -159,7 +159,11 @@ function Details() {
               <CircularProgressbar
                 value={percentage}
                 text={`${percentage}%`}
-                styles={buildStyles({ textSize: "25px" })}
+                styles={buildStyles({
+                  textSize: "25px",
+                  pathColor: "#26329f",
+                  textColor: "#26329f",
+                })}
               />
             </div>
           </div>

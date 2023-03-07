@@ -36,7 +36,11 @@ export default function ProjectCard({ data }) {
         <CircularProgressbar
           value={percentage}
           text={`${percentage}%`}
-          styles={buildStyles({ textSize: "25px" })}
+          styles={buildStyles({
+            textSize: "25px",
+            pathColor: "#26329f",
+            textColor: "#26329f",
+          })}
         />
       </div>
       <p className="project_description">
