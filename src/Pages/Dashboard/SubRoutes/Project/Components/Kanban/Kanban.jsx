@@ -103,6 +103,7 @@ export default function Kanban({ data }) {
     // }
     switch (destination.droppableId) {
       case "pending":
+        console.log({ ...grabbed, status: "pending" });
         setPending((prev) =>
           PushIntoArray(prev, destination.index, {
             ...grabbed,
@@ -111,6 +112,7 @@ export default function Kanban({ data }) {
         );
         break;
       case "running":
+        console.log({ ...grabbed, status: "running" });
         setRunning((prev) =>
           PushIntoArray(prev, destination.index, {
             ...grabbed,
@@ -119,6 +121,7 @@ export default function Kanban({ data }) {
         );
         break;
       case "completed":
+        console.log({ ...grabbed, status: "completed" });
         setCompleted((prev) =>
           PushIntoArray(prev, destination.index, {
             ...grabbed,
@@ -127,6 +130,7 @@ export default function Kanban({ data }) {
         );
         break;
       case "closed":
+        console.log({ ...grabbed, status: "closed" });
         setClosed((prev) =>
           PushIntoArray(prev, destination.index, {
             ...grabbed,
