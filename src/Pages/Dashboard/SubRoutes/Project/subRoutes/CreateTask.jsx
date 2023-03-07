@@ -6,7 +6,7 @@ import useProject from "../../../../../Hooks/useProject";
 function CreateTask() {
   const location = useLocation();
   const navigate = useNavigate();
-  const [membes, setMembers] = useState([]);
+  const [members, setMembers] = useState([]);
   const [error, setError] = useState();
   const { addTask } = useProject();
   console.log(location);
@@ -18,7 +18,7 @@ function CreateTask() {
     const obj = {
       title: e.target.title.value,
       description: e.target.description.value,
-      assigned: membes,
+      assigned: members,
       lead: location.state.lead,
       project: location.state._id,
     };
