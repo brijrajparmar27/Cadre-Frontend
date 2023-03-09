@@ -1,0 +1,12 @@
+.settings {
+  /* background-color: aqua; */
+  height: 100%;
+  width: 100%;
+}
+.settings_contain {
+  display: flex;
+  flex-direction: column;
+}
+.settings_contain img {
+  height: 100px;
+}
