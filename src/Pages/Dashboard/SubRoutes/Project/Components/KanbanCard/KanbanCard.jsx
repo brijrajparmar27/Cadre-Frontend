@@ -2,6 +2,7 @@ import React from "react";
 import { Draggable } from "react-beautiful-dnd";
 import avatar from "../../../../../../assets/images/avatar.svg";
 import "./KanbanCard.css";
+import { FcHighPriority } from "react-icons/fc";
 
 export default function KanbanCard({ each, index }) {
   return (
@@ -53,6 +54,11 @@ export default function KanbanCard({ each, index }) {
                   </a>
                 )}
               </div>
+              {each.priority && (
+                <div className="task_priority">
+                  <FcHighPriority />
+                </div>
+              )}
             </div>
           </div>
         );

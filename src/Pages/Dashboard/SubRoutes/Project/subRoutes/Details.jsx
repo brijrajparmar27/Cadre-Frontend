@@ -4,6 +4,7 @@ import avatar from "../../../../../assets/images/avatar.svg";
 import "./Details.css";
 import moment from "moment/moment";
 import { buildStyles, CircularProgressbar } from "react-circular-progressbar";
+import { FcHighPriority } from "react-icons/fc";
 
 function Details() {
   const [active, setActive] = useState(0);
@@ -141,6 +142,12 @@ function Details() {
                               </a>
                             )}
                           </div>
+
+                          {each.priority && (
+                            <div className="task_priority">
+                              <FcHighPriority />
+                            </div>
+                          )}
                         </div>
                       </div>
                     );
