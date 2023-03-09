@@ -97,11 +97,10 @@ export default function Projects() {
           </div>
         </div>
       </div>
-      <div className="projects_section">
-        {
-          projectData?.map((data) => {
-            return <ProjectCard data={data} key={data._id} />;
-          })}
+      <div className="projects_section" id="style-1">
+        {projectData?.map((data) => {
+          return <ProjectCard data={data} key={data._id} />;
+        })}
       </div>
     </div>
   );

@@ -26,7 +26,7 @@ function Details() {
       <div className="section_title">
         <h1>Project Details</h1>
       </div>
-      <div className="details_contain">
+      <div className="details_contain" id="style-1">
         <div className="details_content">
           <div className="titlebar_left">
             <h2 className="project_title">{projectData.project_name}</h2>
@@ -65,7 +65,7 @@ function Details() {
               })}
             </div>
             <p className="subsection_title">Members</p>
-            <div className="members">
+            <div className="members" id="style-1">
               {projectData?.member?.map((each) => {
                 return (
                   <div key={each._id} className="member_card">
@@ -102,7 +102,7 @@ function Details() {
                   );
                 })}
               </div>
-              <div className="switcher_body">
+              <div className="switcher_body" id="style-1">
                 {/* <div className="overflow"></div>
                 <div className="overflow"></div>
                 <div className="overflow"></div> */}
