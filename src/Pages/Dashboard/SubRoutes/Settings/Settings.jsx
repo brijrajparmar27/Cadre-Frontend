@@ -12,8 +12,8 @@ export default function Settings() {
   const onFileChangeCapture = (e) => {
     // console.log(e.target.files[0]);
     const formdata = new FormData();
-    formdata.append("Image", e.target.files[0]);
     formdata.append("Id", userData._id);
+    formdata.append("Image", e.target.files[0]);
     /*Selected files data can be collected here.*/
     updateUserDP(formdata);
   };
