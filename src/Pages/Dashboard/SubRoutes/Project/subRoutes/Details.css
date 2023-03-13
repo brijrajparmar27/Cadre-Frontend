@@ -259,6 +259,7 @@
 
 /* cardas */
 .taskcard .assigned .avatars {
+  position: relative;
   display: flex;
   list-style-type: none;
   margin: auto;
@@ -298,4 +299,23 @@
 }
 .taskcard .assigned .avatars__item img {
   width: 100%;
+}
+/* end */
+.show {
+  display: block;
+}
+.whoami {
+  display: none;
+  background-color: #596376;
+  color: white;
+  bottom: -20px;
+  left: 0px;
+  z-index: 9;
+  position: absolute;
+  padding: 3px;
+  border-radius: 5px;
+  font-size: 12px;
+}
+.avatars__item_contain:hover .whoami {
+  display: block;
 }
