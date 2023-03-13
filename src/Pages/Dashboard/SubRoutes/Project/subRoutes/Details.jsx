@@ -121,7 +121,7 @@ function Details() {
                   ) {
                     console.log(each);
                     return (
-                      <div className={"taskcard"}>
+                      <div className={"taskcard"} key={each._id}>
                         <h3 className="title">{each.title}</h3>
                         <p className="description">{each?.description}</p>
                         <div className="assigned">
@@ -129,7 +129,10 @@ function Details() {
                             {each?.assigned?.map((each, index) => {
                               return (
                                 index < 4 && (
-                                  <div className="avatars__item_contain">
+                                  <div
+                                    className="avatars__item_contain"
+                                    key={each._id}
+                                  >
                                     <p className="whoami">{each.name}</p>
                                     <a
                                       href="#"

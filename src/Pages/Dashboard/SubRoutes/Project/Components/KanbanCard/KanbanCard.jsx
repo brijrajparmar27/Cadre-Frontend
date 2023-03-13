@@ -33,9 +33,9 @@ export default function KanbanCard({ each, index }) {
                   return (
                     <>
                       {index < 4 && (
-                        <div className="avatars__item_contain">
+                        <div className="avatars__item_contain" key={each._id}>
                           <p className="whoami">{each.name}</p>
-                          <a href="#" className="avatars__item" key={each._id}>
+                          <a href="#" className="avatars__item">
                             <img
                               className="avatar"
                               src={
