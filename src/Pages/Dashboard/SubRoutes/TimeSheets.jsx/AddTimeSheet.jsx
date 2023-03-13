@@ -9,6 +9,8 @@ function AddTimeSheet(e) {
 
   const [work, setWork] = useState([{}]);
 
+  const today = new Date();
+
   // const work = {
   //   projectName: "test",
   //   description: "test description",
@@ -18,7 +20,7 @@ function AddTimeSheet(e) {
 
   const Timesheetdata = {
     user: userData._id,
-    Date: Date.now(),
+    Date: today.toISOString().slice(0, 10),
     work,
   };
 

@@ -63,6 +63,7 @@ export default function CreateProject() {
       projectdata.member.length > 0
     ) {
       AddProject(projectdata);
+      e.target.reset();
     } else {
       console.log("cannot be empty");
     }
