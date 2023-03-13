@@ -28,15 +28,31 @@
   grid-template-rows: 1fr;
   grid-template-columns: 1fr 1.5fr;
   grid-template-areas: "cal sheets";
-  background-color: aqua;
+  /* background-color: aqua; */
   height: 100%;
   width: 100%;
 }
 .timesheet .timesheet_contain .calendar_contain {
-  background-color: antiquewhite;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* background-color: antiquewhite; */
   grid-area: cal;
+}
+.timesheet .timesheet_contain .calendar_contain .calendar_date {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 .timesheet .timesheet_contain .sheets_contain {
   background-color: aquamarine;
   grid-area: sheets;
+}
+
+.timesheet .timesheet_contain .calendar_contain .calendar {
+  border-radius: 5px;
+}
+.timesheet .timesheet_contain .calendar_contain .calendar abbr {
+  text-decoration: none;
 }
