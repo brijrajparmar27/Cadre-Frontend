@@ -32,7 +32,7 @@ function Details() {
             <h2 className="project_title">{projectData.project_name}</h2>
             <div className="lead">
               <img
-                src={projectData.img ? `http://localhost:4040/${projectData.img}` : avatar}
+                src={projectData?.lead ? `{import.meta.env.VITE_SERVER}${projectData.lead.img}` : avatar}
                 alt=""
                 className="user_avatar"
               />
@@ -67,12 +67,11 @@ function Details() {
             <p className="subsection_title">Members</p>
             <div className="members" id="style-1">
               {projectData?.member?.map((each) => {
-                console.log(`http://localhost:4040/public/dp/${each.img}`);
                 return (
                   <div key={each._id} className="member_card">
                     <img
                       src={
-                        each.img ? `http://localhost:4040/public/dp/${each.img}` : avatar
+                        each.img ? `${import.meta.env.VITE_SERVER}${each.img}` : avatar
                       }
                       alt=""
                       className="member_avatar"
@@ -129,7 +128,10 @@ function Details() {
                                   >
                                     <img
                                       className="avatar"
-                                      src={each.img || avatar}
+                                      src={each.img ?
+                                         `${import.meta.env.VITE_SERVER}${each.img}`
+                                        : avatar
+                                      }
                                       alt=""
                                     />
                                   </a>
