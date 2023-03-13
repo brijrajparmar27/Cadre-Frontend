@@ -19,6 +19,7 @@ import Settings from "./Pages/Dashboard/SubRoutes/Settings/Settings";
 import TimeSheets from "./Pages/Dashboard/SubRoutes/TimeSheets.jsx/TimeSheets";
 import Root from "./Pages/Root";
 import Details from "./Pages/Dashboard/SubRoutes/Project/subRoutes/Details";
+import AddTimeSheet from "./Pages/Dashboard/SubRoutes/TimeSheets.jsx/AddTimeSheet";
 
 function App() {
   const { userData } = useSelector((state) => state.logindataslice);
@@ -55,6 +56,7 @@ function App() {
           <Route path="addProject" element={<CreateProject></CreateProject>} />
           <Route path="settings" element={<Settings />} />
           <Route path="time-sheet" element={<TimeSheets />} />
+          <Route path="time-sheet/addTimesheet" element={<AddTimeSheet/>} />
         </Route>
         <Route path="*" element={<NotFound />} />
       </Route>

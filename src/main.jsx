@@ -17,6 +17,7 @@ import { PersistGate } from "redux-persist/integration/react";
 import storage from "redux-persist/lib/storage";
 import { configureStore } from "@reduxjs/toolkit";
 import RootReducers from "./Pages/redux/rootReducer";
+import logger from "redux-logger";
 
 const persistConfig = {
   key: "root",
@@ -28,7 +29,7 @@ const store = configureStore({ reducer: persistedReducer, middleware: (getDefaul
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }), });
+    }).concat(logger) });
 let persistor = persistStore(store);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
