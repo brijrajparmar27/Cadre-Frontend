@@ -32,7 +32,7 @@ function Details() {
             <h2 className="project_title">{projectData.project_name}</h2>
             <div className="lead">
               <img
-                src={projectData?.lead ? `{import.meta.env.VITE_SERVER}${projectData.lead.img}` : avatar}
+                src={projectData?.lead.img  ? `${import.meta.env.VITE_SERVER}${projectData?.lead.img }` : avatar}
                 alt=""
                 className="user_avatar"
               />
