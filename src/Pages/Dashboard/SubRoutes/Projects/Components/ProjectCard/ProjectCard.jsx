@@ -7,6 +7,7 @@ import "./ProjectCard.css";
 export default function ProjectCard({ data }) {
   const percentage = 66;
   const navigate = useNavigate();
+  console.log(import.meta.env.VITE_SERVER);
 
   return (
     <div
@@ -50,10 +51,19 @@ export default function ProjectCard({ data }) {
       <div className="project_members">
         <div className="avatars">
           {data?.member?.map((each, index) => {
+            console.log(each);
             return (
               index < 4 && (
                 <a href="#" className="avatars__item" key={each._id}>
-                  <img className="avatar" src={each.img || avatar} alt="" />
+                  <img
+                    className="avatar"
+                    src={
+                      each.img
+                        ? `${import.meta.env.VITE_SERVER}${each.img}`
+                        : avatar
+                    }
+                    alt=""
+                  />
                 </a>
               )
             );

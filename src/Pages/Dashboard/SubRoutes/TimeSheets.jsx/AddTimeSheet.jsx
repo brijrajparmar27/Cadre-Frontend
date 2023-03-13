@@ -20,18 +20,18 @@ function AddTimeSheet(e) {
   };
 
   return (
-    <div className="create_task_section">
+    <div className="add_timesheet_section">
       <div className="section_title">
         <h1>Add TImeSheet</h1>
       </div>
-      <form onSubmit={onsubmit} className="create_task_form">
+      <form onSubmit={onsubmit} className="add_timesheet_form">
         <p className="title field_label"> Project Name</p>
         <input name="projectName" className="tb description"></input>
         Descripation<input name="des" className="tb description"></input>
         Date<input type="date" name="date" className="textbox tb"></input>
         Working Hours
-        <input type="text" name="workinghoures" className="textbox tb"></input>
-        <button type="submit" className="submit_task">
+        <input type="text" name="hours" className="textbox tb"></input>
+        <button type="submit" className="submit_timesheet">
           submit
         </button>
       </form>
