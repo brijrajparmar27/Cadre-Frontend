@@ -1,25 +1,28 @@
 import React from "react";
 import { BsPlusLg } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
-import "./Timesheet.css";
+import "./TimeSheets.css";
 
-export default function TimeSheets() {
+export default function timesheets() {
   const navigate = useNavigate();
   return (
-    <div className="TimeSheet">
+    <div className="timesheet">
       <div className="section_title">
-        <h1>TimeSheet</h1>
+        <h1>Timesheet</h1>
         <button
-          className="add_timeSheet btn"
+          className="add_timesheet btn"
           onClick={() => {
-            navigate("addTimesheet");
+            navigate("addtimesheet");
           }}
         >
           <BsPlusLg className="add_btn" />
           Add Timesheet
         </button>
       </div>
-      <div className="TimeSheet_contain">data</div>
+      <div className="timesheet_contain">
+        <div className="calendar_contain"></div>
+        <div className="sheets_contain"></div>
+      </div>
     </div>
   );
 }

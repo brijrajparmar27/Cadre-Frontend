@@ -13,7 +13,7 @@ function AddTimeSheet(e) {
       discription: e.target.des.value,
       status: true,
       date: e.target.date.value,
-      hours: e.target.workinghoures.value,
+      hours: e.target.hours.value,
       user: userData._id,
     };
     Newtimesheet(Timesheetdata);
@@ -22,7 +22,7 @@ function AddTimeSheet(e) {
   return (
     <div className="add_timesheet_section">
       <div className="section_title">
-        <h1>Add TImeSheet</h1>
+        <h1>Add Timesheet</h1>
       </div>
       <form onSubmit={onsubmit} className="add_timesheet_form">
         <p className="title field_label"> Project Name</p>

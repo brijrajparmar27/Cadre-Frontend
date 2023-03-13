@@ -1,0 +1,42 @@
+.timesheet {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+.add_timesheet {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  background-color: var(--primary);
+  border: none;
+  outline: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  color: white;
+  font-size: 18px;
+}
+.timesheet .section_title {
+  display: flex;
+  justify-content: space-between;
+  /* background-color: aqua; */
+}
+.timesheet .timesheet_contain {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr 1.5fr;
+  grid-template-areas: "cal sheets";
+  background-color: aqua;
+  height: 100%;
+  width: 100%;
+}
+.timesheet .timesheet_contain .calendar_contain {
+  background-color: antiquewhite;
+  grid-area: cal;
+}
+.timesheet .timesheet_contain .sheets_contain {
+  background-color: aquamarine;
+  grid-area: sheets;
+}
