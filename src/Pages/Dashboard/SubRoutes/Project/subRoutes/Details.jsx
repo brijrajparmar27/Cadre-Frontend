@@ -32,7 +32,11 @@ function Details() {
             <h2 className="project_title">{projectData.project_name}</h2>
             <div className="lead">
               <img
-                src={projectData?.lead.img  ? `${import.meta.env.VITE_SERVER}${projectData?.lead.img }` : avatar}
+                src={
+                  projectData?.lead.img
+                    ? `${import.meta.env.VITE_SERVER}${projectData?.lead.img}`
+                    : avatar
+                }
                 alt=""
                 className="user_avatar"
               />
@@ -69,13 +73,17 @@ function Details() {
               {projectData?.member?.map((each) => {
                 return (
                   <div key={each._id} className="member_card">
-                    <img
-                      src={
-                        each.img ? `${import.meta.env.VITE_SERVER}${each.img}` : avatar
-                      }
-                      alt=""
-                      className="member_avatar"
-                    />
+                    <div className="member_img_contain">
+                      <img
+                        src={
+                          each.img
+                            ? `${import.meta.env.VITE_SERVER}${each.img}`
+                            : avatar
+                        }
+                        alt=""
+                        className="member_avatar"
+                      />
+                    </div>
                     <p>{each.name}</p>
                   </div>
                 );
@@ -128,9 +136,12 @@ function Details() {
                                   >
                                     <img
                                       className="avatar"
-                                      src={each.img ?
-                                         `${import.meta.env.VITE_SERVER}${each.img}`
-                                        : avatar
+                                      src={
+                                        each.img
+                                          ? `${import.meta.env.VITE_SERVER}${
+                                              each.img
+                                            }`
+                                          : avatar
                                       }
                                       alt=""
                                     />

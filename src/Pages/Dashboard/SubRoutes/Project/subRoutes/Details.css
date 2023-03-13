@@ -103,8 +103,19 @@
   padding: 10px;
   margin: 0px 10px;
 }
+.details .member_card .member_img_contain {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  width: 30px;
+  overflow: hidden;
+  border-radius: 50%;
+}
 .details .details_contain .titlebar_right .members .member_avatar {
-  height: 25px;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
 }
 .details .details_contain .titlebar_right .stacks {
   flex: 1;
