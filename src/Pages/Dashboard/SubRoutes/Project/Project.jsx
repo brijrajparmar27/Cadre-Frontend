@@ -23,7 +23,7 @@ export default function Project() {
 
   useEffect(() => {
     // console.log(location.state.projectdata._id);
-    getprojectbyProjectId(location.state.projectdata._id).then((res) => {
+    getprojectbyProjectId(location?.state?.projectdata._id).then((res) => {
       console.log(res.data);
       setProjectData({ ...res.data });
     });

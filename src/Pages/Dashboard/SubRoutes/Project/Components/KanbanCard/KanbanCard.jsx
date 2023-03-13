@@ -38,7 +38,11 @@ export default function KanbanCard({ each, index }) {
                           <a href="#" className="avatars__item" key={each._id}>
                             <img
                               className="avatar"
-                              src={each.img || avatar}
+                              src={
+                                each.img
+                                  ? `${import.meta.env.VITE_SERVER}${each.img}`
+                                  : avatar
+                              }
                               alt=""
                             />
                           </a>

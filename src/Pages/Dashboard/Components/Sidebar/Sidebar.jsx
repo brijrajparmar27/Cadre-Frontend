@@ -6,6 +6,7 @@ import { BsFolder2Open, BsClipboardData, BsGear } from "react-icons/bs";
 import "./Sidebar.css";
 import randomColor from "randomcolor";
 import { useSelector } from "react-redux";
+import avatar from "../../../../assets/images/avatar.svg";
 export default function Sidebar() {
   const { Logout } = useAuth();
   const { userData } = useSelector((state) => state.logindataslice);
@@ -60,7 +61,13 @@ export default function Sidebar() {
       <div className="sidebar_footer">
         <div className="footer_content">
           <div className="dp_contain">
-            <img src="https://avatars.githubusercontent.com/u/73275164" />
+            <img
+              src={
+                userData.img
+                  ? `${import.meta.env.VITE_SERVER}${userData.img}`
+                  : avatar
+              }
+            />
           </div>
           <div className="name_contain">{userData?.name}</div>
           <div className="title_contain">{userData?.role_name}</div>
