@@ -129,23 +129,26 @@ function Details() {
                             {each?.assigned?.map((each, index) => {
                               return (
                                 index < 4 && (
-                                  <a
-                                    href="#"
-                                    className="avatars__item"
-                                    key={each._id}
-                                  >
-                                    <img
-                                      className="avatar"
-                                      src={
-                                        each.img
-                                          ? `${import.meta.env.VITE_SERVER}${
-                                              each.img
-                                            }`
-                                          : avatar
-                                      }
-                                      alt=""
-                                    />
-                                  </a>
+                                  <div className="avatars__item_contain">
+                                    <p className="whoami">{each.name}</p>
+                                    <a
+                                      href="#"
+                                      className="avatars__item"
+                                      key={each._id}
+                                    >
+                                      <img
+                                        className="avatar"
+                                        src={
+                                          each.img
+                                            ? `${import.meta.env.VITE_SERVER}${
+                                                each.img
+                                              }`
+                                            : avatar
+                                        }
+                                        alt=""
+                                      />
+                                    </a>
+                                  </div>
                                 )
                               );
                             })}
