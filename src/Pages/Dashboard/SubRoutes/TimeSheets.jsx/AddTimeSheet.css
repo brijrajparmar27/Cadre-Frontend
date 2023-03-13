@@ -4,7 +4,25 @@
   height: 100%;
   width: 100%;
 }
-.add_timesheet_section .tb {
+.add_timesheet_section .sheet_contain {
+  height: 100%;
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.add_timesheet_section .sheet_contain .sheet_card {
+  width: 100%;
+  border-radius: 10px;
+  /* height: 100px; */
+  border: 1px solid gray;
+  padding: 20px;
+  box-sizing: border-box;
+}
+.add_timesheet_section .sheet_contain .tb {
   /* padding: 8px; */
   font-size: 18px;
   -webkit-align-items: center;
@@ -41,36 +59,60 @@
   box-shadow: 0 0 0 1px #2684ff;
   border-color: #2684ff;
 }
+.desc_tb {
+  padding-top: 8px !important;
+}
 .add_timesheet_section .add_timesheet_form {
   padding: 40px 20px 0px 20px;
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
-
+.ATS_section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+.ATS_section div {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.ATS_section .ATS_Hrs {
+  flex: 9;
+}
+.ATS_section .ATS_Fin {
+  flex: 1;
+}
 .add_timesheet_section .field_label {
   margin-bottom: -5px;
 }
-.add_timesheet_form .priority_contain {
+.add_task_card {
+  border: none !important;
+  /* background-color: var(--primary); */
+  outline: 2px dashed var(--primary);
+  color: var(--primary);
+}
+.sheet_card_header {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 15px;
-  padding: 0px 10px;
 }
-.add_timesheet_form .priority_contain .priority {
-  padding: 3px 6px;
-  border-radius: 5px;
-  color: white;
+.add_timesheet_section .add_task_section {
+  /* color: white; */
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
 }
-.add_timesheet_form .priority_contain .plow {
-  background-color: #2684ffa1;
+.add_timesheet_section .add_task_section .add_icon {
+  font-size: 20px;
 }
-.priority_contain .priority_label_contain {
-  border-right: 1px solid gray;
-  padding-right: 15px;
-}
-.add_timesheet_form .priority_contain .phigh {
-  background-color: rgba(255, 0, 0, 0.695);
+.remove_icon {
+  font-size: 20px;
+  cursor: pointer;
+  margin-right: 10px;
 }
 .submit_timesheet {
   display: flex;
