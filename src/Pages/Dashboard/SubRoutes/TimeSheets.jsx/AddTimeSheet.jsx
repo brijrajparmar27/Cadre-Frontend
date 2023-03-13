@@ -1,40 +1,81 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import useTimeSheet from "../../../../Hooks/useTimeSheet";
+import { VscAdd } from "react-icons/vsc";
 import "./AddTimeSheet.css";
+import AddTimeCard from "./AddTimeCard";
 
 function AddTimeSheet(e) {
-  const { Newtimesheet } = useTimeSheet();
   const { userData } = useSelector((state) => state.logindataslice);
-  const onsubmit = (e) => {
-    e.preventDefault();
-    const Timesheetdata = {
-      projectName: e.target.projectName.value,
-      discription: e.target.des.value,
-      status: true,
-      date: e.target.date.value,
-      hours: e.target.hours.value,
-      user: userData._id,
-    };
-    Newtimesheet(Timesheetdata);
+
+  const [work, setWork] = useState([{}]);
+
+  // const work = {
+  //   projectName: "test",
+  //   description: "test description",
+  //   isCompleted: true,
+  //   hours: 1.25,
+  // };
+
+  const Timesheetdata = {
+    user: userData._id,
+    Date: Date.now(),
+    work,
   };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(Timesheetdata);
+  };
+
+  const handleChange = (index, key, value) => {
+    setWork((prev) => {
+      const temp = prev;
+      temp[index][key] = value;
+      return [...temp];
+    });
+  };
+  const handleRemove = (Targetindex) => {
+    setWork((prev) => {
+      return prev.filter((each, index) => {
+        return index !== Targetindex;
+      });
+    });
+  };
+  const addTaskform = () => {
+    setWork((prev) => [...prev, {}]);
+  };
+
+  useEffect(() => {
+    console.log(work);
+  }, [work]);
 
   return (
     <div className="add_timesheet_section">
       <div className="section_title">
         <h1>Add Timesheet</h1>
       </div>
-      <form onSubmit={onsubmit} className="add_timesheet_form">
-        <p className="title field_label"> Project Name</p>
-        <input name="projectName" className="tb description"></input>
-        Descripation<input name="des" className="tb description"></input>
-        Date<input type="date" name="date" className="textbox tb"></input>
-        Working Hours
-        <input type="text" name="hours" className="textbox tb"></input>
-        <button type="submit" className="submit_timesheet">
-          submit
+      <div className="sheet_contain" id="style-1">
+        {work.map((each, index) => {
+          return (
+            <AddTimeCard
+              key={index}
+              each={each}
+              index={index}
+              handleChange={handleChange}
+              handleRemove={handleRemove}
+            />
+          );
+        })}
+        <div className="add_task_card sheet_card" onClick={addTaskform}>
+          <div className="add_task_section">
+            <VscAdd className="add_icon" />
+            <h3>Add Task</h3>
+          </div>
+        </div>
+        <button onClick={handleSubmit} className="submit_timesheet">
+          Send Timesheet
         </button>
-      </form>
+      </div>
     </div>
   );
 }
