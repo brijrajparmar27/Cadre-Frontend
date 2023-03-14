@@ -3,11 +3,13 @@ import { useSelector } from "react-redux";
 import { VscAdd } from "react-icons/vsc";
 import "./AddTimeSheet.css";
 import AddTimeCard from "./AddTimeCard";
+import useTimeSheet from "../../../../Hooks/useTimeSheet";
 
 function AddTimeSheet(e) {
   const { userData } = useSelector((state) => state.logindataslice);
+  const {Newtimesheet} =useTimeSheet();
 
-  const [work, setWork] = useState([{}]);
+  const [works, setWork] = useState([{}]);
 
   const today = new Date();
 
@@ -21,12 +23,14 @@ function AddTimeSheet(e) {
   const Timesheetdata = {
     user: userData._id,
     Date: today.toISOString().slice(0, 10),
-    work,
+    works,
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(Timesheetdata);
+    Newtimesheet(Timesheetdata);
+  
   };
 
   const handleChange = (index, key, value) => {
@@ -48,8 +52,8 @@ function AddTimeSheet(e) {
   };
 
   useEffect(() => {
-    console.log(work);
-  }, [work]);
+    console.log(works);
+  }, [works]);
 
   return (
     <div className="add_timesheet_section">
@@ -57,7 +61,7 @@ function AddTimeSheet(e) {
         <h1>Add Timesheet</h1>
       </div>
       <div className="sheet_contain" id="style-1">
-        {work.map((each, index) => {
+        {works.map((each, index) => {
           return (
             <AddTimeCard
               key={index}
