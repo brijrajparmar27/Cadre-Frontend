@@ -30,7 +30,11 @@ export default function Settings() {
         </div>
         <div className="settings_contain">
           <div className="dp_contain">
-            <img src={avatar} alt="" onClick={onBtnClick} />
+            <img src={
+              userData.img
+              ? `${import.meta.env.VITE_SERVER}${userData.img}`
+              : avatar
+            } alt="" onClick={onBtnClick} />
             <input
               name="image"
               type="file"

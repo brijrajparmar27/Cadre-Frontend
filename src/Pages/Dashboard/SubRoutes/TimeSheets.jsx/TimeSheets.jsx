@@ -5,10 +5,12 @@ import { useNavigate } from "react-router-dom";
 import "./TimeSheets.css";
 import "react-calendar/dist/Calendar.css";
 import moment from "moment/moment";
+import useTimeSheet from "../../../../Hooks/useTimeSheet";
 
 export default function timesheets() {
   const navigate = useNavigate();
   const [value, setValue] = useState(new Date());
+  const {getTimeSheetbyUserId}=useTimeSheet();
   useEffect(() => {
     console.log(value.toISOString());
   }, [value]);
@@ -35,6 +37,7 @@ export default function timesheets() {
 
             <Calendar
               onChange={(e) => {
+                getTimeSheetbyUserId(`${moment(e).format("yyyy-MM-DD")}`)
                 setValue(e);
               }}
               value={value}
