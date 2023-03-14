@@ -10,7 +10,7 @@ import useTimeSheet from "../../../../Hooks/useTimeSheet";
 export default function timesheets() {
   const navigate = useNavigate();
   const [value, setValue] = useState(new Date());
-  const {getTimeSheetbyUserId}=useTimeSheet();
+  const { getTimeSheetbyUserId, timesheetdata } = useTimeSheet();
   useEffect(() => {
     console.log(value.toISOString());
   }, [value]);
@@ -37,7 +37,7 @@ export default function timesheets() {
 
             <Calendar
               onChange={(e) => {
-                getTimeSheetbyUserId(`${moment(e).format("yyyy-MM-DD")}`)
+                getTimeSheetbyUserId(`${moment(e).format("yyyy-MM-DD")}`);
                 setValue(e);
               }}
               value={value}
@@ -45,7 +45,17 @@ export default function timesheets() {
             />
           </div>
         </div>
-        <div className="sheets_contain"></div>
+        <div className="sheets_contain">
+          {timesheetdata?.map((data) => {
+            return (
+              <>
+                project name:-<p>{data.works[0].projectName}</p>
+                project des:-<p>{data.works[0].description}</p>
+                hours:-<p>{data.works[0].hours}</p>
+              </>
+            );
+          })}
+        </div>
       </div>
     </div>
   );
