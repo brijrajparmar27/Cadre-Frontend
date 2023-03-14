@@ -14,6 +14,10 @@ export default function timesheets() {
   useEffect(() => {
     console.log(value.toISOString());
   }, [value]);
+  useEffect(() => {
+    getTimeSheetbyUserId(`${moment(value).format("yyyy-MM-DD")}`);
+  }, [value]);
+  timesheetdata && console.log(timesheetdata);
   return (
     <div className="timesheet">
       <div className="section_title">
@@ -37,7 +41,7 @@ export default function timesheets() {
 
             <Calendar
               onChange={(e) => {
-                getTimeSheetbyUserId(`${moment(e).format("yyyy-MM-DD")}`);
+                // getTimeSheetbyUserId(`${moment(e).format("yyyy-MM-DD")}`);
                 setValue(e);
               }}
               value={value}
@@ -46,15 +50,78 @@ export default function timesheets() {
           </div>
         </div>
         <div className="sheets_contain">
-          {timesheetdata?.map((data) => {
+          {/* {timesheetdata?.map((data) => {
             return (
-              <>
-                project name:-<p>{data.works[0].projectName}</p>
-                project des:-<p>{data.works[0].description}</p>
-                hours:-<p>{data.works[0].hours}</p>
-              </>
+              <div className="table">
+                {data.works.map((each) => {
+                  return (
+                    <tr>
+                      <td className="time_cell">{each.projectName}</td>
+                      <td className="time_cell">{each.description}</td>
+                      <td className="time_cell">{each.hours}</td>
+                      <td className="time_cell">
+                        {each.isCompleted ? "completed" : "running"}
+                      </td>
+                    </tr>
+                  );
+                })}
+              </div>
             );
-          })}
+          })} */}
+          {
+            <div className="container">
+              <div className="table">
+                <div className="table-header">
+                  <div className="header__item">
+                    <a id="name" className="filter__link" href="#">
+                      Name
+                    </a>
+                  </div>
+                  <div className="header__item">
+                    <a
+                      id="wins"
+                      className="filter__link filter__link--number"
+                      href="#"
+                    >
+                      description
+                    </a>
+                  </div>
+                  <div className="header__item">
+                    <a
+                      id="draws"
+                      className="filter__link filter__link--number"
+                      href="#"
+                    >
+                      hours
+                    </a>
+                  </div>
+                  <div className="header__item">
+                    <a
+                      id="losses"
+                      className="filter__link filter__link--number"
+                      href="#"
+                    >
+                      status
+                    </a>
+                  </div>
+                </div>
+                <div className="table-content">
+                  {timesheetdata[0]?.works?.map((each) => {
+                    return (
+                      <div className="table-row">
+                        <div className="table-data">{each.projectName}</div>
+                        <div className="table-data">{each.description}</div>
+                        <div className="table-data">{each.hours}</div>
+                        <div className="table-data">
+                          {each.isCompleted ? "completed" : "running"}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+          }
         </div>
       </div>
     </div>
