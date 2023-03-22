@@ -1,0 +1,11 @@
+.empty_contain {
+  /* background-color: aquamarine; */
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.empty_contain .lottie_contain {
+  width: 50%;
+}
