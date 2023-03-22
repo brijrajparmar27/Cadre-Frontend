@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { BsSearch, BsFilter, BsPlusLg } from "react-icons/bs";
 import "./Projects.css";
@@ -9,6 +9,10 @@ import { useDispatch, useSelector } from "react-redux";
 import ProjectCard from "./Components/ProjectCard/ProjectCard";
 import API from "../../../axios/axios";
 import { setProjectData } from "../../../redux/projectDataSlice";
+import astroEmpty from "../../../../assets/Lottie/astroEmpty.json";
+import Empty from "../../../../UniversalComponents/Empty/Empty";
+import timesheetLoading from "../../../../assets/Lottie/timesheetLoading.json";
+import Loading from "../../../../UniversalComponents/Loading/Loading";
 
 export default function Projects() {
   const navigate = useNavigate();
@@ -21,6 +25,7 @@ export default function Projects() {
     { value: "progress", label: "Progress" },
     { value: "project_name", label: "project Name" },
   ];
+  const [loading, setLoading] = useState(false);
 
   const { setOrder, setColoumname, order, coloumname, searchProject } =
     useProject();
@@ -37,7 +42,7 @@ export default function Projects() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    getAllProject(userData?._id);
+    getAllProject(userData?._id, setLoading);
   }, []);
 
   useEffect(() => {
@@ -98,6 +103,12 @@ export default function Projects() {
         </div>
       </div>
       <div className="projects_section" id="style-1">
+        <Empty
+          isLoading={loading}
+          isEmpty={projectData.length == 0}
+          display={astroEmpty}
+        />
+        {/* <Loading isLoading={loading} display={timesheetLoading} /> */}
         {projectData?.map((data) => {
           return <ProjectCard data={data} key={data._id} />;
         })}

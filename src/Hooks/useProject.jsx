@@ -21,12 +21,14 @@ function useProject() {
         console.log(err);
       });
   };
-  const getAllProject = (id) => {
+  const getAllProject = (id, setLoading) => {
+    setLoading(true);
     API.get(
       `/get-projectbyuserrole/${id}?sort={"column":"${coloumname}","order":"${order}"}`
     )
       .then((res) => {
         dispatch(setProjectData(res.data.res));
+        setLoading(false);
       })
       .catch((err) => {
         console.log(err);
@@ -50,36 +52,35 @@ function useProject() {
         console.log(err);
       });
   };
-  const addTask=async (data)=>{
+  const addTask = async (data) => {
     // API.post('/add-task',data).then((res)=>{
     //   navigate("/project");
     // }).catch((err)=>{
     //   console.log(err);
     // })
-    try{
-      let res = await API.post('/add-task',data);
-      return res
+    try {
+      let res = await API.post("/add-task", data);
+      return res;
       // console.log(data);
-    }catch(err){
+    } catch (err) {
       console.log(err);
-      return err
+      return err;
     }
-  }
-  const getprojectbyProjectId= async (id)=>{
-    try{
-      let res = await API.get(`/get-projectbyid/${id}`)
-      return res
-    } 
-    catch(err) {
-      return err
-    } 
-      // API.get(`/get-projectbyid/${id}`).then((res)=>{
-      //   setProjectData(res.data)
-      //   console.log(res.data)
-      // }).catch((err)=>{
-      //   console.log(err);
-      // })
-  }
+  };
+  const getprojectbyProjectId = async (id) => {
+    try {
+      let res = await API.get(`/get-projectbyid/${id}`);
+      return res;
+    } catch (err) {
+      return err;
+    }
+    // API.get(`/get-projectbyid/${id}`).then((res)=>{
+    //   setProjectData(res.data)
+    //   console.log(res.data)
+    // }).catch((err)=>{
+    //   console.log(err);
+    // })
+  };
   return {
     AddProject,
     getAllProject,
@@ -91,7 +92,7 @@ function useProject() {
     setOrder,
     searchProject,
     addTask,
-    getprojectbyProjectId
+    getprojectbyProjectId,
   };
 }
 

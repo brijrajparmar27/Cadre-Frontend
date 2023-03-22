@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import avatar from "../../../../../assets/images/avatar.svg";
 import "./Details.css";
@@ -6,10 +6,13 @@ import moment from "moment/moment";
 import { buildStyles, CircularProgressbar } from "react-circular-progressbar";
 import { FcHighPriority } from "react-icons/fc";
 import { BsArrowLeft } from "react-icons/bs";
+import nothingToSee from "../../../../../assets/Lottie/nothingToSee.json";
+import Empty from "../../../../../UniversalComponents/Empty/Empty";
 
 function Details() {
   const [active, setActive] = useState(0);
-  const navigate=useNavigate();
+  const [filteredTasks, setFilteredTasks] = useState([]);
+  const navigate = useNavigate();
   const tabs = [
     { title: "Pending", index: 0 },
     { title: "Running", index: 1 },
@@ -23,10 +26,17 @@ function Details() {
 
   console.log(moment("12-25-1995", "MM-DD-YYYY"));
 
+  useEffect(() => {
+    let temp = projectData.task.filter((each) => {
+      return each.status.toLowerCase() == tabs[active].title.toLowerCase();
+    });
+    setFilteredTasks(temp);
+  }, [active]);
+
   return (
     <div className="details">
       <div className="section_title">
-      <BsArrowLeft
+        <BsArrowLeft
           className="back_icon"
           onClick={() => {
             navigate(-1);
@@ -122,6 +132,11 @@ function Details() {
                 {/* <div className="overflow"></div>
                 <div className="overflow"></div>
                 <div className="overflow"></div> */}
+                <Empty
+                  isLoading={false}
+                  isEmpty={filteredTasks.length == 0}
+                  display={nothingToSee}
+                />
                 {projectData.task.map((each) => {
                   if (
                     each.status.toLowerCase() ==
