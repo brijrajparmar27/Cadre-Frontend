@@ -28,8 +28,7 @@ function AddTimeSheet(e) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(Timesheetdata);
-    Newtimesheet(Timesheetdata);
+    Newtimesheet(Timesheetdata)
   
   };
 

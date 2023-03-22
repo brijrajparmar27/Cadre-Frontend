@@ -1,13 +1,15 @@
 import React, { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import avatar from "../../../../../assets/images/avatar.svg";
 import "./Details.css";
 import moment from "moment/moment";
 import { buildStyles, CircularProgressbar } from "react-circular-progressbar";
 import { FcHighPriority } from "react-icons/fc";
+import { BsArrowLeft } from "react-icons/bs";
 
 function Details() {
   const [active, setActive] = useState(0);
+  const navigate=useNavigate();
   const tabs = [
     { title: "Pending", index: 0 },
     { title: "Running", index: 1 },
@@ -24,6 +26,12 @@ function Details() {
   return (
     <div className="details">
       <div className="section_title">
+      <BsArrowLeft
+          className="back_icon"
+          onClick={() => {
+            navigate(-1);
+          }}
+        />
         <h1>Project Details</h1>
       </div>
       <div className="details_contain" id="style-1">

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { BsArrowLeft } from "react-icons/bs";
 import { useLocation, useNavigate } from "react-router-dom";
 import Select from "react-select";
 import ReactSwitch from "react-switch";
@@ -48,6 +49,12 @@ function CreateTask() {
   return (
     <div className="create_task_section">
       <div className="section_title">
+        <BsArrowLeft
+          className="back_icon"
+          onClick={() => {
+            navigate(-1);
+          }}
+        />
         <h1>Create Task</h1>
       </div>
 

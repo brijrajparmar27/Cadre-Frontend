@@ -1,8 +1,18 @@
 .create_task_section {
   display: flex;
   flex-direction: column;
+  gap: 20px;
   height: 100%;
   width: 100%;
+}
+.create_task_section .section_title {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+.create_task_section .section_title .back_icon {
+  font-size: 30px;
+  cursor: pointer;
 }
 .create_task_section .tb {
   /* padding: 8px; */
@@ -36,7 +46,6 @@
   box-sizing: border-box;
   padding: 1px 8px;
 }
-
 .create_task_section .tb:focus {
   box-shadow: 0 0 0 1px #2684ff;
   border-color: #2684ff;

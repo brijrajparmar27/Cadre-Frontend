@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { BsArrowLeft } from "react-icons/bs";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import Select from "react-select";
 import useProject from "../../../../Hooks/useProject";
 import useUserCollection from "../../../../Hooks/useUserCollection";
@@ -68,9 +70,16 @@ export default function CreateProject() {
       console.log("cannot be empty");
     }
   };
+  const navigate=useNavigate();
   return (
     <div className="create_project_section">
       <div className="section_title">
+      <BsArrowLeft
+          className="back_icon"
+          onClick={() => {
+            navigate(-1);
+          }}
+        />
         <h1>Create Project</h1>
       </div>
 

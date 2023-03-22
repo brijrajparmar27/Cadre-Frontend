@@ -4,6 +4,15 @@
   display: flex;
   flex-direction: column;
 }
+.details .section_title {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+.details .section_title .back_icon {
+  font-size: 30px;
+  cursor: pointer;
+}
 .details .details_contain {
   overflow-y: auto;
   display: flex;

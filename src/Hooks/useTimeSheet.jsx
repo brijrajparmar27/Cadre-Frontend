@@ -1,13 +1,15 @@
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import API from '../Pages/axios/axios'
 
 function useTimeSheet() {
     const [timesheetdata,setTimesheetdata]=useState([]);
+    const navigate=useNavigate();
     const { userData } = useSelector((state) => state.logindataslice);
     const Newtimesheet=(data)=>{
         API.post('/add-timesheet',data).then((res)=>{
-            console.log(res)
+             navigate(-1)
         }).catch((err)=>{
             console.log(err);
         })
