@@ -7,6 +7,7 @@ import {
   BsChatLeftText,
   BsPeople,
   BsPlusLg,
+  BsArrowLeft,
 } from "react-icons/bs";
 import { useSelector } from "react-redux";
 import useProject from "../../../../Hooks/useProject";
@@ -37,6 +38,12 @@ export default function Project() {
       {projectData && (
         <div className="project">
           <div className="section_title">
+            <BsArrowLeft
+              className="back_icon"
+              onClick={() => {
+                navigate(-1);
+              }}
+            />
             <h1>Project Dashboard</h1>
           </div>
           <div className="section_content">

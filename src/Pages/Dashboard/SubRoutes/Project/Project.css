@@ -5,6 +5,15 @@
   height: 100%;
   width: 100%;
 }
+.project .section_title {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+.project .section_title .back_icon {
+  font-size: 30px;
+  cursor: pointer;
+}
 .project .section_content {
   /* padding-top: 20px; */
   /* margin-top: 20px; */
