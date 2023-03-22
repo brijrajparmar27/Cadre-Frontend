@@ -7,7 +7,7 @@ import useTimeSheet from "../../../../Hooks/useTimeSheet";
 
 function AddTimeSheet(e) {
   const { userData } = useSelector((state) => state.logindataslice);
-  const {Newtimesheet} =useTimeSheet();
+  const { Newtimesheet } = useTimeSheet();
 
   const [works, setWork] = useState([{}]);
 
@@ -28,8 +28,7 @@ function AddTimeSheet(e) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    Newtimesheet(Timesheetdata)
-  
+    Newtimesheet(Timesheetdata);
   };
 
   const handleChange = (index, key, value) => {

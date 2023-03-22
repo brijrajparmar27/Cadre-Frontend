@@ -6,11 +6,16 @@ import "./TimeSheets.css";
 import "react-calendar/dist/Calendar.css";
 import moment from "moment/moment";
 import useTimeSheet from "../../../../Hooks/useTimeSheet";
+import Loading from "../../../../UniversalComponents/Loading/Loading";
+import timesheetLoading from "../../../../assets/Lottie/timesheetLoading.json";
+import ghostWalking from "../../../../assets/Lottie/ghostWalking.json";
+import Empty from "../../../../UniversalComponents/Empty/Empty";
 
 export default function timesheets() {
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
   const [value, setValue] = useState(new Date());
-  const { getTimeSheetbyUserId, timesheetdata } = useTimeSheet();
+  const { getTimeSheetbyUserId, timesheetdata } = useTimeSheet(setLoading);
   useEffect(() => {
     console.log(value.toISOString());
   }, [value]);
@@ -68,7 +73,13 @@ export default function timesheets() {
               </div>
             );
           })} */}
-          {
+          <Loading isLoading={loading} display={timesheetLoading} />
+          <Empty
+            isLoading={loading}
+            display={ghostWalking}
+            isEmpty={timesheetdata.length === 0}
+          />
+          {timesheetdata && timesheetdata.length > 0 && (
             <div className="container">
               <div className="table">
                 <div className="table-header">
@@ -121,7 +132,7 @@ export default function timesheets() {
                 </div>
               </div>
             </div>
-          }
+          )}
         </div>
       </div>
     </div>
