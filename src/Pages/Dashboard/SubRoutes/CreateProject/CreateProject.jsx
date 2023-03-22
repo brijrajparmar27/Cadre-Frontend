@@ -70,11 +70,11 @@ export default function CreateProject() {
       console.log("cannot be empty");
     }
   };
-  const navigate=useNavigate();
+  const navigate = useNavigate();
   return (
     <div className="create_project_section">
       <div className="section_title">
-      <BsArrowLeft
+        <BsArrowLeft
           className="back_icon"
           onClick={() => {
             navigate(-1);

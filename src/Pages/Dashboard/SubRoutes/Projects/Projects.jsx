@@ -87,7 +87,7 @@ export default function Projects() {
         </div>
         <div className="sortby">
           <BsFilter
-            className="filter_icon"
+            className={order == "Asc" ? "filter_icon rotate" : "filter_icon"}
             onClick={() =>
               setOrder((prevState) => (prevState === "Asc" ? "Desc" : "Asc"))
             }

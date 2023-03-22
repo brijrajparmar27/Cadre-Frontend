@@ -19,6 +19,9 @@
   display: flex;
   justify-content: space-between;
 }
+.rotate {
+  transform: rotate(180deg);
+}
 .projects .section_title .create_project {
   display: flex;
   justify-content: center;
