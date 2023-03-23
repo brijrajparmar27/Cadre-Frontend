@@ -2,14 +2,13 @@ import { useState } from "react";
 import Select from "react-select";
 import ReactSwitch from "react-switch";
 import { RxCross1 } from "react-icons/rx";
+import { useSelector } from "react-redux";
 
 const AddTimeCard = ({ index, handleChange, each, handleRemove, works }) => {
-  const options = [
-    { value: "coodeit", label: "coodeit" },
-    { value: "tridhya", label: "tridhya" },
-    { value: "saligram", label: "saligram" },
-  ];
-
+  const { projectData } = useSelector((state) => state.projectdatareducer);
+  let options = projectData?.map(function (data) {
+    return { value: data.project_name, label: data.project_name };
+  })
   const getOptions = () => {
     let temp = works.map((each) => {
       return each.projectName;
