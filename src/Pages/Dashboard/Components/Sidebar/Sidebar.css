@@ -26,8 +26,10 @@
   align-items: center;
   grid-area: dp;
 }
-.sidebar .sidebar_footer .dp_contain img {
+.sidebar .sidebar_footer .dp_contain .sidebar_dp {
   width: 40px;
+  height: 40px;
+  object-fit: cover;
   border-radius: 50%;
 }
 .sidebar .sidebar_footer .name_contain {

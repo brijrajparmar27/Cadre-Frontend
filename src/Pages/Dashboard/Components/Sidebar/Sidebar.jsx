@@ -4,15 +4,12 @@ import useAuth from "../../../../Hooks/useAuth";
 import logo from "../../../../assets/images/logo.png";
 import { BsFolder2Open, BsClipboardData, BsGear } from "react-icons/bs";
 import "./Sidebar.css";
-import randomColor from "randomcolor";
 import { useSelector } from "react-redux";
 import avatar from "../../../../assets/images/avatar.svg";
 export default function Sidebar() {
   const { Logout } = useAuth();
   const { userData } = useSelector((state) => state.logindataslice);
   const { projectData } = useSelector((state) => state.projectdatareducer);
-
-  projectData && console.log(projectData);
 
   return (
     <div className="sidebar">
@@ -61,6 +58,7 @@ export default function Sidebar() {
         <div className="footer_content">
           <div className="dp_contain">
             <img
+              className="sidebar_dp"
               src={
                 userData.img
                   ? `${import.meta.env.VITE_SERVER}${userData.img}`
