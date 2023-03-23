@@ -4,6 +4,15 @@
   height: 100%;
   width: 100%;
 }
+.add_timesheet_section .section_title {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+.add_timesheet_section .section_title .back_icon {
+  font-size: 30px;
+  cursor: pointer;
+}
 .add_timesheet_section .sheet_contain {
   height: 100%;
   width: 100%;

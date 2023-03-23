@@ -7,10 +7,12 @@ import {
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import KanbanCard from "../KanbanCard/KanbanCard";
 import useTask from "../../../../../../Hooks/useTask";
-
+import { useSelector } from "react-redux";
+import { toast, ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 export default function Kanban({ data }) {
   const [showClosed, setShowClosed] = useState(false);
-
+  const { userData } = useSelector((state) => state.logindataslice);
   const [pending, setPending] = useState([]);
   const [running, setRunning] = useState([]);
   const [completed, setCompleted] = useState([]);
@@ -72,6 +74,11 @@ export default function Kanban({ data }) {
     console.log("destination ", destination);
 
     if (!destination.droppableId) return;
+    if(userData.role_name==='Jr devloper' && destination.droppableId==='closed' ) {
+      toast.error('you do not allow to close the task !', {
+        position: toast.POSITION.TOP_CENTER
+    });
+      return};
 
     if (
       destination.droppableId === source.droppableId &&
@@ -252,6 +259,7 @@ export default function Kanban({ data }) {
           </div>
         )}
       </div>
+      <ToastContainer></ToastContainer>
     </DragDropContext>
   );
 }
