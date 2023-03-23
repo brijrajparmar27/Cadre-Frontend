@@ -11,10 +11,9 @@ export default function Sidebar() {
   const { Logout } = useAuth();
   const { userData } = useSelector((state) => state.logindataslice);
   const { projectData } = useSelector((state) => state.projectdatareducer);
-  const [project, setProject] = useState();
-  useEffect(() => {
-    setProject(projectData);
-  }, []);
+
+  projectData && console.log(projectData);
+
   return (
     <div className="sidebar">
       <div className="sidebar_header">
@@ -37,7 +36,7 @@ export default function Sidebar() {
                   <div
                     className="dot"
                     style={{
-                      backgroundColor: randomColor({ luminosity: "light" }),
+                      backgroundColor: each.hex,
                     }}
                   ></div>
                   <p>
