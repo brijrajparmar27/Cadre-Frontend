@@ -1,12 +1,102 @@
 .settings {
-  /* background-color: aqua; */
+  display: flex;
+  flex-direction: column;
   height: 100%;
   width: 100%;
 }
 .settings_contain {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  height: 100%;
+  align-items: center;
+  justify-content: space-evenly;
 }
-.settings_contain img {
-  height: 100px;
+.dp_contain {
+  position: relative;
+  height: fit-content;
+  width: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.settings_contain .left {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.settings_contain .right {
+  flex: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.form_contain {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 500px;
+}
+.settings_contain .dp_contain img {
+  height: 150px;
+  width: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.settings_contain .dp_overlay {
+  display: none !important;
+  position: absolute;
+  color: white;
+  top: 0px;
+  left: 0px;
+  z-index: 20;
+  background-color: rgba(0, 0, 0, 0.421);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.overlay_contain {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+.overlay_contain .overlay_icon {
+  font-size: 20px;
+}
+.settings_contain .dp_contain:hover .dp_overlay {
+  display: block !important;
+}
+.settings_contain .dp_overlay p {
+  text-align: center;
+  font-size: 10px;
+}
+.update_profile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  background-color: var(--primary);
+  border: none;
+  outline: none;
+  padding: 0px 20px;
+  border-radius: 10px;
+  color: white;
+  font-size: 18px;
+  height: fit-content;
+  width: fit-content;
+  margin-top: 30px;
+  padding: 10px 40px;
 }
