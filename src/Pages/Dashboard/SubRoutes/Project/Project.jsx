@@ -58,15 +58,20 @@ export default function Project() {
                     }}
                   />
                 </div>
-                <button
-                  className="create_task btn"
-                  onClick={() => {
-                    navigate("createTask", { state: projectData });
-                  }}
-                >
-                  <BsPlusLg className="add_btn" />
-                  Create Task
-                </button>
+
+                {userData && userData.role_name === "Sr Devloper" ? (
+                  <button
+                    className="create_task btn"
+                    onClick={() => {
+                      navigate("createTask", { state: projectData });
+                    }}
+                  >
+                    <BsPlusLg className="add_btn" />
+                    Create Task
+                  </button>
+                ) : (
+                  ""
+                )}
               </div>
               <div className="bottom_bar">
                 <div className="desc_contain">

@@ -4,13 +4,16 @@ import { VscAdd } from "react-icons/vsc";
 import "./AddTimeSheet.css";
 import AddTimeCard from "./AddTimeCard";
 import useTimeSheet from "../../../../Hooks/useTimeSheet";
+import { BsArrowLeft } from "react-icons/bs";
+import { useNavigate } from "react-router-dom";
 
 function AddTimeSheet(e) {
   const { userData } = useSelector((state) => state.logindataslice);
   const { Newtimesheet } = useTimeSheet();
 
   const [works, setWork] = useState([{}]);
-
+  const [error, setError] = useState();
+  const navigate=useNavigate();
   const today = new Date();
 
   const Timesheetdata = {
@@ -21,7 +24,13 @@ function AddTimeSheet(e) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    Newtimesheet(Timesheetdata);
+    console.log(Timesheetdata);
+  
+    if ( Timesheetdata && Timesheetdata.works[0] && Timesheetdata.works[0].projectName) {
+      Newtimesheet(Timesheetdata);
+    } else {
+      setError("field cannot be empty");
+    }
   };
 
   const handleChange = (index, key, value) => {
@@ -49,6 +58,12 @@ function AddTimeSheet(e) {
   return (
     <div className="add_timesheet_section">
       <div className="section_title">
+      <BsArrowLeft
+          className="back_icon"
+          onClick={() => {
+            navigate(-1);
+          }}
+        />
         <h1>Add Timesheet</h1>
       </div>
       <div className="sheet_contain" id="style-1">
@@ -70,6 +85,7 @@ function AddTimeSheet(e) {
             <h3>Add Task</h3>
           </div>
         </div>
+        <p className="error_msg">{error}</p>
         <button onClick={handleSubmit} className="submit_timesheet">
           Send Timesheet
         </button>

@@ -34,6 +34,7 @@ const AddTimeCard = ({ index, handleChange, each, handleRemove, works }) => {
       </div>
       <p className="name field_label">Project</p>
       <Select
+        required
         options={getOptions()}
         onChange={(e) => {
           handleChange(index, "projectName", e.value);
@@ -44,6 +45,7 @@ const AddTimeCard = ({ index, handleChange, each, handleRemove, works }) => {
         name="desc tb"
         cols="30"
         rows="10"
+        required
         className="tb desc_tb"
         onChange={(e) => {
           handleChange(index, "description", e.target.value.trim());
@@ -56,6 +58,7 @@ const AddTimeCard = ({ index, handleChange, each, handleRemove, works }) => {
             type="number"
             name="hours"
             id="hours"
+            required
             className="tb"
             onChange={(e) => {
               handleChange(index, "hours", e.target.value.trim());
