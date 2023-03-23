@@ -40,7 +40,7 @@ export default function Projects() {
 
   const { getAllProject } = useProject();
   const dispatch = useDispatch();
-
+  console.log("user", userData);
   useEffect(() => {
     getAllProject(userData?._id, setLoading);
   }, []);
@@ -65,15 +65,19 @@ export default function Projects() {
       <div className="section_title">
         <h1>Dashboard</h1>
 
-        <button
-          className="create_project btn"
-          onClick={() => {
-            navigate("/dashboard/addProject");
-          }}
-        >
-          <BsPlusLg className="add_btn" />
-          New Project
-        </button>
+        {userData && userData.role_name === "Sr Devloper" ? (
+          <button
+            className="create_project btn"
+            onClick={() => {
+              navigate("/dashboard/addProject");
+            }}
+          >
+            <BsPlusLg className="add_btn" />
+            New Project
+          </button>
+        ) : (
+          ""
+        )}
       </div>
       <div className="header_bar">
         <div className="search_contain">

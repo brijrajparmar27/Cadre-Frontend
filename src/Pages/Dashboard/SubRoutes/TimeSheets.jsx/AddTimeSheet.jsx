@@ -10,6 +10,7 @@ function AddTimeSheet(e) {
   const { Newtimesheet } = useTimeSheet();
 
   const [works, setWork] = useState([{}]);
+  const [error, setError] = useState();
 
   const today = new Date();
 
@@ -21,7 +22,13 @@ function AddTimeSheet(e) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    Newtimesheet(Timesheetdata);
+    console.log(Timesheetdata);
+  
+    if ( Timesheetdata && Timesheetdata.works[0] && Timesheetdata.works[0].projectName) {
+      Newtimesheet(Timesheetdata);
+    } else {
+      setError("field cannot be empty");
+    }
   };
 
   const handleChange = (index, key, value) => {
@@ -70,6 +77,7 @@ function AddTimeSheet(e) {
             <h3>Add Task</h3>
           </div>
         </div>
+        <p className="error_msg">{error}</p>
         <button onClick={handleSubmit} className="submit_timesheet">
           Send Timesheet
         </button>
