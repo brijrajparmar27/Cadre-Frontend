@@ -3,21 +3,45 @@ import "./Settings.css";
 import avatar from "../../../../assets/images/avatar.svg";
 import useUserCollection from "../../../../Hooks/useUserCollection";
 import { useSelector } from "react-redux";
+import imageCompression from "browser-image-compression";
 import { BsFillCameraFill } from "react-icons/bs";
 
 export default function Settings() {
   const { updateUserDP } = useUserCollection();
   const { userData } = useSelector((state) => state.logindataslice);
 
+  let validImages = ["jpg", "jpeg", "png", "gif"];
+
+  const options = {
+    maxSizeMB: 1,
+    maxWidthOrHeight: 600,
+    useWebWorker: true,
+  };
+
   const inputFileRef = useRef();
+
   const onFileChangeCapture = (e) => {
     console.log(e.target.files[0]);
-    const formdata = new FormData();
-    formdata.append("Id", userData._id);
-    formdata.append("Image", e.target.files[0]);
-    console.log(formdata);
-    /*Selected files data can be collected here.*/
-    updateUserDP(formdata);
+
+    let fileName = e.target.files[0].name;
+
+    let extention = fileName
+      .substr(fileName.lastIndexOf(".") + 1)
+      .toLowerCase();
+
+    if (validImages.includes(extention)) {
+      imageCompression(e.target.files[0], options).then((compressed) => {
+        console.log(compressed, " compressed");
+        console.log(e.target.files[0], " uncompressed");
+        const compressedImage = new File([compressed], e.target.files[0].name);
+        const formdata = new FormData();
+        formdata.append("Id", userData._id);
+        formdata.append("Image", compressedImage);
+        console.log(formdata);
+        /*Selected files data can be collected here.*/
+        updateUserDP(formdata);
+      });
+    }
   };
   const onBtnClick = () => {
     /*Collecting node-element and performing click*/
