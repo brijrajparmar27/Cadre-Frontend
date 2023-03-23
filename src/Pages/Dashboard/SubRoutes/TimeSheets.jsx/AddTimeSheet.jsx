@@ -13,13 +13,6 @@ function AddTimeSheet(e) {
 
   const today = new Date();
 
-  // const work = {
-  //   projectName: "test",
-  //   description: "test description",
-  //   isCompleted: true,
-  //   hours: 1.25,
-  // };
-
   const Timesheetdata = {
     user: userData._id,
     Date: today.toISOString().slice(0, 10),
@@ -67,6 +60,7 @@ function AddTimeSheet(e) {
               index={index}
               handleChange={handleChange}
               handleRemove={handleRemove}
+              works={works}
             />
           );
         })}

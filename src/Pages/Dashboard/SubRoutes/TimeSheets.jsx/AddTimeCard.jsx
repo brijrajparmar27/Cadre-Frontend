@@ -3,12 +3,22 @@ import Select from "react-select";
 import ReactSwitch from "react-switch";
 import { RxCross1 } from "react-icons/rx";
 
-const AddTimeCard = ({ index, handleChange, each, handleRemove }) => {
+const AddTimeCard = ({ index, handleChange, each, handleRemove, works }) => {
   const options = [
     { value: "coodeit", label: "coodeit" },
     { value: "tridhya", label: "tridhya" },
     { value: "saligram", label: "saligram" },
   ];
+
+  const getOptions = () => {
+    let temp = works.map((each) => {
+      return each.projectName;
+    });
+    return options.filter((each) => {
+      return !temp.includes(each.value);
+    });
+    // return options;
+  };
 
   const [checked, setChecked] = useState(false);
 
@@ -25,7 +35,7 @@ const AddTimeCard = ({ index, handleChange, each, handleRemove }) => {
       </div>
       <p className="name field_label">Project</p>
       <Select
-        options={options}
+        options={getOptions()}
         onChange={(e) => {
           handleChange(index, "projectName", e.value);
         }}
