@@ -28,7 +28,7 @@
   height: 100%;
 }
 .settings_contain .right {
-  flex: 2;
+  flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -41,8 +41,8 @@
   max-width: 500px;
 }
 .settings_contain .dp_contain img {
-  height: 150px;
-  width: 150px;
+  height: 250px;
+  width: 250px;
   object-fit: cover;
   border-radius: 50%;
 }
