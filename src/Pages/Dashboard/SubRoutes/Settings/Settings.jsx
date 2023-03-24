@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import "./Settings.css";
 import avatar from "../../../../assets/images/avatar.svg";
 import useUserCollection from "../../../../Hooks/useUserCollection";
@@ -9,6 +9,17 @@ import { BsFillCameraFill } from "react-icons/bs";
 export default function Settings() {
   const { updateUserDP } = useUserCollection();
   const { userData } = useSelector((state) => state.logindataslice);
+  console.log(userData);
+
+  const [feildData, setFeildData] = useState({
+    // email: "brijraj@gmail.com",
+    // img: "641bfa9f657183e50be7f5a5.jpg",
+    // jwt: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDFiZmE5ZjY1NzE4M2U1MGJlN2Y1YTUiLCJlbWFpbCI6ImJyaWpyYWpAZ21haWwuY29tIiwiaWF0IjoxNjc5NjM5NjgzLCJleHAiOjE2Nzk2NDY4ODN9.ET19RTlX7TOr34AzqIDYxP0qhxyoXaB-CFf1A-p7inU",
+    name: "brijrajsinh",
+    contact_number: "",
+    // role_name: "Sr Devloper",
+    // _id: "641bfa9f657183e50be7f5a5",
+  });
 
   let validImages = ["jpg", "jpeg", "png", "gif"];
 
@@ -43,10 +54,25 @@ export default function Settings() {
       });
     }
   };
+
   const onBtnClick = () => {
     /*Collecting node-element and performing click*/
     inputFileRef.current.click();
   };
+
+  const mutateFeildData = (key, value) => {
+    setFeildData((prev) => {
+      let temp = prev;
+      temp[key] = value;
+      return temp;
+    });
+  };
+
+  const handleProfileUpdate = (e) => {
+    e.preventDefault();
+    console.log(feildData);
+  };
+
   return (
     <>
       <div className="settings">
@@ -80,18 +106,21 @@ export default function Settings() {
             </div>
           </div>
           <div className="right">
-            <form className="form_contain">
+            <form className="form_contain" onSubmit={handleProfileUpdate}>
               <p className="input_label">Name</p>
               <input
                 type="text"
                 className="textbox"
                 name="name"
-                value={`${userData.name}`}
+                onChange={(e) => {
+                  mutateFeildData("name", e.target.value.trim());
+                }}
+                defaultValue={`${userData.name}`}
               />
               <p className="input_label">Email</p>
               <input
                 type="text"
-                value={userData.email}
+                defaultValue={userData.email}
                 className="textbox"
                 name="assigenedate"
                 disabled
@@ -101,12 +130,14 @@ export default function Settings() {
                 type="number"
                 className="textbox"
                 name="assigenedate"
-                required
+                onChange={(e) => {
+                  mutateFeildData("contact_number", e.target.value.trim());
+                }}
               />
               <p className="input_label">Designation</p>
               <input
                 type="string"
-                value={userData.role_name}
+                defaultValue={userData.role_name}
                 className="textbox"
                 name="assigenedate"
                 disabled
