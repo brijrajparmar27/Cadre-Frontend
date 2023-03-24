@@ -4,6 +4,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import Select from "react-select";
 import ReactSwitch from "react-switch";
 import useProject from "../../../../../Hooks/useProject";
+import useSendmail from "../../../../../Hooks/useSendmail";
 import "./CreateTask.css";
 
 function CreateTask() {
@@ -13,7 +14,7 @@ function CreateTask() {
   const [members, setMembers] = useState([]);
   const [error, setError] = useState();
   const { addTask } = useProject();
-  console.log(location);
+  const { sendmail } = useSendmail();
   let options = location?.state?.member.map(function (data) {
     return { value: data, label: data.name };
   });
@@ -28,10 +29,21 @@ function CreateTask() {
       priority: checked,
       deadline: e.target.DeadLine.value.trim(),
     };
-    console.log(obj);
+    const maildata = {
+      name: members[0].email,
+      subject: e.target.title.value,
+      message: e.target.description.value,
+    };
     if (obj.assigned.length > 0) {
       addTask(obj).then((res) => {
-        navigate("/dashboard/project", {
+        members.map((user) => {
+          sendmail({
+            name: user.email,
+            subject: e.target.title.value,
+            message: e.target.description.value,
+          });
+        });
+          navigate("/dashboard/project", {
           state: { projectdata: { ...location.state } },
         });
       });

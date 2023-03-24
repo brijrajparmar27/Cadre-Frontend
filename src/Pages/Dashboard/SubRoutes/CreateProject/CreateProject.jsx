@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Select from "react-select";
 import useProject from "../../../../Hooks/useProject";
+import useSendmail from "../../../../Hooks/useSendmail";
 import useUserCollection from "../../../../Hooks/useUserCollection";
 import "./CreateProject.css";
 export default function CreateProject() {
@@ -12,6 +13,7 @@ export default function CreateProject() {
   const { getAlluser, userdata } = useUserCollection();
   const { AddProject, getAllSatck, stackdata } = useProject();
   const { userData } = useSelector((state) => state.logindataslice);
+  const { sendmail } = useSendmail();
   let options = userdata.map(function (data) {
     return { value: data, label: data.name };
   });
@@ -43,7 +45,6 @@ export default function CreateProject() {
   };
   const handelsubmit = (e) => {
     e.preventDefault();
-    console.log(userData);
     const currentUser = { ...userData };
     delete currentUser.jwt;
     const projectdata = {
@@ -64,7 +65,16 @@ export default function CreateProject() {
       projectdata.deadline.length > 0 &&
       projectdata.member.length > 0
     ) {
-      AddProject(projectdata);
+      AddProject(projectdata).then((res) => {
+        selectMebers.map((user) => {
+          sendmail({
+            name: user.email,
+            subject: `Assigen project ${projectdata.project_name}`,
+            message: projectdata.description,
+          });
+        });
+      });
+
       e.target.reset();
     } else {
       console.log("cannot be empty");
