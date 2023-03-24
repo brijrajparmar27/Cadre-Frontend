@@ -2,7 +2,12 @@ import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import useAuth from "../../../../Hooks/useAuth";
 import logo from "../../../../assets/images/logo.png";
-import { BsFolder2Open, BsClipboardData, BsGear } from "react-icons/bs";
+import {
+  BsFolder2Open,
+  BsClipboardData,
+  BsGear,
+  BsChatLeftText,
+} from "react-icons/bs";
 import "./Sidebar.css";
 import { useSelector } from "react-redux";
 import avatar from "../../../../assets/images/avatar.svg";
@@ -47,6 +52,10 @@ export default function Sidebar() {
           <NavLink to="/dashboard/time-sheet" className="nav_contain">
             <BsClipboardData className="link_icon" />
             <p>Time Sheet</p>
+          </NavLink>
+          <NavLink to="/dashboard/time-sheet" className="nav_contain">
+            <BsChatLeftText className="proj_fun_icons" />
+            <p>Chats</p>
           </NavLink>
           <NavLink to="/dashboard/settings" className="nav_contain">
             <BsGear className="link_icon" />

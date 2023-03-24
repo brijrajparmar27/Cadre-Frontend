@@ -8,6 +8,7 @@ import {
   BsPeople,
   BsPlusLg,
   BsArrowLeft,
+  BsPen,
 } from "react-icons/bs";
 import { useSelector } from "react-redux";
 import useProject from "../../../../Hooks/useProject";
@@ -84,6 +85,7 @@ export default function Project() {
                   </p>
                 </div>
                 <div className="bottom_right">
+                  <BsPen className="proj_fun_icons" />
                   <BsChatLeftText className="proj_fun_icons" />
                   <BsPeople className="proj_fun_icons" />
                 </div>
