@@ -69,6 +69,7 @@ export default function EditProject() {
     console.log(projectData);
     if (projectData.member.length > 0 || projectData.stack.length > 0) {
       updateProject(projectData, location.state._id);
+      navigate("/dashboard");
       // e.target.reset();
     } else {
       console.log("cannot be empty");

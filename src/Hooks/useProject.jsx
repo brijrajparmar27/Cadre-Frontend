@@ -81,13 +81,13 @@ function useProject() {
     //   console.log(err);
     // })
   };
-  const updateProject=(data,id)=>{
-      API.put(`/update-project/${id}`,data).then((res)=>{
-        navigate("/dashboard");
-      }).catch((err)=>{
-         console.log(err);
-      })
-  }
+  const updateProject = (data, id) => {
+    API.put(`/update-project/${id}`, data)
+      .then((res) => {})
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return {
     AddProject,
     getAllProject,
@@ -100,7 +100,7 @@ function useProject() {
     searchProject,
     addTask,
     getprojectbyProjectId,
-    updateProject
+    updateProject,
   };
 }
 

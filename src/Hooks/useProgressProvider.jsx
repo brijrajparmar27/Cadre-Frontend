@@ -1,8 +1,10 @@
 const useProgresProvider = () => {
-  function calculateProgress(tasks) {
+  const calculateProgress = (tasks) => {
     let totalTasks, taskStatuses;
 
-    totalTasks = tasks.length();
+    console.log(tasks);
+
+    totalTasks = tasks.length;
     taskStatuses = tasks.map((each) => {
       return each.status;
     });
@@ -26,8 +28,8 @@ const useProgresProvider = () => {
     }
 
     return totalProgress / totalTasks;
-  }
-  return calculateProgress;
+  };
+  return { calculateProgress };
 };
 
 export default useProgresProvider;

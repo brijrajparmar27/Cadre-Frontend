@@ -9,8 +9,15 @@ import KanbanCard from "../KanbanCard/KanbanCard";
 import useTask from "../../../../../../Hooks/useTask";
 import { useSelector } from "react-redux";
 import { toast, ToastContainer } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
+import useProgresProvider from "../../../../../../Hooks/useProgressProvider";
+import useProject from "../../../../../../Hooks/useProject";
+import { setProjectData } from "../../../../../../Pages/redux/projectDataSlice";
+import { useDispatch } from "react-redux";
+
 export default function Kanban({ data }) {
+  const dispatch = useDispatch();
+  const { projectData } = useSelector((state) => state.projectdatareducer);
   const [showClosed, setShowClosed] = useState(false);
   const { userData } = useSelector((state) => state.logindataslice);
   const [pending, setPending] = useState([]);
@@ -18,6 +25,8 @@ export default function Kanban({ data }) {
   const [completed, setCompleted] = useState([]);
   const [closed, setClosed] = useState([]);
   const { updatetaskstatus } = useTask();
+  const { calculateProgress } = useProgresProvider();
+  const { updateProject } = useProject();
 
   useEffect(() => {
     console.log(data);
@@ -49,6 +58,28 @@ export default function Kanban({ data }) {
     console.log(pending);
   }, [pending]);
 
+  useEffect(() => {
+    let progress = calculateProgress([
+      ...pending,
+      ...running,
+      ...completed,
+      ...closed,
+    ]);
+    if (!isNaN(progress)) {
+      updateProject({ progress }, data._id);
+      // console.log(projectData);
+      let newProjectData = projectData.map((each) => {
+        if (each._id == data._id) {
+          return { ...each, progress };
+        } else {
+          return { ...each };
+        }
+      });
+      // console.log(newProjectData);
+      dispatch(setProjectData(newProjectData));
+    }
+  }, [pending, running, completed, closed]);
+
   const hideClosed = {
     gridTemplateRows: `6fr 0.3fr`,
     gridTemplateColumns: `1fr 1fr 1fr`,
@@ -73,13 +104,17 @@ export default function Kanban({ data }) {
     console.log("source ", source);
     console.log("destination ", destination);
 
-    if (!destination.droppableId) return;
-    if(userData.role_name==='Jr devloper' && destination.droppableId==='closed' ) {
-      toast.error('you do not allow to close the task !', {
-        position: toast.POSITION.TOP_CENTER
-    });
-      return};
+    if (
+      userData.role_name === "Jr devloper" &&
+      destination.droppableId === "closed"
+    ) {
+      toast.error("you do not allow to close the task !", {
+        position: toast.POSITION.TOP_CENTER,
+      });
+      return;
+    }
 
+    if (!destination?.droppableId) return;
     if (
       destination.droppableId === source.droppableId &&
       destination.index === source.index
@@ -108,7 +143,6 @@ export default function Kanban({ data }) {
         setClosed((prev) => PopFromArray(prev, source.index));
         break;
     }
-    console.log(pending);
     // }
     switch (destination.droppableId) {
       case "pending":
@@ -237,7 +271,11 @@ export default function Kanban({ data }) {
         {showClosed && (
           <div className="closed column">
             <p className="col_name"> closed</p>
-            <Droppable droppableId="closed" direction="horizontal">
+            <Droppable
+              droppableId="closed"
+              direction="horizontal"
+              isDropDisabled={userData.role_name === "Jr devloper"}
+            >
               {(provided) => {
                 return (
                   <div
