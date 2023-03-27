@@ -3,6 +3,7 @@ import { Draggable } from "react-beautiful-dnd";
 import avatar from "../../../../../../assets/images/avatar.svg";
 import "./KanbanCard.css";
 import { FcHighPriority } from "react-icons/fc";
+import { Fragment } from "react";
 
 export default function KanbanCard({ each, index }) {
   return (
@@ -31,9 +32,9 @@ export default function KanbanCard({ each, index }) {
               <div className="avatars">
                 {each?.assigned?.map((each, index) => {
                   return (
-                    <>
+                    <Fragment key={each._id}>
                       {index < 4 && (
-                        <div className="avatars__item_contain" key={each._id}>
+                        <div className="avatars__item_contain">
                           <p className="whoami">{each.name}</p>
                           <a href="#" className="avatars__item">
                             <img
@@ -48,7 +49,7 @@ export default function KanbanCard({ each, index }) {
                           </a>
                         </div>
                       )}
-                    </>
+                    </Fragment>
                   );
                 })}
 
