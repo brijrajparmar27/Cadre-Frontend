@@ -32,18 +32,21 @@
 }
 .section_content .kanban_contain .kanban .column .col_name {
   width: 100%;
-  font-size: 12px;
+  font-size: 25px !important;
+  padding: 15px 15px 0px 15px !important;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  background-color: var(--primary);
-  color: white;
+  /* background-color: var(--primary); */
+  color: black;
+  background-color: white;
+  /* color: white; */
   /* border-bottom: 1px solid gainsboro; */
 
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
   /* background-color: brown; */
-  padding: 4px 0px;
+  /* padding: 4px 0px; */
   box-sizing: border-box;
   /* font-style: italic; */
 }
@@ -63,7 +66,8 @@
   align-items: center;
   gap: 10px;
   padding: 10px 5px;
-  background-color: rgba(220, 220, 220, 0.501);
+  /* background-color: rgba(220, 220, 220, 0.501); */
+  background-color: white;
   /* background-color: blue; */
 }
 .section_content .kanban_contain .kanban .pending {

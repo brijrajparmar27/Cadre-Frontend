@@ -5,9 +5,9 @@
   gap: 2px;
   /* background-color: rgba(220, 220, 220, 0.493); */
   background-color: white;
-  /* border: 1px solid rgb(186, 186, 186); */
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
-    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  border: 1px solid rgb(186, 186, 186);
+  /* box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px; */
   box-sizing: border-box;
   padding: 10px;
   min-height: 110px;
@@ -15,6 +15,11 @@
   width: 250px;
   border-radius: 10px;
   transition: box-shadow 0.1s ease-in-out;
+}
+.kanbancard:hover {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  border: none;
 }
 .kanbancard .title {
   font-size: 15px;

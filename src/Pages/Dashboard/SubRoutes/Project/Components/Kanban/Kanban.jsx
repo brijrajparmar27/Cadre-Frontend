@@ -214,7 +214,7 @@ export default function Kanban({ data }) {
           </Droppable>
         </div>
         <div className="running column">
-          <p className="col_name"> running</p>
+          <p className="col_name">Running</p>
           <Droppable droppableId="running">
             {(provided) => {
               return (
@@ -236,7 +236,7 @@ export default function Kanban({ data }) {
           </Droppable>
         </div>
         <div className="completed column">
-          <p className="col_name"> completed</p>
+          <p className="col_name">Completed</p>
           <Droppable droppableId="completed">
             {(provided) => {
               return (
@@ -270,7 +270,7 @@ export default function Kanban({ data }) {
 
         {showClosed && (
           <div className="closed column">
-            <p className="col_name"> closed</p>
+            <p className="col_name">Closed</p>
             <Droppable
               droppableId="closed"
               direction="horizontal"

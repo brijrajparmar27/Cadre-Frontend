@@ -4,6 +4,7 @@
   flex-direction: column;
   justify-content: space-between;
   border-right: 1px solid gainsboro;
+  background-color: white;
 }
 .sidebar .sidebar_footer {
   padding: 10px;
