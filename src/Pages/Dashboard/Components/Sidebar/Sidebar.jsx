@@ -24,7 +24,7 @@ export default function Sidebar() {
         <div className="sidebar_content">
           <NavLink to="/dashboard" className="nav_contain" end>
             <BsFolder2Open className="link_icon" />
-            <p>Projects</p>
+            <p className="nav_title">Projects</p>
           </NavLink>
           <div className="project_list">
             {projectData?.map((each, index) => {
@@ -51,15 +51,15 @@ export default function Sidebar() {
           </div>
           <NavLink to="/dashboard/time-sheet" className="nav_contain">
             <BsClipboardData className="link_icon" />
-            <p>Time Sheet</p>
+            <p className="nav_title">Time Sheet</p>
           </NavLink>
           <NavLink to="/dashboard/chats" className="nav_contain">
             <BsChatLeftText className="proj_fun_icons" />
-            <p>Chats</p>
+            <p className="nav_title">Chats</p>
           </NavLink>
           <NavLink to="/dashboard/settings" className="nav_contain">
             <BsGear className="link_icon" />
-            <p>Settings</p>
+            <p className="nav_title">Settings</p>
           </NavLink>
         </div>
       </div>

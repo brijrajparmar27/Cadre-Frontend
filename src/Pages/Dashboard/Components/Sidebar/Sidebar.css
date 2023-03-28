@@ -1,31 +1,54 @@
 .sidebar {
-  flex: 2;
+  width: min-content;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   border-right: 1px solid gainsboro;
   background-color: white;
 }
-.sidebar .sidebar_footer {
-  padding: 10px;
+.sidebar:hover {
+  flex: 2;
 }
-.sidebar .sidebar_footer .footer_content {
-  padding: 15px 15px;
-  border-radius: 10px;
-  column-gap: 10px;
-  background-color: #90b2fd49;
+.sidebar:hover .project_list {
+  display: flex !important;
+}
+.sidebar:hover .name_contain {
+  display: block !important;
+}
+.sidebar:hover .title_contain {
+  display: block !important;
+}
+.sidebar:hover .nav_title {
+  display: block !important;
+}
+.sidebar:hover .footer_content {
   display: grid;
+  column-gap: 10px;
   grid-template-rows: 1fr 1fr;
   grid-template-columns: 1fr 9fr;
   grid-template-areas:
     "dp name"
     "dp title";
 }
+.nav_title {
+  display: none;
+}
+.sidebar .sidebar_footer {
+  padding: 10px;
+}
+.sidebar .sidebar_footer .footer_content {
+  align-items: center;
+  padding: 15px 15px;
+  border-radius: 10px;
+  background-color: #90b2fd49;
+}
 .sidebar .sidebar_footer .dp_contain {
   display: flex;
+  width: 100%;
   justify-content: center;
   align-items: center;
   grid-area: dp;
+  margin: 0px;
 }
 .sidebar .sidebar_footer .dp_contain .sidebar_dp {
   width: 40px;
@@ -38,8 +61,10 @@
   align-items: flex-end;
   grid-area: name;
   font-weight: 600;
+  display: none;
 }
 .sidebar .sidebar_footer .title_contain {
+  display: none;
   grid-area: title;
   font-size: 15px;
   font-style: italic;
@@ -54,7 +79,8 @@
 }
 .sidebar .sidebar_content .project_list {
   /* background-color: blue; */
-  display: flex;
+  display: none;
+  /* display: flex; */
   flex-direction: column;
   gap: 10px;
   margin-left: 50px;
@@ -73,6 +99,7 @@
 }
 .sidebar .sidebar_content .nav_contain {
   display: flex;
+  flex-direction: row;
   align-items: center;
   text-decoration: none;
   color: black;
