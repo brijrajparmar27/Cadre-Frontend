@@ -53,7 +53,7 @@ export default function Sidebar() {
             <BsClipboardData className="link_icon" />
             <p>Time Sheet</p>
           </NavLink>
-          <NavLink to="/dashboard/time-sheet" className="nav_contain">
+          <NavLink to="/dashboard/chats" className="nav_contain">
             <BsChatLeftText className="proj_fun_icons" />
             <p>Chats</p>
           </NavLink>

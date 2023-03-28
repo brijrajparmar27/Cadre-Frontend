@@ -21,6 +21,7 @@ import Root from "./Pages/Root";
 import Details from "./Pages/Dashboard/SubRoutes/Project/subRoutes/Details";
 import AddTimeSheet from "./Pages/Dashboard/SubRoutes/TimeSheets.jsx/AddTimeSheet";
 import EditProject from "./Pages/Dashboard/SubRoutes/EditProject/EditProject";
+import Chat from "./Pages/Dashboard/SubRoutes/Chat/Chat";
 
 function App() {
   const { userData } = useSelector((state) => state.logindataslice);
@@ -50,16 +51,17 @@ function App() {
             path="project/createTask"
             element={<CreateTask></CreateTask>}
           ></Route>
-          
-            <Route
-            path="project/details"
-            element={<Details></Details>}
-          ></Route>
+
+          <Route path="project/details" element={<Details></Details>}></Route>
           <Route path="addProject" element={<CreateProject></CreateProject>} />
-          <Route path="project/EditProject" element={<EditProject></EditProject>} />
+          <Route
+            path="project/EditProject"
+            element={<EditProject></EditProject>}
+          />
           <Route path="settings" element={<Settings />} />
           <Route path="time-sheet" element={<TimeSheets />} />
-          <Route path="time-sheet/addTimesheet" element={<AddTimeSheet/>} />
+          <Route path="chats" element={<Chat />} />
+          <Route path="time-sheet/addTimesheet" element={<AddTimeSheet />} />
         </Route>
         <Route path="*" element={<NotFound />} />
       </Route>
