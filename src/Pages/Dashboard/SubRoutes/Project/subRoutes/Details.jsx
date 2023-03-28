@@ -202,8 +202,8 @@ function Details() {
           <div className="progress">
             <div className="project_progress">
               <CircularProgressbar
-                value={percentage}
-                text={`${percentage}%`}
+                value={projectData.progress}
+                text={`${Math.round(projectData.progress)}%`}
                 styles={buildStyles({
                   textSize: "25px",
                   pathColor: "#26329f",
