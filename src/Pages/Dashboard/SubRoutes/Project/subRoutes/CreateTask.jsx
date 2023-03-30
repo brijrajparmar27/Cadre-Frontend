@@ -39,8 +39,8 @@ function CreateTask() {
         members.map((user) => {
           sendmail({
             name: user.email,
-            subject: e.target.title.value,
-            message: e.target.description.value,
+            subject: `Assign new task in ${location.project_name}`, 
+            message: `Title:- ${e.target.title.value} description :- ${e.target.description.value}`
           });
         });
           navigate("/dashboard/project", {
