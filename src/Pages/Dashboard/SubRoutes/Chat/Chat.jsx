@@ -4,6 +4,7 @@ import useChat from "../../../../Hooks/useChat";
 import useMessage from "../../../../Hooks/useMessage";
 import useUserCollection from "../../../../Hooks/useUserCollection";
 import "./Chat.css";
+import io from "socket.io-client";
 
 export default function Chat() {
   const { getAlluser, userdata } = useUserCollection();
@@ -11,6 +12,8 @@ export default function Chat() {
   const { accessChat, FetchChat, selectedchat } = useChat();
   const { userData } = useSelector((state) => state.logindataslice);
   const { sendMessage, FetachallMessage, displayMessage } = useMessage();
+  const ENDPOINT = "http://localhost:4040";
+  var soket, selectedchatcompare;
   const clickuser = (data) => {
     setuserChat(data);
     try {
@@ -30,8 +33,15 @@ export default function Chat() {
     getAlluser();
   }, []);
   useEffect(() => {
-    FetachallMessage(selectedchat?._id);
+    if (!selectedchat) {
+      return;
+    } else {
+      FetachallMessage(selectedchat?._id);
+    }
   }, [selectedchat]);
+  useEffect(() => {
+    io(ENDPOINT);
+  }, []);
   return (
     <>
       <div className="chatsidebar">
@@ -55,13 +65,15 @@ export default function Chat() {
         {displayMessage?.map((data) => {
           return (
             <>
-           { data.sender?._id === userData?._id ?
-              <div style={{ display: "flex", justifyContent: "flex-end" }}>
-                <p>{data.content}</p>
-              </div>:
-              <div>
-                <p>{data.content}</p>
-              </div>}
+              {data.sender?._id === userData?._id ? (
+                <div style={{ display: "flex", justifyContent: "flex-end" }}>
+                  <p>{data.content}</p>
+                </div>
+              ) : (
+                <div>
+                  <p>{data.content}</p>
+                </div>
+              )}
             </>
           );
         })}
