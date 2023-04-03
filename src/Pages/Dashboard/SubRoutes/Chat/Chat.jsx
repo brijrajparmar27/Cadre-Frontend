@@ -42,54 +42,61 @@ export default function Chat() {
   useEffect(() => {
     io(ENDPOINT);
   }, []);
+
   return (
-    <>
+    <div className="chats">
       <div className="chatsidebar">
-        {userdata?.map((data) => {
-          return (
-            <a
-              onClick={() => {
-                clickuser(data);
-              }}
-            >
-              {data.name}
-            </a>
-          );
-        })}
+        <input type="text" className="search_box" />
+        <div className="chat_contacts">
+          {userdata?.map((data) => {
+            return (
+              <a
+                onClick={() => {
+                  clickuser(data);
+                }}
+              >
+                {data.name}
+              </a>
+            );
+          })}
+        </div>
       </div>
 
       <div className="content">
         <div className="navbar">
           <a href="#home">{userChat?.name}</a>
         </div>
-        {displayMessage?.map((data) => {
-          return (
-            <>
-              {data.sender?._id === userData?._id ? (
-                <div style={{ display: "flex", justifyContent: "flex-end" }}>
-                  <p>{data.content}</p>
-                </div>
-              ) : (
-                <div>
-                  <p>{data.content}</p>
-                </div>
-              )}
-            </>
-          );
-        })}
-
-        <div className="chat__form">
-          <form id="chat__form" onSubmit={sendingMessage}>
-            <input
-              id="text-message"
-              type="text"
-              name="chatBox"
-              placeholder="Type your message here ..."
-            />
-            <button type="submit">Send</button>
-          </form>
+        <div className="chats_contain">
+          {displayMessage?.map((data) => {
+            return (
+              <>
+                {data.sender?._id === userData?._id ? (
+                  <div style={{ display: "flex", justifyContent: "flex-end" }}>
+                    <p>{data.content}</p>
+                  </div>
+                ) : (
+                  <div>
+                    <p>{data.content}</p>
+                  </div>
+                )}
+              </>
+            );
+          })}
         </div>
+
+        <form onSubmit={sendingMessage} className="chat_form">
+          <input
+            id="text-message"
+            type="text"
+            name="chatBox"
+            className="new_msg_box"
+            placeholder="Type your message here ..."
+          />
+          <button type="submit" className="new_msg_send">
+            Send
+          </button>
+        </form>
       </div>
-    </>
+    </div>
   );
 }

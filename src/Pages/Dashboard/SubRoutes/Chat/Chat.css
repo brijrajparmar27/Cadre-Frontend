@@ -1,113 +1,69 @@
-.chatsidebar {
-    margin: 0;
-    padding: 0;
-    width: 200px;
-    background-color: #f1f1f1;
-    position: fixed;
-    height: 100%;
-    overflow: auto;
-  }
-  /* Sidebar links */
-.chatsidebar a {
-    display: block;
-    color: black;
-    padding: 16px;
-    text-decoration: none;
-  }
-  
-  /* Active/current link */
-  .chatsidebar a.active {
-    background-color: #04AA6D;
-    color: white;
-  }
-  
-  /* Links on mouse-over */
-  .chatsidebar a:hover:not(.active) {
-    background-color: #555;
-    color: white;
-  }
-  div.content {
-    margin-left: 200px;
-    padding: 1px 16px;
-    height: 1000px;
-    top:7;
-  }
-  .navbar {
-    overflow: hidden;
-    background-color:#04AA6D;
-    position: fixed;
-    top: 3;
-    width: 100%;
-  }
-  
-  .navbar a {
-    float: left;
-    display: block;
-    color: #f2f2f2;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 17px;
-  }
-  
-  .navbar a:hover {
-    background: #ddd;
-    color: black;
-  }
-  
-  /* On screens that are less than 700px wide, make the sidebar into a topbar */
-  @media screen and (max-width: 700px) {
-    .chatsidebar {
-      width: 100%;
-      height: auto;
-      position: relative;
-    }
-    .chatsidebar a {float: left;}
-    div.content {margin-left: 0;}
-  }
-  
-  /* On screens that are less than 400px, display the bar vertically, instead of horizontally */
-  @media screen and (max-width: 400px) {
-    .chatsidebar a {
-      text-align: center;
-      float: none;
-    }
-  }
-  /* input {
-    height: 40px;
-    font-size: 16px;
-    min-width: 90%;
-    padding-left: 15px;
-    background-color: #fff;
-    border-radius: 15px;
-    border: none;
-  } */
-  /* button {
-    width: 10%;
-    height: 100%;
-    font-size: 16px;
-    background-color: transparent;
-    border: none;
-    text-align: center;
-    text-transform: uppercase;
-    cursor: pointer;
-   
-  } */
-  /* form {
-    max-width: 800px;
-    margin: 0 auto;
-    height: 50px;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    
-  } */
-  .chat__form {
-    background-color: #e0e0e0;
-    bottom: 0%;
-    margin-top: 147px;
-    
+.chats {
+  /* background-color: aqua; */
+  height: 100%;
+  width: 100%;
+  display: flex;
+}
+.chats .chatsidebar {
+  box-sizing: border-box;
+  flex: 1;
+  max-width: 20%;
+  /* background-color: blue; */
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+.chats .chatsidebar .search_box {
+  margin-bottom: 20px;
+  padding: 5px;
+  border-radius: 5px;
+  outline: none;
+  border: 1px solid gray;
+}
+.chats .chatsidebar .chat_contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.chats .content {
+  padding: 10px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.chats .content .navbar {
+  flex: 1;
+  max-height: 50px;
+  display: flex;
+  align-items: center;
+  padding: 0px 30px;
+  background-color: var(--primary);
+}
+.chats .content .navbar a {
+  color: white;
+  text-decoration: none;
+}
+.chats .content .chats_contain {
+  flex: 1;
+  overflow-y: auto;
+  padding: 5px;
+  background-color: rgba(220, 220, 220, 0.57);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.chats .chatsidebar .chat_contacts a {
+  cursor: pointer;
+}
+.chats .content .chat_form {
+  flex: 1;
+  max-height: 50px;
+  display: flex;
+}
+.chats .content .chat_form .new_msg_box {
+  width: 100%;
+  padding: 0px 10px;
+}
+.chats .content .chat_form .new_msg_send {
+  padding: 0px 20px;
 }
