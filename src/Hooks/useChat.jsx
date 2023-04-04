@@ -5,6 +5,7 @@ import API from '../Pages/axios/axios'
 
 function useChat() {
     const [selectedchat,setSelectedChat]=useState();
+    const [getChatdata,setGetChat]=useState()
     const { userData } = useSelector((state) => state.logindataslice);
     const config = {
         headers: { Authorization: `Bearer ${userData.jwt}` }
@@ -16,14 +17,21 @@ function useChat() {
             console.log(err);
         })
     }
-    const FetchChat=()=>{
-        API.get('/chat',config).then((res)=>{
+    const groupChat=(users,name)=>{
+        API.post('/Groupchat',{users,name},config).then((res)=>{
             console.log(res);
         }).catch((err)=>{
             console.log(err);
         })
     }
-  return {accessChat,FetchChat,selectedchat}
+    const FetchChat=()=>{
+        API.get('/chat',config).then((res)=>{
+            setGetChat(res.data)
+        }).catch((err)=>{
+            console.log(err);
+        })
+    }
+  return {accessChat,FetchChat,selectedchat,groupChat,getChatdata,setSelectedChat}
 }
 
 export default useChat

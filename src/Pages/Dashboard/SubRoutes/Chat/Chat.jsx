@@ -7,21 +7,26 @@ import "./Chat.css";
 import io from "socket.io-client";
 
 export default function Chat() {
-  const { getAlluser, userdata } = useUserCollection();
+  const { getAlluser, userdata, getAlluserAndProject, userdataandProject } =
+    useUserCollection();
   const [userChat, setuserChat] = useState();
-  const { accessChat, FetchChat, selectedchat } = useChat();
+  const { accessChat, FetchChat, selectedchat, groupChat,getChatdata,setSelectedChat } = useChat();
   const { userData } = useSelector((state) => state.logindataslice);
   const { sendMessage, FetachallMessage, displayMessage } = useMessage();
-  const ENDPOINT = "http://localhost:4040";
-  var soket, selectedchatcompare;
+  console.log(getChatdata)
   const clickuser = (data) => {
+    console.log(data);
     setuserChat(data);
-    try {
-      accessChat(data._id);
-    } catch (err) {
-      console.log(err);
+    if(data.isGroupChat == false){
+      try {
+        accessChat(data?.users[1]?._id);
+      } catch (err) {
+        console.log(err);
+      }
+    }else{
+      setSelectedChat(data)
     }
-  };
+ };
   const sendingMessage = (e) => {
     e.preventDefault();
     sendMessage({
@@ -30,7 +35,7 @@ export default function Chat() {
     });
   };
   useEffect(() => {
-    getAlluser();
+    FetchChat()
   }, []);
   useEffect(() => {
     if (!selectedchat) {
@@ -40,23 +45,34 @@ export default function Chat() {
     }
   }, [selectedchat]);
   useEffect(() => {
-    io(ENDPOINT);
+    //io(ENDPOINT);
   }, []);
-
   return (
     <div className="chats">
       <div className="chatsidebar">
         <input type="text" className="search_box" />
         <div className="chat_contacts">
-          {userdata?.map((data) => {
+          {getChatdata?.map((data) => {
             return (
-              <a
-                onClick={() => {
-                  clickuser(data);
-                }}
-              >
-                {data.name}
-              </a>
+              <>
+                {data?.isGroupChat == true ? (
+                  <a
+                    onClick={() => {
+                      clickuser(data);
+                    }}
+                  >
+                    {data.chatName}
+                  </a>
+                ) : (
+                  <a
+                  onClick={() => {
+                    clickuser(data);
+                  }}
+                >
+                  {data && data.users && data.users[1]?.name}
+                </a>
+                )}
+              </>
             );
           })}
         </div>
@@ -64,7 +80,7 @@ export default function Chat() {
 
       <div className="content">
         <div className="navbar">
-          <a href="#home">{userChat?.name}</a>
+          <a href="#home">{userChat?.isGroupChat == true ? userChat?.chatName : userChat?.users[1]?.name}</a>
         </div>
         <div className="chats_contain">
           {displayMessage?.map((data) => {

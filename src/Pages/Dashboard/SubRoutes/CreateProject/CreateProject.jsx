@@ -7,6 +7,7 @@ import useProject from "../../../../Hooks/useProject";
 import useSendmail from "../../../../Hooks/useSendmail";
 import useUserCollection from "../../../../Hooks/useUserCollection";
 import "./CreateProject.css";
+import useChat from "../../../../Hooks/useChat";
 export default function CreateProject() {
   const [selectMebers, setSelectMebers] = useState([]);
   const [selectStack, setSelectStck] = useState([]);
@@ -14,6 +15,7 @@ export default function CreateProject() {
   const { AddProject, getAllSatck, stackdata } = useProject();
   const { userData } = useSelector((state) => state.logindataslice);
   const { sendmail } = useSendmail();
+  const { groupChat } = useChat();
   let options = userdata.map(function (data) {
     return { value: data, label: data.name };
   });
@@ -73,6 +75,11 @@ export default function CreateProject() {
             message: projectdata.description,
           });
         });
+        const users = res.data.member.map((item) => {
+          return item._id;
+        });
+          groupChat(JSON.stringify(users), res.data.project_name);
+        navigate("/dashboard");
       });
 
       e.target.reset();

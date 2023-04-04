@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import API from "../Pages/axios/axios";
 import { setProjectData } from "../Pages/redux/projectDataSlice";
+import useChat from "./useChat";
 
 function useProject() {
   const dispatch = useDispatch();
@@ -12,14 +13,21 @@ function useProject() {
   const [order, setOrder] = useState("desc");
   const [stackdata, setStackdata] = useState([]);
 
-  const AddProject = (data) => {
-    API.post("/add-project", data)
-      .then((res) => {
-        navigate("/dashboard");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+  const AddProject = async (data) => {
+    try {
+      const res = API.post("/add-project", data);
+      return res;
+    } catch (err) {
+      console.log(err);
+    }
+
+    // } API.post("/add-project", data)
+    //     .then((res) => {
+    //       navigate("/dashboard");
+    //     })
+    //     .catch((err) => {
+    //       console.log(err);
+    //     });
   };
   const getAllProject = (id, setLoading) => {
     setLoading(true);
