@@ -8,12 +8,15 @@ function useMessage() {
     const config = {
         headers: { Authorization: `Bearer ${userData.jwt}` }
     };
-    const sendMessage=(chatdata)=>{
-        API.post('/message',chatdata,config).then((res)=>{
+    const sendMessage=async(chatdata)=>{
+        try{
+            const res=  await API.post('/message',chatdata,config);
             setDisplayMessage([...displayMessage,res.data])
-        }).catch((err)=>{
+            return res.data;
+        } 
+        catch(err){
             console.log(err)
-        })
+        }
     }
     const FetachallMessage=(chatId)=>{
         API.get(`/message/${chatId}`,config).then((res)=>{
@@ -23,7 +26,7 @@ function useMessage() {
             console.log(err)
         })
     }
-  return {sendMessage,FetachallMessage,displayMessage}
+  return {sendMessage,FetachallMessage,displayMessage,setDisplayMessage}
 }
 
 export default useMessage
