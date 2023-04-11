@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import ContactCard from "../ContactCard/ContactCard";
 
-export default function ChatSidebar({ setCurrentChat }) {
+export default function ChatSidebar({ setCurrentChat, state }) {
   const { getContacts, accessChat } = useChat();
 
   const [query, setQuery] = useState("");
@@ -23,6 +23,14 @@ export default function ChatSidebar({ setCurrentChat }) {
         console.log(err);
       });
   }, [query]);
+  if (state && state != null) {
+    let d = contacts.find((each) => {
+      if (each.chatName) {
+        return each.chatName === state.project_name;
+      }
+    });
+    setCurrentChat(d);
+  }
 
   const handleChatOpen = (each) => {
     console.log(each);

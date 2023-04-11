@@ -10,11 +10,13 @@ import { TbSend } from "react-icons/tb";
 
 import avatar from "../../../../assets/images/avatar.svg";
 import group from "../../../../assets/images/groupavatar.png";
+import { useLocation } from "react-router-dom";
 
 const ENDPOINT = "http://localhost:4040/";
 export default function Chat() {
   const { userData } = useSelector((state) => state.logindataslice);
   const { accessChat } = useChat();
+  const {state}=useLocation();
   const { fetchAllMessage, displayMessage, setDisplayMessage, sendMessage } =
     useMessage();
 
@@ -63,7 +65,7 @@ export default function Chat() {
         <h1>Chats</h1>
       </div>
       <div className="chats">
-        <ChatSidebar setCurrentChat={setCurrentChat} />
+        <ChatSidebar setCurrentChat={setCurrentChat} state={state} />
 
         <div className="content">
           <div className="navbar">

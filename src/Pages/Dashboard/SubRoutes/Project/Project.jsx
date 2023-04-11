@@ -86,7 +86,7 @@ export default function Project() {
                 </div>
                 <div className="bottom_right">
                   <BsPen className="proj_fun_icons" onClick={()=>navigate('EditProject',{ state: projectData })} />
-                  <BsChatLeftText className="proj_fun_icons" />
+                  <BsChatLeftText className="proj_fun_icons" onClick={()=>{navigate('/dashboard/chats',{state: projectData})}} />
                   <BsPeople className="proj_fun_icons" />
                 </div>
               </div>
