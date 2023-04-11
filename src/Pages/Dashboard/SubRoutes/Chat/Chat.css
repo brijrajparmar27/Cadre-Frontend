@@ -1,46 +1,43 @@
-.chats {
-  /* background-color: aqua; */
+.ChatsPage {
   height: 100%;
   width: 100%;
   display: flex;
-}
-.chats .chatsidebar {
-  box-sizing: border-box;
-  flex: 1;
-  max-width: 20%;
-  /* background-color: blue; */
-  display: flex;
   flex-direction: column;
-  padding: 10px;
 }
-.chats .chatsidebar .search_box {
-  margin-bottom: 20px;
-  padding: 5px;
-  border-radius: 5px;
-  outline: none;
-  border: 1px solid gray;
+.ChatsPage .section_title {
+  margin-bottom: 15px;
 }
-.chats .chatsidebar .chat_contacts {
+.chats {
+  /* background-color: aqua; */
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
   display: flex;
-  flex-direction: column;
   gap: 10px;
 }
 .chats .content {
-  padding: 10px;
   flex: 1;
   display: flex;
   flex-direction: column;
+  background-color: white;
+  border-radius: 20px;
+  border: 1px solid gainsboro;
 }
 .chats .content .navbar {
   flex: 1;
   max-height: 50px;
   display: flex;
-  align-items: center;
-  padding: 0px 30px;
-  background-color: var(--primary);
+  align-items: flex-end;
+  gap: 15px;
+  padding: 0px 15px;
 }
 .chats .content .navbar a {
-  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  color: black;
+  height: 70%;
   text-decoration: none;
 }
 .chats .content .chats_contain {
@@ -51,11 +48,16 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+  border-radius: 10px;
+  margin: 10px 10px 0px 10px;
 }
 .chats .chatsidebar .chat_contacts a {
   cursor: pointer;
 }
 .chats .content .chat_form {
+  background-color: rgba(220, 220, 220, 0.57);
+  border-radius: 10px;
+  margin: 10px;
   flex: 1;
   max-height: 50px;
   display: flex;
@@ -63,7 +65,26 @@
 .chats .content .chat_form .new_msg_box {
   width: 100%;
   padding: 0px 10px;
+  border: none;
+  outline: none;
+  background-color: transparent;
 }
 .chats .content .chat_form .new_msg_send {
-  padding: 0px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  width: 40px;
+  font-size: 20px;
+  border: none;
+  background-color: var(--primary);
+  color: white;
+  margin: 5px;
+  border-radius: 10px;
+}
+.contact_dp {
+  width: 35px;
+  height: 35px;
+  object-fit: cover;
+  border-radius: 50%;
 }

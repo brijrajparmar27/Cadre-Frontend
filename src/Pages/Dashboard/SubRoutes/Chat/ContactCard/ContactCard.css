@@ -1,0 +1,36 @@
+.contact_card {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 2fr 8fr;
+  grid-template-areas:
+    "dp name"
+    "dp lastmsg";
+  column-gap: 5px;
+  height: 50px;
+  /* background-color: aqua; */
+  /* padding: 5px; */
+}
+.contact_card .contact_dp_contain {
+  grid-area: dp;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.contact_card .contact_dp_contain .contact_dp {
+  width: 35px;
+  height: 35px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.contact_card .contact_name {
+  font-size: 15px;
+  grid-area: name;
+  display: flex;
+  align-items: flex-end;
+}
+.contact_card .contact_last_text {
+  font-size: 12px;
+  grid-area: lastmsg;
+  display: flex;
+  align-items: flex-start;
+}
