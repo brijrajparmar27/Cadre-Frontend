@@ -4,7 +4,6 @@ import { useSelector } from "react-redux";
 import API from "../Pages/axios/axios";
 
 function useChat() {
-  const [selectedchat, setSelectedChat] = useState();
   const [chatData, setChatData] = useState();
 
   const { userData } = useSelector((state) => state.logindataslice);
@@ -14,13 +13,7 @@ function useChat() {
   };
 
   const accessChat = (userId) => {
-    API.post("/chat", { userId }, config)
-      .then((res) => {
-        setSelectedChat(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    return API.post("/chat", { userId }, config);
   };
 
   const getContacts = (id, query) => {
@@ -50,11 +43,9 @@ function useChat() {
   return {
     accessChat,
     FetchChat,
-    selectedchat,
     groupChat,
     chatData,
     getContacts,
-    setSelectedChat,
   };
 }
 
