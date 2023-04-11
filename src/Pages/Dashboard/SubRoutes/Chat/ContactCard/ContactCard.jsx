@@ -4,6 +4,7 @@ import avatar from "../../../../../assets/images/avatar.svg";
 import group from "../../../../../assets/images/groupavatar.png";
 
 export default function ContactCard({ each, handleChatOpen }) {
+  console.log(each);
   return (
     <div
       className="contact_card"
@@ -22,7 +23,7 @@ export default function ContactCard({ each, handleChatOpen }) {
       <div className="contact_name">
         {each.name ? each.name : each.chatName}
       </div>
-      <div className="contact_last_text">hello</div>
+      <div className="contact_last_text">{each?.latestMessage?.content}</div>
     </div>
   );
 }
