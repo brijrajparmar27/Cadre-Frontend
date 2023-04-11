@@ -19,6 +19,7 @@ export default function Chat() {
     useMessage();
 
   const [currentChat, setCurrentChat] = useState(null);
+  let prevID = null;
 
   useEffect(() => {
     if (!currentChat) {
@@ -74,9 +75,27 @@ export default function Chat() {
           </div>
           <div className="chats_contain">
             {displayMessage?.map((each) => {
+              console.log(each);
+              let sharp = true;
+              if (each.sender._id == prevID) {
+                sharp = false;
+              }
+              console.log(each.sender._id, prevID);
+              prevID = each.sender._id;
+              let fromMe = each.sender._id == userData._id;
               return (
-                <div>
-                  {each.sender.name}:-- {each.content}
+                <div className={fromMe ? "chat_doc right" : "chat_doc left"}>
+                  <div className="chatbubble_img_contain">
+                    {!fromMe && sharp && (
+                      <img src={avatar} alt="" className="chatbubble_avatar" />
+                    )}
+                  </div>
+                  <div className={sharp ? "bubble active" : "bubble passive"}>
+                    {!fromMe && sharp && (
+                      <p className="bubble_title">{each.sender.name}</p>
+                    )}
+                    <p className="bubble_content">{each.content}</p>
+                  </div>
                 </div>
               );
             })}
