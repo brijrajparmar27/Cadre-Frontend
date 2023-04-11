@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import API from "../Pages/axios/axios";
 import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { setLoginData } from "../Pages/redux/logindataslice";
 
 function useUserCollection() {
   const [userdata, setUserdata] = useState([]);
   const [userdataandProject, setUserdataandProject] = useState([]);
   const { userData } = useSelector((state) => state.logindataslice);
+  const dispatch = useDispatch();
   const getAlluser = () => {
     API.get(`/get-alluser?sort={"column":"name","order":"asc"}`)
       .then((res) => {
@@ -33,12 +36,27 @@ function useUserCollection() {
       console.log(err);
     }
   };
+  const updateUserProfile = (data) => {
+    API.patch(`/user-details-update/${userData._id}`, data)
+      .then((res) => {
+        let users = {
+          ...userData,
+          contact_number: data.contact_number,
+          name: data.name,
+        };
+        dispatch(setLoginData(users));
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return {
     getAlluser,
     userdata,
     updateUserDP,
     getAlluserAndProject,
     userdataandProject,
+    updateUserProfile,
   };
 }
 

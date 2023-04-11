@@ -9,13 +9,14 @@ import { BsFillCameraFill } from "react-icons/bs";
 export default function Settings() {
   const { updateUserDP } = useUserCollection();
   const { userData } = useSelector((state) => state.logindataslice);
+  const{updateUserProfile}=useUserCollection();
   console.log(userData);
 
   const [feildData, setFeildData] = useState({
     // email: "brijraj@gmail.com",
     // img: "641bfa9f657183e50be7f5a5.jpg",
     // jwt: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDFiZmE5ZjY1NzE4M2U1MGJlN2Y1YTUiLCJlbWFpbCI6ImJyaWpyYWpAZ21haWwuY29tIiwiaWF0IjoxNjc5NjM5NjgzLCJleHAiOjE2Nzk2NDY4ODN9.ET19RTlX7TOr34AzqIDYxP0qhxyoXaB-CFf1A-p7inU",
-    name: "brijrajsinh",
+    name: "",
     contact_number: "",
     // role_name: "Sr Devloper",
     // _id: "641bfa9f657183e50be7f5a5",
@@ -71,6 +72,7 @@ export default function Settings() {
   const handleProfileUpdate = (e) => {
     e.preventDefault();
     console.log(feildData);
+     updateUserProfile(feildData);
   };
 
   return (
@@ -128,6 +130,7 @@ export default function Settings() {
               <p className="input_label">Phone Number</p>
               <input
                 type="number"
+                defaultValue={userData.contact_number}
                 className="textbox"
                 name="assigenedate"
                 onChange={(e) => {
