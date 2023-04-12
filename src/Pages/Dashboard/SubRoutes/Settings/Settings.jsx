@@ -144,7 +144,7 @@ export default function Settings() {
                 className="textbox"
                 name="assigenedate"
                 disabled
-              />
+              />  
               <button type="submit" className="update_profile">
                 Update Profile
               </button>
