@@ -37,12 +37,13 @@ function useUserCollection() {
     }
   };
   const updateUserProfile = (data) => {
+  // return  console.log(data,"data");
     API.patch(`/user-details-update/${userData._id}`, data)
       .then((res) => {
         let users = {
           ...userData,
           contact_number: data.contact_number,
-          name: data.name,
+          name: data.name
         };
         dispatch(setLoginData(users));
       })

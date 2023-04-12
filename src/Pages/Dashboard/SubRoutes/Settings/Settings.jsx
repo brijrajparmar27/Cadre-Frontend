@@ -16,8 +16,8 @@ export default function Settings() {
     // email: "brijraj@gmail.com",
     // img: "641bfa9f657183e50be7f5a5.jpg",
     // jwt: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDFiZmE5ZjY1NzE4M2U1MGJlN2Y1YTUiLCJlbWFpbCI6ImJyaWpyYWpAZ21haWwuY29tIiwiaWF0IjoxNjc5NjM5NjgzLCJleHAiOjE2Nzk2NDY4ODN9.ET19RTlX7TOr34AzqIDYxP0qhxyoXaB-CFf1A-p7inU",
-    name: "",
-    contact_number: "",
+    name: userData.name ? userData.name : "",
+    contact_number: userData.contact_number ? userData.contact_number : "",
     // role_name: "Sr Devloper",
     // _id: "641bfa9f657183e50be7f5a5",
   });
@@ -71,7 +71,7 @@ export default function Settings() {
 
   const handleProfileUpdate = (e) => {
     e.preventDefault();
-    console.log(feildData);
+   // console.log(feildData);
      updateUserProfile(feildData);
   };
 
