@@ -78,6 +78,7 @@
 .chats .content .chats_contain .chat_doc .bubble {
   border-radius: 20px;
   min-width: 70px;
+  max-width: 40%;
   color: white;
   padding: 10px;
   background-color: var(--primary);
