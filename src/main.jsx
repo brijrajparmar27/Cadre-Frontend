@@ -18,6 +18,8 @@ import storage from "redux-persist/lib/storage";
 import { configureStore } from "@reduxjs/toolkit";
 import RootReducers from "./Pages/redux/rootReducer";
 import logger from "redux-logger";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const persistConfig = {
   key: "root",
@@ -35,6 +37,7 @@ let persistor = persistStore(store);
 ReactDOM.createRoot(document.getElementById("root")).render(
   <Provider store={store}>
     <PersistGate persistor={persistor}>
+      <ToastContainer/>
       <App />
     </PersistGate>
   </Provider>

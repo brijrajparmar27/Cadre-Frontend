@@ -1,7 +1,7 @@
 import API from "../Pages/axios/axios";
 import { useDispatch } from "react-redux";
 import { setLoginData } from "../Pages/redux/logindataslice";
-import { toast } from "react-toastify";
+import { toast} from "react-toastify";
 import { useState } from "react";
 
 const useAuth = () => {
@@ -15,18 +15,19 @@ const useAuth = () => {
       .then((res) => {
         setLoding(false);
         dispatch(setLoginData(res.data));
+        toast.success('successfully Login');
       })
       .catch((err) => {
         setError(err.response.data.message)
         setLoding(false);
-        toast.error("sucssesfuly login");
+        toast.error(err.response.data.message);
       });
   };
   const Signup = (data) => {
     API.post("user-register", data)
       .then((res) => {
         dispatch(setLoginData(res.data));
-        toast.success("sucssesfuly register");
+        toast.success("successfully register");
       })
       .catch((err) => {
         console.log(err);

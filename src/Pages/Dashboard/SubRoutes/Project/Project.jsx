@@ -14,6 +14,7 @@ import { useSelector } from "react-redux";
 import useProject from "../../../../Hooks/useProject";
 import Kanban from "./Components/Kanban/Kanban";
 import { AiOutlineDelete } from "react-icons/ai";
+import { toast } from "react-toastify";
 
 export default function Project() {
   const [projectData, setProjectData] = useState(null);
@@ -46,12 +47,9 @@ export default function Project() {
       confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
       if (result.isConfirmed) {
-        deleteproject(location.state.projectdata._id)
-        Swal.fire(
-          'Deleted!',
-          'Your file has been deleted.',
-          'success'
-        ).then(()=>{navigate('/dashboard')})
+        deleteproject(location.state.projectdata._id);
+        toast.success('delete project successfully');
+        navigate('/dashboard');
       }
     })
   }

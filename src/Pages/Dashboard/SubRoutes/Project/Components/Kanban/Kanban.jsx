@@ -8,8 +8,7 @@ import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import KanbanCard from "../KanbanCard/KanbanCard";
 import useTask from "../../../../../../Hooks/useTask";
 import { useSelector } from "react-redux";
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { toast} from "react-toastify";
 import useProgresProvider from "../../../../../../Hooks/useProgressProvider";
 import useProject from "../../../../../../Hooks/useProject";
 import { setProjectData } from "../../../../../../Pages/redux/projectDataSlice";
@@ -297,7 +296,6 @@ export default function Kanban({ data }) {
           </div>
         )}
       </div>
-      <ToastContainer></ToastContainer>
     </DragDropContext>
   );
 }
