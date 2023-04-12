@@ -1,4 +1,4 @@
-.chats .chatsidebar {
+.chatsidebar {
   box-sizing: border-box;
   flex: 1;
   max-width: 20%;
@@ -10,13 +10,13 @@
   gap: 15px;
   padding: 10px;
 }
-.chats .chatsidebar .sidebar_heading {
+.chatsidebar .sidebar_heading {
   display: flex;
   justify-content: flex-start;
   align-items: center;
   margin-top: 5px;
 }
-.chats .chatsidebar .search_box {
+.chatsidebar .search_box {
   display: flex;
   gap: 5px;
   padding: 5px;
@@ -26,7 +26,7 @@
   background-color: ghostwhite;
   height: 25px;
 }
-.chats .chatsidebar .search_box .seatch_chats_tb {
+.chatsidebar .search_box .seatch_chats_tb {
   background-color: ghostwhite;
   font-size: 15px;
   border: none;
@@ -34,7 +34,9 @@
   width: 100%;
   height: 100%;
 }
-.chats .chatsidebar .chat_contacts {
+.chatsidebar .chat_contacts {
+  overflow-y: auto;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   gap: 10px;

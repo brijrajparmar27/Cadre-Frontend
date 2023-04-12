@@ -60,7 +60,7 @@ export default function ChatSidebar({ setCurrentChat, state }) {
           }}
         />
       </div>
-      <div className="chat_contacts">
+      <div className="chat_contacts" id="style-1">
         {contacts &&
           contacts.map((each) => {
             return (

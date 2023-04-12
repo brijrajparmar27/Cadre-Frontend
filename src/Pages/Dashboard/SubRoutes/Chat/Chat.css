@@ -15,6 +15,9 @@
   display: flex;
   gap: 10px;
 }
+.chats .chat_lottie_contain {
+  flex: 1;
+}
 .chats .content {
   flex: 1;
   display: flex;
@@ -79,11 +82,23 @@
   padding: 10px;
   background-color: var(--primary);
 }
+.chats .content .chats_contain .chat_doc .bubble .bubble_content {
+  font-size: 14px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+.chats .content .chats_contain .chat_doc .bubble .bubble_title {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+}
 .chats .content .chats_contain .left {
   justify-content: flex-start;
 }
 .chats .content .chats_contain .left .bubble {
   border-top-left-radius: 0px;
+  background-color: white;
+  color: black;
+  border: 1px solid gainsboro;
 }
 .chats .content .chats_contain .right {
   justify-content: flex-end;
