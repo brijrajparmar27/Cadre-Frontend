@@ -96,6 +96,13 @@ function useProject() {
         console.log(err);
       });
   };
+  const deleteproject=(id)=>{
+    API.delete(`/delete-project/${id}`).then((res)=>{
+      console.log(res)
+    }).catch((err)=>{
+      console.log(err);
+    })
+  }
   return {
     AddProject,
     getAllProject,
@@ -109,6 +116,7 @@ function useProject() {
     addTask,
     getprojectbyProjectId,
     updateProject,
+    deleteproject
   };
 }
 

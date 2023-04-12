@@ -65,7 +65,7 @@ export default function Projects() {
       <div className="section_title">
         <h1>Dashboard</h1>
 
-        {userData && userData.role_name === "Sr Devloper" ? (
+        {userData && userData.role_name === "Sr Devloper" || userData.role_name === "Admin" ? (
           <button
             className="create_project btn"
             onClick={() => {

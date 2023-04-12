@@ -1,7 +1,7 @@
 import "./Project.css";
 import React, { useEffect, useState } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
-
+import Swal from 'sweetalert2';
 import {
   BsInfoCircle,
   BsChatLeftText,
@@ -13,6 +13,7 @@ import {
 import { useSelector } from "react-redux";
 import useProject from "../../../../Hooks/useProject";
 import Kanban from "./Components/Kanban/Kanban";
+import { AiOutlineDelete } from "react-icons/ai";
 
 export default function Project() {
   const [projectData, setProjectData] = useState(null);
@@ -21,7 +22,7 @@ export default function Project() {
   console.log(location);
   const navigate = useNavigate();
   const { userData } = useSelector((state) => state.logindataslice);
-  const { getprojectbyProjectId } = useProject();
+  const { getprojectbyProjectId,deleteproject } = useProject();
 
   useEffect(() => {
     // console.log(location.state.projectdata._id);
@@ -34,6 +35,26 @@ export default function Project() {
   // console.log("project data ", projectData);
   // projectData && console.log(projectData.task);
   // }, [projectData]);
+  const  clickdeleteproject=()=>{
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        deleteproject(location.state.projectdata._id)
+        Swal.fire(
+          'Deleted!',
+          'Your file has been deleted.',
+          'success'
+        ).then(()=>{navigate('/dashboard')})
+      }
+    })
+  }
   return (
     <>
       {projectData && (
@@ -60,7 +81,7 @@ export default function Project() {
                   />
                 </div>
 
-                {userData && userData.role_name === "Sr Devloper" ? (
+                {userData && userData.role_name === "Sr Devloper" || userData.role_name === "Admin" ? (
                   <button
                     className="create_task btn"
                     onClick={() => {
@@ -85,6 +106,7 @@ export default function Project() {
                   </p>
                 </div>
                 <div className="bottom_right">
+                   {userData && userData.role_name === "Admin" ?<AiOutlineDelete className="proj_fun_icons" onClick={clickdeleteproject}></AiOutlineDelete>:''}
                   <BsPen className="proj_fun_icons" onClick={()=>navigate('EditProject',{ state: projectData })} />
                   <BsChatLeftText className="proj_fun_icons" onClick={()=>{navigate('/dashboard/chats',{state: projectData})}} />
                   <BsPeople className="proj_fun_icons" />
