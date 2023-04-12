@@ -3,12 +3,15 @@ import API from "../Pages/axios/axios";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { setLoginData } from "../Pages/redux/logindataslice";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router";
 
 function useUserCollection() {
   const [userdata, setUserdata] = useState([]);
   const [userdataandProject, setUserdataandProject] = useState([]);
   const { userData } = useSelector((state) => state.logindataslice);
   const dispatch = useDispatch();
+  const navigate=useNavigate();
   const getAlluser = () => {
     API.get(`/get-alluser?sort={"column":"name","order":"asc"}`)
       .then((res) => {
@@ -46,6 +49,8 @@ function useUserCollection() {
           name: data.name
         };
         dispatch(setLoginData(users));
+        toast.success('profile update successfully');
+        navigate('/dashboard');
       })
       .catch((err) => {
         console.log(err);

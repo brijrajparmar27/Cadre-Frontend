@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import API from "../Pages/axios/axios";
+import { toast } from "react-toastify";
 
 function useTimeSheet(setLoading) {
   const [timesheetdata, setTimesheetdata] = useState([]);
@@ -10,6 +11,7 @@ function useTimeSheet(setLoading) {
   const Newtimesheet = (data) => {
     API.post("/add-timesheet", data)
       .then((res) => {
+        toast.success('project update successfully');
         navigate(-1);
       })
       .catch((err) => {

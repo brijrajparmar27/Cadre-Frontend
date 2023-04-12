@@ -6,6 +6,7 @@ import AddTimeCard from "./AddTimeCard";
 import useTimeSheet from "../../../../Hooks/useTimeSheet";
 import { BsArrowLeft } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 function AddTimeSheet(e) {
   const { userData } = useSelector((state) => state.logindataslice);
@@ -29,7 +30,8 @@ function AddTimeSheet(e) {
     if ( Timesheetdata && Timesheetdata.works[0] && Timesheetdata.works[0].projectName) {
       Newtimesheet(Timesheetdata);
     } else {
-      setError("field cannot be empty");
+      //setError("field cannot be empty");
+      toast.error("field cannot be empty")
     }
   };
 

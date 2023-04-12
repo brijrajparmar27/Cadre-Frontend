@@ -8,6 +8,7 @@ import useSendmail from "../../../../Hooks/useSendmail";
 import useUserCollection from "../../../../Hooks/useUserCollection";
 import "./CreateProject.css";
 import useChat from "../../../../Hooks/useChat";
+import { toast } from "react-toastify";
 export default function CreateProject() {
   const [selectMebers, setSelectMebers] = useState([]);
   const [selectStack, setSelectStck] = useState([]);
@@ -68,6 +69,7 @@ export default function CreateProject() {
       projectdata.member.length > 0
     ) {
       AddProject(projectdata).then((res) => {
+        toast.success('new project add successfully');
         selectMebers.map((user) => {
           sendmail({
             name: user.email,

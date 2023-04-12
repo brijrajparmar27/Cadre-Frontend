@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import API from "../Pages/axios/axios";
 import { setProjectData } from "../Pages/redux/projectDataSlice";
 import useChat from "./useChat";
+import { toast } from "react-toastify";
 
 function useProject() {
   const dispatch = useDispatch();
@@ -91,7 +92,9 @@ function useProject() {
   };
   const updateProject = (data, id) => {
     API.put(`/update-project/${id}`, data)
-      .then((res) => {})
+      .then((res) => {
+        toast.success('project update successfully');
+      })
       .catch((err) => {
         console.log(err);
       });

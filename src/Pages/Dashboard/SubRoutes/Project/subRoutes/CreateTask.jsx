@@ -6,6 +6,7 @@ import ReactSwitch from "react-switch";
 import useProject from "../../../../../Hooks/useProject";
 import useSendmail from "../../../../../Hooks/useSendmail";
 import "./CreateTask.css";
+import { toast } from "react-toastify";
 
 function CreateTask() {
   const location = useLocation();
@@ -43,12 +44,14 @@ function CreateTask() {
             message: `Title:- ${e.target.title.value} description :- ${e.target.description.value}`
           });
         });
+        toast.success('Task add successfully');
           navigate("/dashboard/project", {
           state: { projectdata: { ...location.state } },
         });
       });
     } else {
-      setError("field cannot be empty");
+      toast.error('field cannot be empty')
+      //setError("field cannot be empty");
     }
   };
   const inputmember = (e) => {
