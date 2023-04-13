@@ -22,7 +22,7 @@ export default function timesheets() {
   useEffect(() => {
     getTimeSheetbyUserId(`${moment(value).format("yyyy-MM-DD")}`);
   }, [value]);
-  timesheetdata && console.log(timesheetdata);
+  console.log(timesheetdata);
   return (
     <div className="timesheet">
       <div className="section_title">
@@ -83,9 +83,19 @@ export default function timesheets() {
             <div className="container">
               <div className="table">
                 <div className="table-header">
+                  {timesheetdata && timesheetdata.length >= 2 ? (
+                    <div className="header__item">
+                      <a id="name" className="filter__link" href="#">
+                        Name
+                      </a>
+                    </div>
+                  ) : (
+                    ""
+                  )}
+
                   <div className="header__item">
                     <a id="name" className="filter__link" href="#">
-                      Name
+                      project Name
                     </a>
                   </div>
                   <div className="header__item">
@@ -117,18 +127,40 @@ export default function timesheets() {
                   </div>
                 </div>
                 <div className="table-content">
-                  {timesheetdata[0]?.works?.map((each) => {
-                    return (
-                      <div className="table-row">
-                        <div className="table-data">{each.projectName}</div>
-                        <div className="table-data">{each.description}</div>
-                        <div className="table-data">{each.hours}</div>
-                        <div className="table-data">
-                          {each.isCompleted ? "completed" : "running"}
-                        </div>
-                      </div>
-                    );
-                  })}
+                  {timesheetdata && timesheetdata.length >= 2
+                    ? timesheetdata.map((each) => {
+                        return each?.works.map((data) => {
+                          return (
+                            //console.log(data.projectName)
+                            <div className="table-row">
+                              <div className="table-data">{each.user.name}</div>
+                              <div className="table-data">
+                                {data.projectName}
+                              </div>
+                              <div className="table-data">
+                                
+                                {data.description}
+                              </div>
+                              <div className="table-data">{data.hours}</div>
+                              <div className="table-data">
+                                {data.isCompleted ? "completed" : "running"}
+                              </div>
+                            </div>
+                          );
+                        });
+                      })
+                    : timesheetdata[0]?.works?.map((each) => {
+                        return (
+                          <div className="table-row">
+                            <div className="table-data">{each.projectName}</div>
+                            <div className="table-data">{each.description}</div>
+                            <div className="table-data">{each.hours}</div>
+                            <div className="table-data">
+                              {each.isCompleted ? "completed" : "running"}
+                            </div>
+                          </div>
+                        );
+                      })}
                 </div>
               </div>
             </div>
