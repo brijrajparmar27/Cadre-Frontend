@@ -10,6 +10,7 @@ import {
 } from "react-icons/bs";
 import "./Sidebar.css";
 import { useSelector } from "react-redux";
+import { AiOutlineUser } from "react-icons/ai";
 import avatar from "../../../../assets/images/avatar.svg";
 export default function Sidebar() {
   const { Logout } = useAuth();
@@ -57,6 +58,11 @@ export default function Sidebar() {
             <BsChatLeftText className="proj_fun_icons" />
             <p className="nav_title">Chats</p>
           </NavLink>
+          { userData && userData.role_name === "Admin" ?
+            <NavLink to="/dashboard/all-users" className="nav_contain">
+            <AiOutlineUser className="link_icon" />
+            <p className="nav_title">Users</p>
+          </NavLink>:''}
           <NavLink to="/dashboard/settings" className="nav_contain">
             <BsGear className="link_icon" />
             <p className="nav_title">Settings</p>

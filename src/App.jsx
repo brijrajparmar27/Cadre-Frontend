@@ -22,6 +22,7 @@ import Details from "./Pages/Dashboard/SubRoutes/Project/subRoutes/Details";
 import AddTimeSheet from "./Pages/Dashboard/SubRoutes/TimeSheets.jsx/AddTimeSheet";
 import EditProject from "./Pages/Dashboard/SubRoutes/EditProject/EditProject";
 import Chat from "./Pages/Dashboard/SubRoutes/Chat/Chat";
+import AllUsers from "./Pages/Dashboard/SubRoutes/Admin/allUsers";
 
 function App() {
   const { userData } = useSelector((state) => state.logindataslice);
@@ -62,6 +63,7 @@ function App() {
           <Route path="time-sheet" element={<TimeSheets />} />
           <Route path="chats" element={<Chat />} />
           <Route path="time-sheet/addTimesheet" element={<AddTimeSheet />} />
+          <Route path="all-users" element={<AllUsers/>} />
         </Route>
         <Route path="*" element={<NotFound />} />
       </Route>

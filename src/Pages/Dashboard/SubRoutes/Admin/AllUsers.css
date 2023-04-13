@@ -1,0 +1,142 @@
+.users {
+    display: flex;
+    margin: auto;
+    flex-direction: column;
+    height: 100%;
+    width: 70%;
+  }
+  .add_timesheet {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    background-color: var(--primary);
+    border: none;
+    outline: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    color: white;
+    font-size: 18px;
+  }
+  .users .section_title {
+    display: flex;
+    justify-content: space-between;
+    /* background-color: aqua; */
+  }
+  .timesheet .timesheet_contain {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 1.5fr;
+    grid-template-areas: "cal sheets";
+    /* background-color: aqua; */
+    height: 100%;
+    width: 100%;
+  }
+  .timesheet .timesheet_contain .calendar_contain {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* background-color: antiquewhite; */
+    grid-area: cal;
+  }
+  .timesheet .timesheet_contain .calendar_contain .calendar_date {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .timesheet .timesheet_contain .sheets_contain {
+    /* background-color: aquamarine; */
+    grid-area: sheets;
+  }
+  
+  .timesheet .timesheet_contain .calendar_contain .calendar {
+    border-radius: 5px;
+  }
+  .timesheet .timesheet_contain .calendar_contain .calendar abbr {
+    text-decoration: none;
+  }
+  .timesheet .timesheet_contain .timesheet_table,
+  th,
+  td {
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
+  .timesheet .timesheet_contain .timesheet_table {
+    width: 100%;
+  }
+  /* .timesheet .timesheet_contain .timesheet_table tr {
+  } */
+  .timesheet .timesheet_contain .timesheet_table .time_cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* tablre */
+  .container {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+  .table {
+    width: 100%;
+    border: 1px solid grey;
+    border-radius: 10px;
+  }
+  .table-header {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    display: flex;
+    width: 100%;
+    background: var(--primary);
+    padding: 18px 0;
+  }
+  .table-row {
+    display: flex;
+    width: 100%;
+    padding: 18px 0;
+  }
+  .table-row:nth-of-type(odd) {
+    background: #eee;
+  }
+  .table-data,
+  .header__item {
+    flex: 1 1 20%;
+    text-align: center;
+  }
+  .header__item {
+    text-transform: uppercase;
+  }
+  .filter__link {
+    color: white;
+    text-decoration: none;
+    position: relative;
+    display: inline-block;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  .filter__link::after {
+    content: "";
+    position: absolute;
+    right: -18px;
+    color: white;
+    font-size: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .filter__link.desc::after {
+    content: "(desc)";
+  }
+  .filter__link.asc::after {
+    content: "(asc)";
+  }
+  .proj_fun_icons {
+    font-size: 20px;
+    cursor: pointer;
+  }
+  /* end table */
+  

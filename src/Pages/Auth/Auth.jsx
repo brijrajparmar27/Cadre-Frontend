@@ -40,7 +40,6 @@ const Auth = () => {
   const options = [
     { value: "Sr Devloper", label: "Sr Devloper" },
     { value: "Jr devloper", label: "Jr devloper" },
-    { value: "Admin", label: "Admin" },
   ];
 
   const formVariant = {
