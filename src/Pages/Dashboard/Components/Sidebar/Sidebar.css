@@ -30,6 +30,18 @@
     "dp name"
     "dp title";
 }
+.sidebar:hover .drop_arrow {
+  display: block !important;
+  font-size: 15px;
+  margin-left: 10px;
+}
+.sidebar .droppable {
+  align-items: center;
+  justify-content: space-between;
+}
+.sidebar .drop_arrow {
+  display: none;
+}
 .nav_title {
   display: none;
 }
@@ -116,3 +128,40 @@
   height: 40px;
   cursor: pointer;
 }
+
+/* ------------------------------ */
+/* force expand  */
+/* ------------------------------ */
+
+/* .sidebar {
+  flex: 2;
+}
+.sidebar .project_list {
+  display: flex !important;
+}
+.sidebar .name_contain {
+  display: block !important;
+}
+.sidebar .title_contain {
+  display: block !important;
+}
+.sidebar .nav_title {
+  display: block !important;
+}
+.sidebar .footer_content {
+  display: grid;
+  column-gap: 10px;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 9fr;
+  grid-template-areas:
+    "dp name"
+    "dp title";
+}
+.sidebar .drop_arrow {
+  display: block !important;
+  font-size: 15px;
+  margin-left: 10px;
+} */
+
+/* ------------------------------ */
+/* ------------------------------ */

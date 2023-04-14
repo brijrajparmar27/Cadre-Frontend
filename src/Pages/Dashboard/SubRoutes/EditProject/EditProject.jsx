@@ -6,6 +6,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import Select from "react-select";
 import useProject from "../../../../Hooks/useProject";
 import useUserCollection from "../../../../Hooks/useUserCollection";
+import { toast } from "react-toastify";
 import "./EditProject.css";
 
 export default function EditProject() {
@@ -69,6 +70,7 @@ export default function EditProject() {
     console.log(projectData);
     if (projectData.member.length > 0 || projectData.stack.length > 0) {
       updateProject(projectData, location.state._id);
+      toast.success("project update successfully");
       navigate("/dashboard");
       // e.target.reset();
     } else {

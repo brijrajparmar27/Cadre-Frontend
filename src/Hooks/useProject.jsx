@@ -93,19 +93,21 @@ function useProject() {
   const updateProject = (data, id) => {
     API.put(`/update-project/${id}`, data)
       .then((res) => {
-        toast.success('project update successfully');
+        // toast.success('project update successfully');
       })
       .catch((err) => {
         console.log(err);
       });
   };
-  const deleteproject=(id)=>{
-    API.delete(`/delete-project/${id}`).then((res)=>{
-      console.log(res)
-    }).catch((err)=>{
-      console.log(err);
-    })
-  }
+  const deleteproject = (id) => {
+    API.delete(`/delete-project/${id}`)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return {
     AddProject,
     getAllProject,
@@ -119,7 +121,7 @@ function useProject() {
     addTask,
     getprojectbyProjectId,
     updateProject,
-    deleteproject
+    deleteproject,
   };
 }
 

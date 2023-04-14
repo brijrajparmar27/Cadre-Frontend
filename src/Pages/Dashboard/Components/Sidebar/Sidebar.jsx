@@ -7,15 +7,28 @@ import {
   BsClipboardData,
   BsGear,
   BsChatLeftText,
+  BsChevronUp,
 } from "react-icons/bs";
 import "./Sidebar.css";
 import { useSelector } from "react-redux";
 import { AiOutlineUser } from "react-icons/ai";
+import { motion } from "framer-motion";
 import avatar from "../../../../assets/images/avatar.svg";
+
+const arrowVariant = {
+  up: {
+    rotate: 0,
+  },
+  down: {
+    rotate: 180,
+  },
+};
+
 export default function Sidebar() {
   const { Logout } = useAuth();
   const { userData } = useSelector((state) => state.logindataslice);
   const { projectData } = useSelector((state) => state.projectdatareducer);
+  const [expandProjects, setExpandProjects] = useState(false);
 
   return (
     <div className="sidebar">
@@ -23,33 +36,48 @@ export default function Sidebar() {
         <img src={logo} alt="logo" className="sidebar_logo" onClick={Logout} />
 
         <div className="sidebar_content">
-          <NavLink to="/dashboard" className="nav_contain" end>
-            <BsFolder2Open className="link_icon" />
-            <p className="nav_title">Projects</p>
+          <NavLink to="/dashboard" className="nav_contain droppable" end>
+            <div style={{ display: "flex", alignItems: "center", gap: "15px" }}>
+              <BsFolder2Open className="link_icon" />
+              <p className="nav_title">Projects</p>
+            </div>
+            <motion.div
+              className="drop_arrow"
+              onClick={(e) => {
+                // e.stopPropagation();
+                setExpandProjects((prev) => !prev);
+              }}
+              variants={arrowVariant}
+              animate={expandProjects ? "up" : "down"}
+            >
+              <BsChevronUp />
+            </motion.div>
           </NavLink>
-          <div className="project_list">
-            {projectData?.map((each, index) => {
-              return (
-                <NavLink
-                  className="project_card"
-                  to="/dashboard/project"
-                  state={{ projectdata: each }}
-                  key={index}
-                >
-                  <div
-                    className="dot"
-                    style={{
-                      backgroundColor: each.hex,
-                    }}
-                  ></div>
-                  <p>
-                    {each?.project_name.substring(0, 20)}
-                    {each?.project_name.length > 20 && "..."}
-                  </p>
-                </NavLink>
-              );
-            })}
-          </div>
+          {expandProjects && (
+            <div className="project_list">
+              {projectData?.map((each, index) => {
+                return (
+                  <NavLink
+                    className="project_card"
+                    to="/dashboard/project"
+                    state={{ projectdata: each }}
+                    key={index}
+                  >
+                    <div
+                      className="dot"
+                      style={{
+                        backgroundColor: each.hex,
+                      }}
+                    ></div>
+                    <p>
+                      {each?.project_name.substring(0, 20)}
+                      {each?.project_name.length > 20 && "..."}
+                    </p>
+                  </NavLink>
+                );
+              })}
+            </div>
+          )}
           <NavLink to="/dashboard/time-sheet" className="nav_contain">
             <BsClipboardData className="link_icon" />
             <p className="nav_title">Time Sheet</p>
@@ -58,11 +86,14 @@ export default function Sidebar() {
             <BsChatLeftText className="proj_fun_icons" />
             <p className="nav_title">Chats</p>
           </NavLink>
-          { userData && userData.role_name === "Admin" ?
+          {userData && userData.role_name === "Admin" ? (
             <NavLink to="/dashboard/all-users" className="nav_contain">
-            <AiOutlineUser className="link_icon" />
-            <p className="nav_title">Users</p>
-          </NavLink>:''}
+              <AiOutlineUser className="link_icon" />
+              <p className="nav_title">Users</p>
+            </NavLink>
+          ) : (
+            ""
+          )}
           <NavLink to="/dashboard/settings" className="nav_contain">
             <BsGear className="link_icon" />
             <p className="nav_title">Settings</p>
