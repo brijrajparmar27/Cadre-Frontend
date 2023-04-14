@@ -4,7 +4,6 @@ import avatar from "../../../../../assets/images/avatar.svg";
 import group from "../../../../../assets/images/groupavatar.png";
 
 export default function ContactCard({ each, handleChatOpen }) {
-  console.log(each);
   return (
     <div
       className="contact_card"

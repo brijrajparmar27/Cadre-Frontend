@@ -56,6 +56,13 @@ function useUserCollection() {
         console.log(err);
       });
   };
+  const deletuser=async(id)=>{
+    API.delete(`delete-user/${id}`).then((res)=>{
+      console.log(res);
+    }).catch((err)=>{
+       console.log(err);
+    })
+  }
   return {
     getAlluser,
     userdata,
@@ -63,6 +70,7 @@ function useUserCollection() {
     getAlluserAndProject,
     userdataandProject,
     updateUserProfile,
+    deletuser
   };
 }
 

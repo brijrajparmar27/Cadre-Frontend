@@ -4,12 +4,30 @@ import useUserCollection from "../../../../Hooks/useUserCollection";
 import { AiOutlineDelete } from "react-icons/ai";
 import { BsPen, BsPlusLg } from "react-icons/bs";
 import avatar from "../../../../assets/images/avatar.svg";
+import Swal from "sweetalert2";
 
 function AllUsers() {
-  const { getAlluser, userdata } = useUserCollection();
+  const { getAlluser, userdata,deletuser } = useUserCollection();
   useEffect(() => {
     getAlluser();
   }, []);
+  const  clickdeleteuser=(id)=>{
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        deletuser(id);
+        toast.success('delete users successfully');
+        //navigate('/dashboard');
+      }
+    })
+  }
   return (
     <div>
       <div className="users">
@@ -75,7 +93,7 @@ function AllUsers() {
                         <div className="table-data">{res.contact_number}</div>
                         <div className="table-data">
                           <AiOutlineDelete
-                            className="proj_fun_icons"
+                            className="proj_fun_icons" onClick={()=>{clickdeleteuser(res._id)}}
                           ></AiOutlineDelete>
                           <BsPen
                             className="proj_fun_icons"
