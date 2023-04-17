@@ -15,13 +15,15 @@ import { useLocation } from "react-router-dom";
 import Empty from "../../../../UniversalComponents/Empty/Empty";
 import { io } from "socket.io-client";
 import { useIsTyping } from "use-is-typing";
+import Loading from "../../../../UniversalComponents/Loading/Loading";
+import typingLottie from "../../../../assets/Lottie/typing.json";
 
 const ENDPOINT = "http://localhost:4040/";
 var socket, selectedChatcompare;
-const appendMessage = (setDisplayMessage, newMessageRecieved) => {
-  console.log("appending new message");
-  setDisplayMessage((prev) => [...prev, { ...newMessageRecieved }]);
-};
+// const appendMessage = (setDisplayMessage, newMessageRecieved) => {
+//   console.log("appending new message");
+//   setDisplayMessage((prev) => [...prev, { ...newMessageRecieved }]);
+// };
 export default function Chat() {
   const { userData } = useSelector((state) => state.logindataslice);
   const { accessChat } = useChat();
@@ -52,7 +54,8 @@ export default function Chat() {
 
   useEffect(() => {
     console.log(istyping);
-  }, [istyping]);
+  });
+  // }, [istyping]);
 
   const handleChatSend = (e) => {
     e.preventDefault();
@@ -157,8 +160,16 @@ export default function Chat() {
                   </div>
                 );
               })}
-              {istyping && <div>....typing</div>}
               <div className="botton_anchor" ref={chatBoxRef}></div>
+
+              {istyping && (
+                <div className="chat_doc left">
+                  <div className="chatbubble_img_contain"></div>
+                  <div className="bubble_typing">
+                    <Loading isLoading={true} display={typingLottie} />
+                  </div>
+                </div>
+              )}
             </div>
             <form onSubmit={handleChatSend} className="chat_form">
               <input

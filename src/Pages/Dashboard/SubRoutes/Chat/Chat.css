@@ -71,6 +71,27 @@
 }
 .chats .content .chats_contain .chat_doc .active {
 }
+.bubble_typing {
+  margin-top: -19px;
+  background-color: blue;
+  width: 70px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 20px;
+  background-color: white;
+  color: black;
+  border: 1px solid gainsboro;
+}
+.bubble_typing .lottie_contain {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  width: 40px;
+}
 .chats .content .chats_contain .chat_doc .passive {
   border-radius: 20px !important;
   margin-top: -9px;
