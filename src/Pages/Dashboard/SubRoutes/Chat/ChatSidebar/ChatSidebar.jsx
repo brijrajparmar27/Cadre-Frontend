@@ -33,7 +33,7 @@ export default function ChatSidebar({ setCurrentChat, state }) {
   }
 
   const handleChatOpen = (each) => {
-    console.log(each);
+    // console.log(each);
     if (each.isGroupChat) {
       setCurrentChat(each);
     } else {

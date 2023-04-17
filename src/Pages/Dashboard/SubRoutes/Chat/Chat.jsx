@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./Chat.css";
 import useChat from "../../../../Hooks/useChat";
 import { useSelector } from "react-redux";
@@ -14,39 +14,54 @@ import group from "../../../../assets/images/groupavatar.png";
 import { useLocation } from "react-router-dom";
 import Empty from "../../../../UniversalComponents/Empty/Empty";
 import { io } from "socket.io-client";
+import { useIsTyping } from "use-is-typing";
 
 const ENDPOINT = "http://localhost:4040/";
-var socket,selectedChatcompare;
+var socket, selectedChatcompare;
+const appendMessage = (setDisplayMessage, newMessageRecieved) => {
+  console.log("appending new message");
+  setDisplayMessage((prev) => [...prev, { ...newMessageRecieved }]);
+};
 export default function Chat() {
   const { userData } = useSelector((state) => state.logindataslice);
   const { accessChat } = useChat();
   const { state } = useLocation();
+  const [isTyping, register] = useIsTyping();
   const { fetchAllMessage, displayMessage, setDisplayMessage, sendMessage } =
     useMessage();
 
   const [currentChat, setCurrentChat] = useState(null);
-  const [socketConnected,setscoketConnected]=useState(false);
-  const [typing,settyping]=useState(false);
-  const[istyping,setistyping]=useState(false);
+  const [socketConnected, setscoketConnected] = useState(false);
+  const [typing, settyping] = useState(false);
+  const [istyping, setistyping] = useState(false);
   let prevID = null;
-  useEffect(()=>{
-    socket=io(ENDPOINT);
-    socket.emit('setup',(userData));
-    socket.on("connected",()=>setscoketConnected(true));
-    socket.on('typing',()=>setistyping(true));
-    socket.on("stop typing", () => setistyping(false));;
-   },[])
+  const chatBoxRef = useRef(null);
 
+  useEffect(() => {
+    console.log("scroll to bottom");
+    chatBoxRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [displayMessage]);
 
-   const handleChatSend = (e) => {
+  useEffect(() => {
+    socket = io(ENDPOINT);
+    socket.emit("setup", userData);
+    socket.on("connected", () => setscoketConnected(true));
+    socket.on("typing", () => setistyping(true));
+    socket.on("stop typing", () => setistyping(false));
+  }, []);
+
+  useEffect(() => {
+    console.log(istyping);
+  }, [istyping]);
+
+  const handleChatSend = (e) => {
     e.preventDefault();
     let newMsg = e.target.chatBox.value.trim();
     if (newMsg) {
       socket.emit("stop typing", currentChat._id);
-      sendMessage({ content: newMsg, chatId: currentChat._id }).then((res)=>{
-        socket.emit('new message',res)
+      sendMessage({ content: newMsg, chatId: currentChat._id }).then((res) => {
+        socket.emit("new message", res);
       });
-     
     }
 
     e.target.reset();
@@ -56,42 +71,26 @@ export default function Chat() {
       return;
     } else {
       fetchAllMessage(currentChat._id);
-      socket.emit('join chat',currentChat._id);
-      selectedChatcompare=currentChat
+      socket.emit("join chat", currentChat._id);
+      selectedChatcompare = currentChat;
     }
   }, [currentChat]);
-  // useEffect(()=>{
-  //   console.log('mmw')
-  //   socket.on('message recieved',(newmeassgerecive)=>{
-  //     console.log('ndnd',newmeassgerecive);
-  //     if(!selectedChatcompare || selectedChatcompare._id !== newmeassgerecive.chat._id){
-  //       //give notification
-  //     }
-  //     else{
-  //       setDisplayMessage([...displayMessage,newmeassgerecive]);
-  //     }
-  //   })
-  // })
 
   useEffect(() => {
     socket.on("message recieved", (newMessageRecieved) => {
+      console.log(newMessageRecieved);
       if (
         !selectedChatcompare || // if chat is not selected or doesn't match current chat
         selectedChatcompare._id !== newMessageRecieved.chat._id
       ) {
-        // if (!notification.includes(newMessageRecieved)) {
-        //   setNotification([newMessageRecieved, ...notification]);
-        //   setFetchAgain(!fetchAgain);
-        // }
       } else {
-        console.log("send",newMessageRecieved)
-        setDisplayMessage([...displayMessage,newMessageRecieved]);
+        displayMessage &&
+          setDisplayMessage([...displayMessage, newMessageRecieved]);
+        console.log(newMessageRecieved);
+        console.log(displayMessage);
       }
     });
   });
-
-  console.log(displayMessage);
-
 
   const getChatName = (currentChat) => {
     if (currentChat.isGroupChat) {
@@ -102,39 +101,17 @@ export default function Chat() {
       });
       return temp[0].name;
     }
-    return "hello";
   };
-  const typingHandler = (e) => {
-    //setNewMessage(e.target.value);
 
-    if (!socketConnected) return;
-
-    if (!typing) {
-      settyping(true);
-      socket.emit("typing", currentChat._id);
-    }
-    let lastTypingTime = new Date().getTime();
-    var timerLength = 3000;
-    setTimeout(() => {
-      var timeNow = new Date().getTime();
-      var timeDiff = timeNow - lastTypingTime;
-      if (timeDiff >= timerLength && typing) {
-        socket.emit("stope typing", currentChat._id);
-        settyping(false);
-      }
-    }, timerLength);
-  };
-  
+  useEffect(() => {
+    console.log("typing?", isTyping);
+    currentChat && isTyping && socket.emit("typing", currentChat._id);
+    currentChat && !isTyping && socket.emit("stop typing", currentChat._id);
+  }, [isTyping]);
 
   return (
     <div className="ChatsPage">
       <div className="section_title">
-        {/* <BsArrowLeft
-          className="back_icon"
-          onClick={() => {
-            navigate(-1);
-          }}
-        /> */}
         <h1>Chats</h1>
       </div>
       <div className="chats">
@@ -158,7 +135,10 @@ export default function Chat() {
                 prevID = each.sender._id;
                 let fromMe = each.sender._id == userData._id;
                 return (
-                  <div className={fromMe ? "chat_doc right" : "chat_doc left"}>
+                  <div
+                    className={fromMe ? "chat_doc right" : "chat_doc left"}
+                    key={each._id}
+                  >
                     <div className="chatbubble_img_contain">
                       {!fromMe && sharp && (
                         <img
@@ -177,16 +157,17 @@ export default function Chat() {
                   </div>
                 );
               })}
+              {istyping && <div>....typing</div>}
+              <div className="botton_anchor" ref={chatBoxRef}></div>
             </div>
             <form onSubmit={handleChatSend} className="chat_form">
-              {istyping ? <div>....typing</div>:''}
               <input
                 id="text-message"
                 type="text"
                 name="chatBox"
                 className="new_msg_box"
                 placeholder="Type your message here ..."
-                onChange={typingHandler}
+                ref={register}
               />
               <button type="submit" className="new_msg_send">
                 <TbSend />

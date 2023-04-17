@@ -18,26 +18,30 @@ import storage from "redux-persist/lib/storage";
 import { configureStore } from "@reduxjs/toolkit";
 import RootReducers from "./Pages/redux/rootReducer";
 import logger from "redux-logger";
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const persistConfig = {
   key: "root",
   storage,
 };
 const persistedReducer = persistReducer(persistConfig, RootReducers);
-const store = configureStore({ reducer: persistedReducer, middleware: (getDefaultMiddleware) =>
+const store = configureStore({
+  reducer: persistedReducer,
+  middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }).concat(logger) });
+    }),
+  // .concat(logger),
+});
 let persistor = persistStore(store);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <Provider store={store}>
     <PersistGate persistor={persistor}>
-      <ToastContainer/>
+      <ToastContainer />
       <App />
     </PersistGate>
   </Provider>
