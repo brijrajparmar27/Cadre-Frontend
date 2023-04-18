@@ -12,9 +12,10 @@ function AllUsers() {
   const { getAlluser, userdata, deletuser } = useUserCollection();
   const [AddModal, setAddModal] = useState(false);
   const [EditModal, setEditModal] = useState(false);
+  const [EditUserData,setEdituserData]=useState(false);
   useEffect(() => {
     getAlluser();
-  }, []);
+  }, [AddModal,EditModal]);
   const clickdeleteuser = (id) => {
     Swal.fire({
       title: "Are you sure?",
@@ -28,10 +29,11 @@ function AllUsers() {
       if (result.isConfirmed) {
         deletuser(id);
         toast.success("delete users successfully");
-        //navigate('/dashboard');
+        getAlluser();
       }
     });
   };
+  
   return (
     <div className="users">
       <div className="section_title">
@@ -48,7 +50,7 @@ function AllUsers() {
       </div>
 
       {AddModal && <AddUser setAddModal={setAddModal} />}
-      {EditModal && <EditUser setEditModal={setEditModal} />}
+      {EditModal && EditUserData && <EditUser setEditModal={setEditModal} EdituserData={EditUserData} />}
 
       <div className="container">
         <div className="table">
@@ -106,6 +108,7 @@ function AllUsers() {
                           className="proj_fun_icons"
                           onClick={() => {
                             setEditModal(true);
+                            setEdituserData(res)
                           }}
                         />
                         <AiOutlineDelete

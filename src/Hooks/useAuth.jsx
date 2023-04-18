@@ -24,14 +24,20 @@ const useAuth = () => {
       });
   };
   const Signup = (data) => {
-    API.post("user-register", data)
-      .then((res) => {
-        dispatch(setLoginData(res.data));
-        toast.success("successfully register");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    try{
+      const res=API.post("user-register", data)
+      return res
+    }catch(err){
+      console.log(err);
+    }
+    // API.post("user-register", data)
+    //   .then((res) => {
+    //    // dispatch(setLoginData(res.data));
+    //     toast.success("successfully register");
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
   };
   const Logout = () => {
     dispatch(setLoginData(null));

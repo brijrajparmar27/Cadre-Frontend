@@ -63,6 +63,16 @@ function useUserCollection() {
        console.log(err);
     })
   }
+  const updateuser=(data)=>{
+    try{
+      const res= API.patch(`/user-details-update/${data._id}`, data)
+      return res;
+    }catch(err){
+      console.log(err)
+    }
+      
+
+  }
   return {
     getAlluser,
     userdata,
@@ -70,7 +80,8 @@ function useUserCollection() {
     getAlluserAndProject,
     userdataandProject,
     updateUserProfile,
-    deletuser
+    deletuser,
+    updateuser
   };
 }
 
