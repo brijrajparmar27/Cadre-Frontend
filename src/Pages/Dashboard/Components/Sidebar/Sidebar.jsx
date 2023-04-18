@@ -33,7 +33,7 @@ export default function Sidebar() {
   return (
     <div className="sidebar">
       <div className="sidebar_header">
-        <img src={logo} alt="logo" className="sidebar_logo" onClick={Logout} />
+        <img src={logo} alt="logo" className="sidebar_logo" />
 
         <div className="sidebar_content">
           <NavLink to="/dashboard" className="nav_contain droppable" end>
@@ -101,19 +101,30 @@ export default function Sidebar() {
         </div>
       </div>
       <div className="sidebar_footer">
-        <div className="footer_content">
-          <div className="dp_contain">
-            <img
-              className="sidebar_dp"
-              src={
-                userData.img
-                  ? `${import.meta.env.VITE_SERVER}${userData.img}`
-                  : avatar
-              }
-            />
+        <div className="card_stack">
+          <div className="logout_card" onClick={Logout}>
+            <p>Logout</p>
           </div>
-          <div className="name_contain">{userData?.name}</div>
-          <div className="title_contain">{userData?.role_name}</div>
+          <div className="user_card">
+            <div className="user_dp">
+              <img
+                className="sidebar_dp"
+                src={
+                  userData.img
+                    ? `${import.meta.env.VITE_SERVER}${userData.img}`
+                    : avatar
+                }
+              />
+            </div>
+            <div className="user_info">
+              <div className="info">
+                <div className="center">
+                  <p className="user_name">{userData?.name}</p>
+                  <p className="user_designation">{userData?.role_name}</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
