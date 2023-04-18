@@ -18,7 +18,7 @@ import { useIsTyping } from "use-is-typing";
 import Loading from "../../../../UniversalComponents/Loading/Loading";
 import typingLottie from "../../../../assets/Lottie/typing.json";
 
-const ENDPOINT = "http://localhost:4040/";
+const ENDPOINT = import.meta.env.VITE_BASEURL;
 var socket, selectedChatcompare;
 // const appendMessage = (setDisplayMessage, newMessageRecieved) => {
 //   console.log("appending new message");

@@ -11,7 +11,7 @@ function useTimeSheet(setLoading) {
   const Newtimesheet = (data) => {
     API.post("/add-timesheet", data)
       .then((res) => {
-        toast.success('project update successfully');
+        toast.success("project update successfully");
         navigate(-1);
       })
       .catch((err) => {
@@ -22,6 +22,7 @@ function useTimeSheet(setLoading) {
     setLoading(true);
     API.get(`get-timesheet/${userData._id}?date=${date}`)
       .then((res) => {
+        console.log(res.data);
         setTimesheetdata(res.data);
         setLoading(false);
       })

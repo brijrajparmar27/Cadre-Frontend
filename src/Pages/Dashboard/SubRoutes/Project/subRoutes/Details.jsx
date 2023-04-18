@@ -80,7 +80,7 @@ function Details() {
                   <img
                     key={each._id}
                     className="tech_icon"
-                    src={`http://localhost:4040/public/stacks/${each.url}`}
+                    src={`${import.meta.env.VITE_STACK}${each.url}`}
                     alt={each.title}
                   />
                 );

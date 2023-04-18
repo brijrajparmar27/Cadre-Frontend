@@ -1,142 +1,103 @@
 .users {
-    display: flex;
-    margin: auto;
-    flex-direction: column;
-    height: 100%;
-    width: 70%;
-  }
-  .add_timesheet {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    cursor: pointer;
-    background-color: var(--primary);
-    border: none;
-    outline: none;
-    padding: 10px 20px;
-    border-radius: 10px;
-    color: white;
-    font-size: 18px;
-  }
-  .users .section_title {
-    display: flex;
-    justify-content: space-between;
-    /* background-color: aqua; */
-  }
-  .timesheet .timesheet_contain {
-    display: grid;
-    grid-template-rows: 1fr;
-    grid-template-columns: 1fr 1.5fr;
-    grid-template-areas: "cal sheets";
-    /* background-color: aqua; */
-    height: 100%;
-    width: 100%;
-  }
-  .timesheet .timesheet_contain .calendar_contain {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    /* background-color: antiquewhite; */
-    grid-area: cal;
-  }
-  .timesheet .timesheet_contain .calendar_contain .calendar_date {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-  .timesheet .timesheet_contain .sheets_contain {
-    /* background-color: aquamarine; */
-    grid-area: sheets;
-  }
-  
-  .timesheet .timesheet_contain .calendar_contain .calendar {
-    border-radius: 5px;
-  }
-  .timesheet .timesheet_contain .calendar_contain .calendar abbr {
-    text-decoration: none;
-  }
-  .timesheet .timesheet_contain .timesheet_table,
-  th,
-  td {
-    border: 1px solid black;
-    border-collapse: collapse;
-  }
-  .timesheet .timesheet_contain .timesheet_table {
-    width: 100%;
-  }
-  /* .timesheet .timesheet_contain .timesheet_table tr {
-  } */
-  .timesheet .timesheet_contain .timesheet_table .time_cell {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  /* tablre */
-  .container {
-    display: flex;
-    height: 100%;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-  }
-  .table {
-    width: 100%;
-    border: 1px solid grey;
-    border-radius: 10px;
-  }
-  .table-header {
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    display: flex;
-    width: 100%;
-    background: var(--primary);
-    padding: 18px 0;
-  }
-  .table-row {
-    display: flex;
-    width: 100%;
-    padding: 18px 0;
-  }
-  .table-row:nth-of-type(odd) {
-    background: #eee;
-  }
-  .table-data,
-  .header__item {
-    flex: 1 1 20%;
-    text-align: center;
-  }
-  .header__item {
-    text-transform: uppercase;
-  }
-  .filter__link {
-    color: white;
-    text-decoration: none;
-    position: relative;
-    display: inline-block;
-    padding-left: 24px;
-    padding-right: 24px;
-  }
-  .filter__link::after {
-    content: "";
-    position: absolute;
-    right: -18px;
-    color: white;
-    font-size: 12px;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-  .filter__link.desc::after {
-    content: "(desc)";
-  }
-  .filter__link.asc::after {
-    content: "(asc)";
-  }
-  .proj_fun_icons {
-    font-size: 20px;
-    cursor: pointer;
-  }
-  /* end table */
-  
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+.users .section_title {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  /* background-color: aqua; */
+}
+.users .backdrop {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.405);
+  z-index: 10;
+}
+.users .backdrop .modal {
+  height: 80%;
+  width: 80%;
+  border-radius: 20px;
+  background-color: white;
+  padding: 30px;
+}
+/* tablre */
+.users .container {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  overflow-y: auto;
+}
+.users .table {
+  width: 70%;
+  border: 1px solid grey;
+  border-radius: 10px;
+}
+.users .table-header {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  display: flex;
+  width: 100%;
+  background: var(--primary);
+  padding: 18px 0;
+  z-index: 0;
+}
+.users .table-row {
+  display: flex;
+  width: 100%;
+  padding: 18px 0;
+}
+.users .table-row:nth-of-type(odd) {
+  background: #eee;
+  /* background: blue; */
+}
+.table-data,
+.header__item {
+  flex: 1 1 20%;
+  text-align: center;
+}
+.users .header__item {
+  text-transform: uppercase;
+}
+.users .filter__link {
+  color: white;
+  /* color: aqua; */
+  text-decoration: none;
+  position: relative;
+  display: inline-block;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+.users .filter__link::after {
+  content: "";
+  position: absolute;
+  right: -18px;
+  color: white;
+  font-size: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.users .filter__link.desc::after {
+  content: "(desc)";
+}
+.users .filter__link.asc::after {
+  content: "(asc)";
+}
+/* end table */
+
+.users .user_actions {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 10px;
+}

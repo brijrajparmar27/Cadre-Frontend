@@ -83,7 +83,10 @@ export default function timesheets() {
             <div className="container">
               <div className="table">
                 <div className="table-header">
-                  {timesheetdata && timesheetdata.length >= 2 || timesheetdata && timesheetdata.works && timesheetdata.works.length >=2 ? (
+                  {(timesheetdata && timesheetdata.length >= 2) ||
+                  (timesheetdata &&
+                    timesheetdata.works &&
+                    timesheetdata.works.length >= 2) ? (
                     <div className="header__item">
                       <a id="name" className="filter__link" href="#">
                         Name
@@ -127,7 +130,10 @@ export default function timesheets() {
                   </div>
                 </div>
                 <div className="table-content">
-                  {timesheetdata && timesheetdata.length >= 2 || timesheetdata && timesheetdata.works && timesheetdata.works.length >=2
+                  {(timesheetdata && timesheetdata.length >= 2) ||
+                  (timesheetdata &&
+                    timesheetdata.works &&
+                    timesheetdata.works.length >= 2)
                     ? timesheetdata.map((each) => {
                         return each?.works.map((data) => {
                           return (
@@ -138,7 +144,6 @@ export default function timesheets() {
                                 {data.projectName}
                               </div>
                               <div className="table-data">
-                                
                                 {data.description}
                               </div>
                               <div className="table-data">{data.hours}</div>
