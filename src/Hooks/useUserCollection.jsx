@@ -11,7 +11,7 @@ function useUserCollection() {
   const [userdataandProject, setUserdataandProject] = useState([]);
   const { userData } = useSelector((state) => state.logindataslice);
   const dispatch = useDispatch();
-  const navigate=useNavigate();
+  const navigate = useNavigate();
   const getAlluser = () => {
     API.get(`/get-alluser?sort={"column":"name","order":"asc"}`)
       .then((res) => {
@@ -40,39 +40,39 @@ function useUserCollection() {
     }
   };
   const updateUserProfile = (data) => {
-  // return  console.log(data,"data");
+    // return  console.log(data,"data");
     API.patch(`/user-details-update/${userData._id}`, data)
       .then((res) => {
         let users = {
           ...userData,
           contact_number: data.contact_number,
-          name: data.name
+          name: data.name,
         };
         dispatch(setLoginData(users));
-        toast.success('profile update successfully');
-        navigate('/dashboard');
+        toast.success("profile update successfully");
+        navigate("/dashboard");
       })
       .catch((err) => {
         console.log(err);
       });
   };
-  const deletuser=async(id)=>{
-    API.delete(`delete-user/${id}`).then((res)=>{
-      console.log(res);
-    }).catch((err)=>{
-       console.log(err);
-    })
-  }
-  const updateuser=(data)=>{
-    try{
-      const res= API.patch(`/user-details-update/${data._id}`, data)
+  const deletuser = async (id) => {
+    try {
+      const res = API.delete(`delete-user/${id}`);
       return res;
-    }catch(err){
-      console.log(err)
+      console.log(res);
+    } catch (err) {
+      console.log(err);
     }
-      
-
-  }
+  };
+  const updateuser = (data) => {
+    try {
+      const res = API.patch(`/user-details-update/${data._id}`, data);
+      return res;
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return {
     getAlluser,
     userdata,
@@ -81,7 +81,7 @@ function useUserCollection() {
     userdataandProject,
     updateUserProfile,
     deletuser,
-    updateuser
+    updateuser,
   };
 }
 

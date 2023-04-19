@@ -183,18 +183,18 @@ const Auth = () => {
                 setError("");
               }}
             >
-              {isLogin ? (
+              {/* {isLogin ? (
                 <span>
                   {" "}
                   Dont have an account?{" "}
-                  <span className="link_btn"> Signup</span>
+                   <span className="link_btn"> Signup</span> 
                 </span>
               ) : (
                 <span>
                   Already have an account?{" "}
                   <span className="link_btn">Login</span>
                 </span>
-              )}
+              )} */}
             </p>
           </div>
         </motion.div>

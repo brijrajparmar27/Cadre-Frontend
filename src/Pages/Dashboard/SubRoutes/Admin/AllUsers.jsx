@@ -7,15 +7,17 @@ import avatar from "../../../../assets/images/avatar.svg";
 import Swal from "sweetalert2";
 import AddUser from "./Modals/AddUser";
 import EditUser from "./Modals/EditUser";
+import { toast } from "react-toastify";
+import useSendmail from "../../../../Hooks/useSendmail";
 
 function AllUsers() {
   const { getAlluser, userdata, deletuser } = useUserCollection();
   const [AddModal, setAddModal] = useState(false);
   const [EditModal, setEditModal] = useState(false);
-  const [EditUserData,setEdituserData]=useState(false);
+  const [EditUserData, setEdituserData] = useState(false);
   useEffect(() => {
     getAlluser();
-  }, [AddModal,EditModal]);
+  }, [AddModal, EditModal]);
   const clickdeleteuser = (id) => {
     Swal.fire({
       title: "Are you sure?",
@@ -27,13 +29,14 @@ function AllUsers() {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        deletuser(id);
-        toast.success("delete users successfully");
-        getAlluser();
+        deletuser(id).then((res) => {
+          toast.success("delete users successfully");
+          getAlluser();
+        });
       }
     });
   };
-  
+
   return (
     <div className="users">
       <div className="section_title">
@@ -50,7 +53,9 @@ function AllUsers() {
       </div>
 
       {AddModal && <AddUser setAddModal={setAddModal} />}
-      {EditModal && EditUserData && <EditUser setEditModal={setEditModal} EdituserData={EditUserData} />}
+      {EditModal && EditUserData && (
+        <EditUser setEditModal={setEditModal} EdituserData={EditUserData} />
+      )}
 
       <div className="container">
         <div className="table">
@@ -108,7 +113,7 @@ function AllUsers() {
                           className="proj_fun_icons"
                           onClick={() => {
                             setEditModal(true);
-                            setEdituserData(res)
+                            setEdituserData(res);
                           }}
                         />
                         <AiOutlineDelete
