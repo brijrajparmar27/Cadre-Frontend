@@ -4,14 +4,14 @@
   height: 100%;
   width: 100%;
 }
-.settings_contain {
+.settings .settings_contain {
   display: flex;
   flex-direction: row;
   height: 100%;
   align-items: center;
   justify-content: space-evenly;
 }
-.dp_contain {
+.settings .dp_contain {
   position: relative;
   height: fit-content;
   width: fit-content;
@@ -20,33 +20,33 @@
   align-items: center;
   cursor: pointer;
 }
-.settings_contain .left {
+.settings .settings_contain .left {
   flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100%;
 }
-.settings_contain .right {
+.settings .settings_contain .right {
   flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100%;
 }
-.form_contain {
+.settings .form_contain {
   display: flex;
   flex-direction: column;
   width: 100%;
   max-width: 500px;
 }
-.settings_contain .dp_contain img {
+.settings .settings_contain .dp_contain img {
   height: 250px;
   width: 250px;
   object-fit: cover;
   border-radius: 50%;
 }
-.settings_contain .dp_overlay {
+.settings .settings_contain .dp_overlay {
   display: none !important;
   position: absolute;
   color: white;
@@ -63,7 +63,7 @@
   justify-content: center;
   align-items: center;
 }
-.overlay_contain {
+.settings .overlay_contain {
   height: 100%;
   width: 100%;
   display: flex;
@@ -72,17 +72,17 @@
   justify-content: center;
   align-items: center;
 }
-.overlay_contain .overlay_icon {
+.settings .overlay_contain .overlay_icon {
   font-size: 20px;
 }
-.settings_contain .dp_contain:hover .dp_overlay {
+.settings .settings_contain .dp_contain:hover .dp_overlay {
   display: block !important;
 }
-.settings_contain .dp_overlay p {
+.settings .settings_contain .dp_overlay p {
   text-align: center;
   font-size: 10px;
 }
-.update_profile {
+.settings .update_profile {
   display: flex;
   justify-content: center;
   align-items: center;

@@ -123,6 +123,9 @@
 .sidebar .sidebar_footer .card_stack .user_card .user_dp .sidebar_dp {
   height: 40px;
   width: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
 }
 .sidebar .sidebar_footer .card_stack .user_card .user_info {
   display: none;

@@ -1,0 +1,85 @@
+.EditUser {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  box-sizing: border-box;
+}
+.EditUser .settings_contain {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+}
+.EditUser .settings_contain .left {
+  flex: 1.5;
+}
+.EditUser .settings_contain .left .lottie_contain {
+  width: 100%;
+}
+.EditUser .settings_contain .right {
+  flex: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.EditUser .textbox {
+  width: 100%;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  cursor: default;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  min-height: 38px;
+  outline: 0 !important;
+  position: relative;
+  -webkit-transition: all 100ms;
+  transition: all 100ms;
+  background-color: hsl(0, 0%, 100%);
+  border-color: hsl(0, 0%, 80%);
+  border-radius: 4px;
+  border-style: solid;
+  border-width: 1px;
+  box-sizing: border-box;
+  padding: 1px 8px;
+}
+.EditUser .right .textbox:focus {
+  box-shadow: 0 0 0 1px #2684ff;
+  border-color: #2684ff;
+}
+.EditUser .right .form_contain .input_label {
+  margin-top: 10px;
+}
+.EditUser .right .form_contain {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 70%;
+}
+.EditUser .right .form_contain .update_profile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  background-color: var(--primary);
+  border: none;
+  outline: none;
+  padding: 0px 20px;
+  border-radius: 10px;
+  color: white;
+  font-size: 18px;
+  width: fit-content;
+  padding: 10px 50px;
+  margin-top: 20px;
+}

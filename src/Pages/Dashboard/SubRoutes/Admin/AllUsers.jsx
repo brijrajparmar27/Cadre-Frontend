@@ -5,15 +5,10 @@ import { AiOutlineDelete } from "react-icons/ai";
 import { BsPen, BsPlusLg } from "react-icons/bs";
 import avatar from "../../../../assets/images/avatar.svg";
 import Swal from "sweetalert2";
-<<<<<<< Updated upstream
-import AddUser from "./Modals/AddUser";
-import EditUser from "./Modals/EditUser";
 import { toast } from "react-toastify";
 import useSendmail from "../../../../Hooks/useSendmail";
-=======
-import AddUser from "./Modals/AddUser/AddUser";
 import EditUser from "./Modals/EditUser/EditUser";
->>>>>>> Stashed changes
+import AddUser from "./Modals/AddUser/AddUser";
 
 function AllUsers() {
   const { getAlluser, userdata, deletuser } = useUserCollection();

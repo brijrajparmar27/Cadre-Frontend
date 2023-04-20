@@ -114,7 +114,7 @@ export default function AddUser({ setAddModal }) {
                     setRole(role.value);
                   }}
                 />
-                <button type="submit" className="update_profile">
+                <button type="submit" className="AddUsrBtn">
                   Add User
                 </button>
               </form>

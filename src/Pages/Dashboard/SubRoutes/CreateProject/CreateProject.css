@@ -20,7 +20,7 @@
   font-size: 30px;
   cursor: pointer;
 }
-.input_label {
+.create_project_section .input_label {
   margin-top: 15px;
 }
 .create_project_section .create_content {
