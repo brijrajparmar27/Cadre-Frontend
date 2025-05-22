@@ -1,5 +1,9 @@
 # Cadre Frontend
 
+<div align="center">
+  <img src="repo-assets/logo.png" alt="Cadre Logo" width="200"/>
+</div>
+
 Cadre is a project management system designed to streamline team collaboration, project tracking, timesheet management, and communication. This repository contains the frontend module, built with React, Redux, and Vite, providing a modern, responsive, and interactive user interface.
 
 > **Note:** This is the frontend part of the project. The backend is available at [Cadre Backend](https://github.com/brijrajparmar27/Cadre-Backend).
@@ -24,6 +28,46 @@ Cadre is a project management system designed to streamline team collaboration, 
 ---
 
 ## Features
+
+### Authentication
+
+<div align="center">
+  <img src="repo-assets/login.png" alt="Login Screen" width="600"/>
+</div>
+
+### Dashboard
+
+<div align="center">
+  <img src="repo-assets/dashboard.png" alt="Dashboard View" width="600"/>
+</div>
+
+### Project Management
+
+<div align="center">
+  <img src="repo-assets/project kanban.png" alt="Project Kanban Board" width="600"/>
+  <img src="repo-assets/project details.png" alt="Project Details" width="600"/>
+  <img src="repo-assets/create task.png" alt="Create Task" width="600"/>
+</div>
+
+### Timesheet Management
+
+<div align="center">
+  <img src="repo-assets/add timesheet.png" alt="Add Timesheet" width="600"/>
+</div>
+
+### Team Collaboration
+
+<div align="center">
+  <img src="repo-assets/chat.png" alt="Chat Interface" width="600"/>
+</div>
+
+### User Settings
+
+<div align="center">
+  <img src="repo-assets/user settings.png" alt="User Settings" width="600"/>
+</div>
+
+Key features include:
 
 - **User Authentication**: Login and registration with role-based access (Sr Developer, Jr Developer, Admin).
 - **Dashboard**: Central hub for accessing all project management features.
